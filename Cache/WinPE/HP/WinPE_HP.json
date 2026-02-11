@@ -1,4 +1,5 @@
 {
+  "category": "WinPE",
   "catalog": {
     "dateReleased": "2026-02-11",
     "schemaVersion": "1.0.0.0",
@@ -151,15 +152,14 @@
     }
   ],
   "itemCount": 6,
-  "category": "WinPE",
+  "generatedAtUtc": "2026-02-11T21:59:16Z",
   "schemaVersion": 1,
-  "generatedAtUtc": "2026-02-11T21:46:23Z",
   "source": {
     "uri": "https://ftp.ext.hp.com/pub/caps-softpaq/cmit/HP_WinPE_DriverPack.html",
-    "name": "HP WinPE DriverPack Page",
-    "extractedFile": null,
     "extractedSha256": null,
-    "catalogSha256": "7907c0e4755f930cf74f45cc88733c90b3b3b591568fc898e3f95e2e0e34adf6",
-    "catalogType": "WinPEHtmlPage"
+    "catalogType": "WinPEHtmlPage",
+    "extractedFile": null,
+    "name": "HP WinPE DriverPack Page",
+    "catalogSha256": "7907c0e4755f930cf74f45cc88733c90b3b3b591568fc898e3f95e2e0e34adf6"
   }
 }
