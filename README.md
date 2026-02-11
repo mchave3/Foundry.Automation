@@ -60,3 +60,20 @@ Run:
 ```powershell
 pwsh -NoProfile -File ./Scripts/Update-HPCatalog.ps1
 ```
+
+## Surface Catalog
+
+This repository includes a PowerShell generator that builds Surface DriverPack metadata from Microsoft's Surface support article.
+
+- Script: `Scripts/Update-SurfaceCatalog.ps1`
+- Schema: `Schemas/SurfaceCatalog.schema.json`
+- Outputs:
+  - `Cache/DriverPack/Surface/DriverPack_Surface.json`
+  - `Cache/DriverPack/Surface/DriverPack_Surface.xml`
+  - `Cache/DriverPack/Surface/README.md`
+
+Run:
+
+```powershell
+pwsh -NoProfile -File ./Scripts/Update-SurfaceCatalog.ps1
+```

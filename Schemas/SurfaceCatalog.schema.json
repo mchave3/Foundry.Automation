@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Foundry Surface Catalog",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAtUtc",
+    "category",
+    "source",
+    "catalog",
+    "itemCount",
+    "items"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "generatedAtUtc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "DriverPack"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "name",
+        "catalogType",
+        "uri"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "catalogType": {
+          "type": "string",
+          "enum": [
+            "SupportArticle"
+          ]
+        },
+        "uri": {
+          "type": "string"
+        },
+        "catalogSha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "catalog": {
+      "type": "object",
+      "required": [
+        "articleGuid",
+        "lastPublishedDate"
+      ],
+      "properties": {
+        "articleGuid": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "firstPublishedDate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastPublishedDate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "itemCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "model": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "packageId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "downloadCenterUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "msiUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fileName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "device": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "importFolderCount": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "importFolders": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hidMiniZipUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "guidanceUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
