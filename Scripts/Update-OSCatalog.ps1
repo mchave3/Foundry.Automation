@@ -1,3 +1,4 @@
+#region Parameters
 [CmdletBinding()]
 param(
     [Parameter()]
@@ -22,7 +23,11 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+#endregion Parameters
 
+#region Utility Functions
+
+# Extract fwlink id from a Microsoft URL query string.
 function Get-FwlinkIdFromUrl {
     param(
         [Parameter(Mandatory = $true)]
@@ -47,6 +52,7 @@ function Get-FwlinkIdFromUrl {
     return $null
 }
 
+# Parse build text like 26100.4349 into major/UBR parts.
 function ConvertTo-BuildParts {
     param(
         [Parameter(Mandatory = $true)]
@@ -80,6 +86,7 @@ function ConvertTo-BuildParts {
     }
 }
 
+# Serialize JSON deterministically with normalized line endings.
 function ConvertTo-DeterministicJson {
     param(
         [Parameter(Mandatory = $true)]
@@ -90,6 +97,7 @@ function ConvertTo-DeterministicJson {
     return ($json -replace "`r?`n", "`r`n").TrimEnd("`r", "`n")
 }
 
+# Write text file as UTF-8 without BOM.
 function Write-Utf8NoBomFile {
     param(
         [Parameter(Mandatory = $true)]
@@ -104,6 +112,7 @@ function Write-Utf8NoBomFile {
     [System.IO.File]::WriteAllText($Path, $normalized, $encoding)
 }
 
+# Resolve 7-Zip executable path for cross-platform CAB extraction.
 function Get-SevenZipCommandPath {
     $candidates = @('7zz', '7z')
     foreach ($candidate in $candidates) {
@@ -116,6 +125,7 @@ function Get-SevenZipCommandPath {
     throw 'Required tool not found: 7-Zip CLI (7zz or 7z). Install 7-Zip/p7zip before running this script.'
 }
 
+# Extract file patterns from an archive using 7-Zip.
 function Invoke-SevenZipExtract {
     param(
         [Parameter(Mandatory = $true)]
@@ -136,6 +146,7 @@ function Invoke-SevenZipExtract {
     & $SevenZipPath @arguments | Out-Null
 }
 
+# Load WORProject versions endpoint and keep one best source per build major.
 function Get-WorProjectCatalogSources {
     param(
         [Parameter(Mandatory = $true)]
@@ -203,6 +214,7 @@ function Get-WorProjectCatalogSources {
             }
 
             if ($take) {
+                # Keep newest release per build major to avoid redundant source processing.
                 $bestByBuildMajor[$buildKey] = [pscustomobject]([ordered]@{
                         windowsMajor = $windowsMajor
                         build = $build
@@ -237,6 +249,7 @@ function Get-WorProjectCatalogSources {
     }
 }
 
+# Convert products.xml entries into normalized ESD items.
 function ConvertFrom-ProductsXml {
     param(
         [Parameter(Mandatory = $true)]
@@ -387,6 +400,7 @@ function ConvertFrom-ProductsXml {
     $items = @($candidates)
     if ($clientTypeRegex) {
         $filtered = @($items | Where-Object { $_.url -and [regex]::IsMatch([string]$_.url, $clientTypeRegex) })
+        # Some older catalogs do not expose expected client type markers in URL.
         if ($filtered.Count -gt 0) {
             $items = $filtered
         }
@@ -404,6 +418,7 @@ function ConvertFrom-ProductsXml {
         ))
 }
 
+# Emit XML output aligned with the JSON catalog shape.
 function Write-OperatingSystemXml {
     param(
         [Parameter(Mandatory = $true)]
@@ -480,6 +495,10 @@ function Write-OperatingSystemXml {
         $writer.Dispose()
     }
 }
+
+#endregion Utility Functions
+
+#region Main Execution
 
 $startedAt = Get-Date
 $generatedAt = (Get-Date).ToUniversalTime()
@@ -561,6 +580,7 @@ try {
         }
 
         if (-not (Test-Path -Path $xmlPath)) {
+            # Fallback for sources where the XML name differs from products.xml.
             try {
                 Invoke-SevenZipExtract -SevenZipPath $sevenZipPath -ArchivePath $cabPath -OutputDirectory $sourceTempDirectory -Patterns @('*.xml')
             }
@@ -635,9 +655,11 @@ $dedupMap = [ordered]@{}
 foreach ($item in $itemsAll) {
     $key = $null
     if ($item.sha1) {
+        # Prefer stable content hash when available.
         $key = 'sha1:' + [string]$item.sha1
     }
     else {
+        # Fallback key for older entries missing SHA1.
         $key = 'url:' + [string]$item.url + '|fn:' + [string]$item.fileName
     }
 
@@ -732,3 +754,5 @@ Write-Utf8NoBomFile -Path $mdPath -Content ($summaryLines -join "`r`n")
     Items = $itemsSorted.Count
     Status = $status
 }
+
+#endregion Main Execution
