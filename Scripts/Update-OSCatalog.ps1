@@ -112,6 +112,16 @@ function Write-Utf8NoBomFile {
     [System.IO.File]::WriteAllText($Path, $normalized, $encoding)
 }
 
+# Resolve a writable temporary root directory in a cross-platform way.
+function Get-TemporaryRootPath {
+    $tempPath = [System.IO.Path]::GetTempPath()
+    if (-not $tempPath) {
+        return '/tmp'
+    }
+
+    return $tempPath
+}
+
 # Resolve 7-Zip executable path for cross-platform CAB extraction.
 function Get-SevenZipCommandPath {
     $candidates = @('7zz', '7z')
@@ -520,7 +530,7 @@ $itemsAll = @()
 $skippedSources = 0
 $skippedSourceDetails = @()
 
-$tempRoot = Join-Path -Path $env:TEMP -ChildPath ('foundry-os-catalog-' + [guid]::NewGuid())
+$tempRoot = Join-Path -Path (Get-TemporaryRootPath) -ChildPath ('foundry-os-catalog-' + [guid]::NewGuid())
 $null = New-Item -Path $tempRoot -ItemType Directory -Force
 
 try {
