@@ -1,0 +1,326 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Foundry HP Catalog",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAtUtc",
+    "category",
+    "source",
+    "catalog",
+    "itemCount",
+    "items"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "generatedAtUtc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "DriverPack",
+        "WinPE"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "name",
+        "catalogType",
+        "uri"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "catalogType": {
+          "type": "string",
+          "enum": [
+            "DriverPackCatalogCab",
+            "WinPEHtmlPage"
+          ]
+        },
+        "uri": {
+          "type": "string"
+        },
+        "extractedFile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "catalogSha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "extractedSha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "platformListUri": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "platformListCatalogSha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "platformListExtractedFile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "platformListExtractedSha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "catalog": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "toolVersion",
+        "dateReleased"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "toolVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dateReleased": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "itemCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "productId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "productType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "systemId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "systemName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "architecture": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "osId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "osName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "softPaqId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "softPaqVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "category": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dateReleased": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "downloadUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "releaseNotesUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sizeBytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "md5": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cvaFileUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hsaCompliant": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "winpeFamily": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "platformListMatched": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "platformProductName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "platformSystemFamily": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "platformDateAdded": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "platformDateLastModified": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "platformSupportsWin10": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "platformSupportsWin11": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "platformWin10Releases": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "platformWin11Releases": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

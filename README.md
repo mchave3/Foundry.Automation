@@ -40,3 +40,23 @@ Run:
 ```powershell
 pwsh -NoProfile -File ./Scripts/Update-DellCatalog.ps1
 ```
+
+## HP Catalog
+
+This repository includes a PowerShell generator that pulls HP DriverPack metadata from `HPClientDriverPackCatalog.cab` and WinPE pack metadata from HP's WinPE page.
+
+- Script: `Scripts/Update-HPCatalog.ps1`
+- Schema: `Schemas/HPCatalog.schema.json`
+- Outputs:
+  - `Cache/DriverPack/HP/DriverPack_HP.json`
+  - `Cache/DriverPack/HP/DriverPack_HP.xml`
+  - `Cache/DriverPack/HP/README.md`
+  - `Cache/WinPE/HP/WinPE_HP.json`
+  - `Cache/WinPE/HP/WinPE_HP.xml`
+  - `Cache/WinPE/HP/README.md`
+
+Run:
+
+```powershell
+pwsh -NoProfile -File ./Scripts/Update-HPCatalog.ps1
+```
