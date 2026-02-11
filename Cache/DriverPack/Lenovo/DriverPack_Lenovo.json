@@ -1,6 +1,10 @@
 {
-  "generatedAtUtc": "2026-02-11T23:13:48Z",
-  "category": "DriverPack",
+  "source": {
+    "name": "Lenovo DriverPack Catalog V2",
+    "uri": "https://download.lenovo.com/cdrt/td/catalogv2.xml",
+    "catalogSha256": "c5d751fbc0cee31594ae8c28f17323ded50cf993c3177cb2441a9f32cab6d9cc",
+    "catalogType": "DriverPackCatalogXml"
+  },
   "items": [
     {
       "id": "ThinkCentre M625Q|win10|1809|tc_m625q_w1064_1809_20190305.exe",
@@ -36793,16 +36797,12 @@
       "md5": "03aa4f3c5810cbbf97956b2e8cee9546"
     }
   ],
-  "source": {
-    "name": "Lenovo DriverPack Catalog V2",
-    "catalogType": "DriverPackCatalogXml",
-    "catalogSha256": "c5d751fbc0cee31594ae8c28f17323ded50cf993c3177cb2441a9f32cab6d9cc",
-    "uri": "https://download.lenovo.com/cdrt/td/catalogv2.xml"
+  "generatedAtUtc": "2026-02-11T23:19:45Z",
+  "catalog": {
+    "modelCount": 471,
+    "catalogVersion": "1.0"
   },
   "schemaVersion": 1,
   "itemCount": 2830,
-  "catalog": {
-    "catalogVersion": "1.0",
-    "modelCount": 471
-  }
+  "category": "DriverPack"
 }
