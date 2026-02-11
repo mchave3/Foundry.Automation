@@ -77,3 +77,20 @@ Run:
 ```powershell
 pwsh -NoProfile -File ./Scripts/Update-SurfaceCatalog.ps1
 ```
+
+## Lenovo Catalog
+
+This repository includes a PowerShell generator that builds Lenovo DriverPack metadata from Lenovo's `catalogv2.xml`.
+
+- Script: `Scripts/Update-LenovoCatalog.ps1`
+- Schema: `Schemas/LenovoCatalog.schema.json`
+- Outputs:
+  - `Cache/DriverPack/Lenovo/DriverPack_Lenovo.json`
+  - `Cache/DriverPack/Lenovo/DriverPack_Lenovo.xml`
+  - `Cache/DriverPack/Lenovo/README.md`
+
+Run:
+
+```powershell
+pwsh -NoProfile -File ./Scripts/Update-LenovoCatalog.ps1
+```

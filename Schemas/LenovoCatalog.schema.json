@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Foundry Lenovo Catalog",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAtUtc",
+    "category",
+    "source",
+    "catalog",
+    "itemCount",
+    "items"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "generatedAtUtc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "DriverPack"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "name",
+        "catalogType",
+        "uri"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "catalogType": {
+          "type": "string",
+          "enum": [
+            "DriverPackCatalogXml"
+          ]
+        },
+        "uri": {
+          "type": "string"
+        },
+        "catalogSha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "catalog": {
+      "type": "object",
+      "required": [
+        "catalogVersion",
+        "modelCount"
+      ],
+      "properties": {
+        "catalogVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "modelCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "itemCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "model": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "machineTypes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "machineTypeCount": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "os": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "osVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "releaseDate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "downloadUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fileName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "crc": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "md5": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
