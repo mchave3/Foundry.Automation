@@ -18,3 +18,5 @@ Run:
 ```powershell
 pwsh -NoProfile -File ./Scripts/Update-OSCatalog.ps1
 ```
+
+Prerequisite: `7zz` or `7z` must be available in `PATH` for CAB extraction.

@@ -104,6 +104,38 @@ function Write-Utf8NoBomFile {
     [System.IO.File]::WriteAllText($Path, $normalized, $encoding)
 }
 
+function Get-SevenZipCommandPath {
+    $candidates = @('7zz', '7z')
+    foreach ($candidate in $candidates) {
+        $command = Get-Command -Name $candidate -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
+        if ($command) {
+            return [string]$command.Source
+        }
+    }
+
+    throw 'Required tool not found: 7-Zip CLI (7zz or 7z). Install 7-Zip/p7zip before running this script.'
+}
+
+function Invoke-SevenZipExtract {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$SevenZipPath,
+
+        [Parameter(Mandatory = $true)]
+        [string]$ArchivePath,
+
+        [Parameter(Mandatory = $true)]
+        [string]$OutputDirectory,
+
+        [Parameter(Mandatory = $true)]
+        [string[]]$Patterns
+    )
+
+    $arguments = @('e', '-y', "-o$OutputDirectory", $ArchivePath)
+    $arguments += $Patterns
+    & $SevenZipPath @arguments | Out-Null
+}
+
 function Get-WorProjectCatalogSources {
     param(
         [Parameter(Mandatory = $true)]
@@ -454,10 +486,7 @@ $generatedAt = (Get-Date).ToUniversalTime()
 $generatedAtUtc = $generatedAt.ToString('yyyy-MM-ddTHH:mm:ssZ')
 $generatedAtDisplay = $generatedAt.ToString('yyyy-MM-dd HH:mm:ss') + ' UTC'
 
-$expandExe = Join-Path -Path $env:SystemRoot -ChildPath 'System32\expand.exe'
-if (-not (Test-Path -Path $expandExe)) {
-    throw "Required tool not found: $expandExe"
-}
+$sevenZipPath = Get-SevenZipCommandPath
 
 if (-not (Test-Path -Path $OutputDirectory)) {
     $null = New-Item -Path $OutputDirectory -ItemType Directory -Force
@@ -491,8 +520,13 @@ try {
             continue
         }
 
-        $cabPath = Join-Path -Path $tempRoot -ChildPath ("products_{0}.cab" -f $sourceId)
-        $xmlPath = Join-Path -Path $tempRoot -ChildPath ("products_{0}.xml" -f $sourceId)
+        $sourceTempDirectory = Join-Path -Path $tempRoot -ChildPath $sourceId
+        if (-not (Test-Path -Path $sourceTempDirectory)) {
+            $null = New-Item -Path $sourceTempDirectory -ItemType Directory -Force
+        }
+
+        $cabPath = Join-Path -Path $sourceTempDirectory -ChildPath ("products_{0}.cab" -f $sourceId)
+        $xmlPath = Join-Path -Path $sourceTempDirectory -ChildPath ("products_{0}.xml" -f $sourceId)
 
         try {
             Invoke-WebRequest -Uri $cabUrl -OutFile $cabPath -ErrorAction Stop | Out-Null
@@ -510,11 +544,37 @@ try {
 
         $cabSha256 = (Get-FileHash -Path $cabPath -Algorithm SHA256).Hash.ToLowerInvariant()
 
-        & $expandExe '-F:products.xml' $cabPath $xmlPath | Out-Null
+        $directProductsXmlPath = Join-Path -Path $sourceTempDirectory -ChildPath 'products.xml'
+        if (Test-Path -Path $directProductsXmlPath) {
+            Remove-Item -Path $directProductsXmlPath -Force -ErrorAction SilentlyContinue
+        }
+
+        try {
+            Invoke-SevenZipExtract -SevenZipPath $sevenZipPath -ArchivePath $cabPath -OutputDirectory $sourceTempDirectory -Patterns @('products.xml')
+        }
+        catch {
+            Write-Verbose -Message ("7-Zip direct extraction failed for source '{0}': {1}" -f $sourceId, $_.Exception.Message)
+        }
+
+        if (Test-Path -Path $directProductsXmlPath) {
+            Copy-Item -Path $directProductsXmlPath -Destination $xmlPath -Force
+        }
+
         if (-not (Test-Path -Path $xmlPath)) {
-            & $expandExe '-F:*.xml' $cabPath $tempRoot | Out-Null
-            $xmlCandidates = @(Get-ChildItem -Path $tempRoot -Filter '*.xml' -File | Where-Object { $_.Name -notlike ("products_{0}.xml" -f $sourceId) })
-            if ($xmlCandidates.Count -eq 1) {
+            try {
+                Invoke-SevenZipExtract -SevenZipPath $sevenZipPath -ArchivePath $cabPath -OutputDirectory $sourceTempDirectory -Patterns @('*.xml')
+            }
+            catch {
+                Write-Verbose -Message ("7-Zip wildcard extraction failed for source '{0}': {1}" -f $sourceId, $_.Exception.Message)
+            }
+
+            $xmlCandidates = @(
+                Get-ChildItem -Path $sourceTempDirectory -Filter '*.xml' -File |
+                Where-Object { $_.FullName -ne $xmlPath } |
+                Sort-Object -Descending -Property LastWriteTimeUtc, Name
+            )
+
+            if ($xmlCandidates.Count -ge 1) {
                 Copy-Item -Path $xmlCandidates[0].FullName -Destination $xmlPath -Force
             }
         }
