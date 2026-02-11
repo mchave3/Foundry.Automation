@@ -2,17 +2,17 @@
 
 | Metric | Value |
 | --- | --- |
-| Executed At (UTC) | 2026-02-11 18:07:53 UTC |
+| Executed At (UTC) | 2026-02-11 19:04:58 UTC |
 | Status | SUCCESS |
 | Sources Processed | 18 |
 | Sources Skipped | 1 |
 | Items | 3016 |
-| Duration (Seconds) | 31 |
-| SHA256 JSON | 2b5fba059a097694f494ce88d5e2a3b3bd61620c53c7dc25f8e81e261cbd7104 |
-| SHA256 XML | bf31ecefffca7e598d5d8e67e5bb151c11569a07374a3ef41d5a1af3db3f2a4a |
+| Duration (Seconds) | 65 |
+| SHA256 JSON | d424909fb9b71c81b2b69e28bcc8a88b10072c86ecd7ffa47947413547300a7f |
+| SHA256 XML | ec514aea920e2fbaf64213de5a21c3902c5523b74c8adfa84af20122f135a2ec |
 
 ## Sources Not Processed
 
 | Source | Reason |
 | --- | --- |
-| Win10_14393.0 | CAB download failed: Hôte inconnu. (wscont.apps.microsoft.com:443) |
+| Win10_14393.0 | CAB download failed: Name or service not known (wscont.apps.microsoft.com:443) |
