@@ -11,7 +11,7 @@ This repository includes a PowerShell generator that pulls Windows catalog metad
 - Outputs:
   - `Cache/OS/OperatingSystem.json`
   - `Cache/OS/OperatingSystem.xml`
-  - `Cache/OS/OperatingSystem.md`
+  - `Cache/OS/README.md`
 
 Run:
 
@@ -30,10 +30,10 @@ This repository also includes a PowerShell generator that pulls Dell Driver Pack
 - Outputs:
   - `Cache/DriverPack/Dell/DriverPack_Dell.json`
   - `Cache/DriverPack/Dell/DriverPack_Dell.xml`
-  - `Cache/DriverPack/Dell/DriverPack_Dell.md`
+  - `Cache/DriverPack/Dell/README.md`
   - `Cache/WinPE/Dell/WinPE_Dell.json`
   - `Cache/WinPE/Dell/WinPE_Dell.xml`
-  - `Cache/WinPE/Dell/WinPE_Dell.md`
+  - `Cache/WinPE/Dell/README.md`
 
 Run:
 

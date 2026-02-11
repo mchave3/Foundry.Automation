@@ -482,7 +482,7 @@ function Write-DellCategoryOutputs {
     $filePrefix = if ($Catalog.category -eq 'DriverPack') { 'DriverPack_Dell' } else { 'WinPE_Dell' }
     $jsonPath = Join-Path -Path $OutputDirectory -ChildPath ($filePrefix + '.json')
     $xmlPath = Join-Path -Path $OutputDirectory -ChildPath ($filePrefix + '.xml')
-    $mdPath = Join-Path -Path $OutputDirectory -ChildPath ($filePrefix + '.md')
+    $mdPath = Join-Path -Path $OutputDirectory -ChildPath 'README.md'
 
     $json = ConvertTo-DeterministicJson -Object $Catalog
     Write-Utf8NoBomFile -Path $jsonPath -Content $json

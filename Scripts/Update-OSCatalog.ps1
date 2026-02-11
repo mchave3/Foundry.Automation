@@ -711,7 +711,7 @@ $catalog = [ordered]@{
 
 $jsonPath = Join-Path -Path $OutputDirectory -ChildPath 'OperatingSystem.json'
 $xmlPath = Join-Path -Path $OutputDirectory -ChildPath 'OperatingSystem.xml'
-$mdPath = Join-Path -Path $OutputDirectory -ChildPath 'OperatingSystem.md'
+$mdPath = Join-Path -Path $OutputDirectory -ChildPath 'README.md'
 
 $json = ConvertTo-DeterministicJson -Object $catalog
 Write-Utf8NoBomFile -Path $jsonPath -Content $json

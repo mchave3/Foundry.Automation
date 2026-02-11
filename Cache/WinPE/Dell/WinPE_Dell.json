@@ -1,22 +1,20 @@
 {
-  "source": {
-    "catalogXmlFile": "DriverPackCatalog.xml",
-    "catalogCabSha256": "430735c667283b1facc6c35eb039686f8f9f65cb9f5ed444ce790fdbe6312e06",
-    "catalogCabUri": "https://downloads.dell.com/catalog/DriverPackCatalog.cab",
-    "name": "Dell Driver Pack Catalog",
-    "catalogXmlSha256": "1cc6805b87c92f957d95475d59e8813645add432cab540be1ac73bf007739956"
-  },
-  "schemaVersion": 1,
   "catalog": {
+    "version": "2026.02.02",
     "schemaVersion": "2.3",
     "baseLocation": "downloads.dell.com",
     "dateTime": "2026-02-09T07:06:54",
-    "baseLocationAccessProtocols": "HTTP FTP",
-    "version": "2026.02.02"
+    "baseLocationAccessProtocols": "HTTP FTP"
   },
-  "itemCount": 5,
-  "generatedAtUtc": "2026-02-11T20:42:06Z",
-  "category": "WinPE",
+  "generatedAtUtc": "2026-02-11T20:52:45Z",
+  "schemaVersion": 1,
+  "source": {
+    "catalogCabSha256": "430735c667283b1facc6c35eb039686f8f9f65cb9f5ed444ce790fdbe6312e06",
+    "catalogXmlSha256": "1cc6805b87c92f957d95475d59e8813645add432cab540be1ac73bf007739956",
+    "catalogXmlFile": "DriverPackCatalog.xml",
+    "catalogCabUri": "https://downloads.dell.com/catalog/DriverPackCatalog.cab",
+    "name": "Dell Driver Pack Catalog"
+  },
   "items": [
     {
       "releaseId": "0VJ7T",
@@ -198,5 +196,7 @@
         }
       ]
     }
-  ]
+  ],
+  "category": "WinPE",
+  "itemCount": 5
 }
