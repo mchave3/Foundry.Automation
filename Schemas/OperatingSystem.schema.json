@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Foundry Operating System ESD Catalog",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAtUtc",
+    "source",
+    "latestFwlinks",
+    "sources",
+    "items"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "generatedAtUtc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "name",
+        "versionsUri"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "versionsUri": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "latestFwlinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "windowsMajor",
+          "fwlinkId",
+          "fwlinkUrl"
+        ],
+        "properties": {
+          "windowsMajor": {
+            "type": "string"
+          },
+          "fwlinkId": {
+            "type": "string"
+          },
+          "fwlinkUrl": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "windowsMajor",
+          "build",
+          "buildMajor",
+          "buildUbr",
+          "date",
+          "cabUrl",
+          "cabSha256",
+          "productsXmlSha256",
+          "itemCount"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "windowsMajor": {
+            "type": "string"
+          },
+          "build": {
+            "type": "string"
+          },
+          "buildMajor": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "buildUbr": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cabUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cabSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "productsXmlSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "itemCount": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "sourceId",
+          "fileName",
+          "url"
+        ],
+        "properties": {
+          "sourceId": {
+            "type": "string"
+          },
+          "mctId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "clientType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "windowsRelease": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "enum": [
+              null,
+              10,
+              11
+            ]
+          },
+          "build": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "buildMajor": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "buildUbr": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "architecture": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "languageCode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "language": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "edition": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "sizeBytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "sha1": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "isRetailOnly": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "url": {
+            "type": "string"
+          },
+          "key": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
