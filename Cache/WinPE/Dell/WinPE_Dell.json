@@ -1,0 +1,202 @@
+{
+  "source": {
+    "catalogXmlFile": "DriverPackCatalog.xml",
+    "catalogCabSha256": "430735c667283b1facc6c35eb039686f8f9f65cb9f5ed444ce790fdbe6312e06",
+    "catalogCabUri": "https://downloads.dell.com/catalog/DriverPackCatalog.cab",
+    "name": "Dell Driver Pack Catalog",
+    "catalogXmlSha256": "1cc6805b87c92f957d95475d59e8813645add432cab540be1ac73bf007739956"
+  },
+  "schemaVersion": 1,
+  "catalog": {
+    "schemaVersion": "2.3",
+    "baseLocation": "downloads.dell.com",
+    "dateTime": "2026-02-09T07:06:54",
+    "baseLocationAccessProtocols": "HTTP FTP",
+    "version": "2026.02.02"
+  },
+  "itemCount": 5,
+  "generatedAtUtc": "2026-02-11T20:42:06Z",
+  "category": "WinPE",
+  "items": [
+    {
+      "releaseId": "0VJ7T",
+      "type": "WinPE",
+      "name": "WinPE10.0-Drivers-A38-0VJ7T.cab",
+      "description": "With the Dell Command Deploy Driver Packs, an I/T Administrator can perform the following tasks:\n1) Use Microsoft Windows OS-based PnP enumeration capabilities to install drivers for applicable devices\n2) Create a system-level optimized deployment sequence\n3) Setup an appropriate boot control sequence.\n4) Optimize the deployment of targeted system-specific driver packages.",
+      "importantInfo": "Please visit http://Dell.com/Command for additional help on using CABs for OS Deployment.",
+      "format": "cab",
+      "vendorVersion": "1.0",
+      "dellVersion": "A38",
+      "dateTime": "2025-12-19T05:12:43",
+      "hashMD5": "FC37E3069C8C628385945BE3D78BD8B6",
+      "sizeBytes": 139610032,
+      "path": "FOLDER14002063M/1/WinPE10.0-Drivers-A38-0VJ7T.cab",
+      "downloadUrl": "https://downloads.dell.com/FOLDER14002063M/1/WinPE10.0-Drivers-A38-0VJ7T.cab",
+      "supportedSystems": [],
+      "supportedOperatingSystems": [
+        {
+          "osCode": "winpe10x",
+          "osVendor": "Microsoft",
+          "osArch": "x86",
+          "osType": "client",
+          "majorVersion": 10,
+          "minorVersion": 0,
+          "spMajorVersion": 0,
+          "spMinorVersion": 0
+        },
+        {
+          "osCode": "winpe10x",
+          "osVendor": "Microsoft",
+          "osArch": "x64",
+          "osType": "client",
+          "majorVersion": 10,
+          "minorVersion": 0,
+          "spMajorVersion": 0,
+          "spMinorVersion": 0
+        }
+      ]
+    },
+    {
+      "releaseId": "2F5W2",
+      "type": "WinPE",
+      "name": "WinPE5.0-Drivers-A10-2F5W2.CAB",
+      "description": "With the Dell Command Deploy Driver Packs, an I/T Administrator can perform the following tasks:\n1) Use Microsoft Windows OS-based PnP enumeration capabilities to install drivers for applicable devices\n2) Create a system-level optimized deployment sequence\n3) Setup an appropriate boot control sequence.\n4) Optimize the deployment of targeted system-specific driver packages.",
+      "importantInfo": "Please visit http://Dell.com/Command for additional help on using CABs for OS Deployment.",
+      "format": "cab",
+      "vendorVersion": "1.0",
+      "dellVersion": "A10",
+      "dateTime": "2017-11-30T00:00:00",
+      "hashMD5": "43AA87C03D61206CA4E7324F16954CE6",
+      "sizeBytes": 103883414,
+      "path": "FOLDER04560673M/1/WinPE5.0-Drivers-A10-2F5W2.CAB",
+      "downloadUrl": "https://downloads.dell.com/FOLDER04560673M/1/WinPE5.0-Drivers-A10-2F5W2.CAB",
+      "supportedSystems": [],
+      "supportedOperatingSystems": [
+        {
+          "osCode": "winpe5x",
+          "osVendor": "Microsoft",
+          "osArch": "x86",
+          "osType": "client",
+          "majorVersion": 6,
+          "minorVersion": 3,
+          "spMajorVersion": 0,
+          "spMinorVersion": 0
+        },
+        {
+          "osCode": "winpe5x",
+          "osVendor": "Microsoft",
+          "osArch": "x64",
+          "osType": "client",
+          "majorVersion": 6,
+          "minorVersion": 3,
+          "spMajorVersion": 0,
+          "spMinorVersion": 0
+        }
+      ]
+    },
+    {
+      "releaseId": "2V5TD",
+      "type": "WinPE",
+      "name": "WinPE11.0-Drivers-A08-2V5TD.cab",
+      "description": "With the Dell Command Deploy Driver Packs, an I/T Administrator can perform the following tasks:\n1) Use Microsoft Windows OS-based PnP enumeration capabilities to install drivers for applicable devices\n2) Create a system-level optimized deployment sequence\n3) Setup an appropriate boot control sequence.\n4) Optimize the deployment of targeted system-specific driver packages.",
+      "importantInfo": "Please visit http://Dell.com/Command for additional help on using CABs for OS Deployment.",
+      "format": "cab",
+      "vendorVersion": "1.0",
+      "dellVersion": "A08",
+      "dateTime": "2025-12-19T05:13:37",
+      "hashMD5": "03997A6A0A66962F1AE39DD5935728D5",
+      "sizeBytes": 29028403,
+      "path": "FOLDER14002062M/1/WinPE11.0-Drivers-A08-2V5TD.cab",
+      "downloadUrl": "https://downloads.dell.com/FOLDER14002062M/1/WinPE11.0-Drivers-A08-2V5TD.cab",
+      "supportedSystems": [],
+      "supportedOperatingSystems": [
+        {
+          "osCode": "winpe11x",
+          "osVendor": "Microsoft",
+          "osArch": "x64",
+          "osType": "client",
+          "majorVersion": 10,
+          "minorVersion": 0,
+          "spMajorVersion": 0,
+          "spMinorVersion": 0
+        }
+      ]
+    },
+    {
+      "releaseId": "F1YJC",
+      "type": "WinPE",
+      "name": "WinPE4.0-Drivers-A06-F1YJC.CAB",
+      "description": "With the Dell Command Deploy Driver Packs, an I/T Administrator can perform the following tasks:\n1) Use Microsoft Windows OS-based PnP enumeration capabilities to install drivers for applicable devices\n2) Create a system-level optimized deployment sequence\n3) Setup an appropriate boot control sequence.\n4) Optimize the deployment of targeted system-specific driver packages.",
+      "importantInfo": "Please visit http://Dell.com/Command for additional help on using CABs for OS Deployment.",
+      "format": "cab",
+      "vendorVersion": "1.0",
+      "dellVersion": "A06",
+      "dateTime": "2015-06-02T00:00:00",
+      "hashMD5": "96DAA271FB10208B464FBD98E83C0528",
+      "sizeBytes": 14122848,
+      "path": "FOLDER03048988M/1/WinPE4.0-Drivers-A06-F1YJC.CAB",
+      "downloadUrl": "https://downloads.dell.com/FOLDER03048988M/1/WinPE4.0-Drivers-A06-F1YJC.CAB",
+      "supportedSystems": [],
+      "supportedOperatingSystems": [
+        {
+          "osCode": "winpe4x",
+          "osVendor": "Microsoft",
+          "osArch": "x86",
+          "osType": "client",
+          "majorVersion": 4,
+          "minorVersion": 0,
+          "spMajorVersion": 0,
+          "spMinorVersion": 0
+        },
+        {
+          "osCode": "winpe4x",
+          "osVendor": "Microsoft",
+          "osArch": "x64",
+          "osType": "client",
+          "majorVersion": 4,
+          "minorVersion": 0,
+          "spMajorVersion": 0,
+          "spMinorVersion": 0
+        }
+      ]
+    },
+    {
+      "releaseId": "MJ53D",
+      "type": "WinPE",
+      "name": "WinPE3.0-Drivers-A23-MJ53D.CAB",
+      "description": "With the Dell Command Deploy Driver Packs, an I/T Administrator can perform the following tasks:\n1) Use Microsoft Windows OS-based PnP enumeration capabilities to install drivers for applicable devices\n2) Create a system-level optimized deployment sequence\n3) Setup an appropriate boot control sequence.\n4) Optimize the deployment of targeted system-specific driver packages.",
+      "importantInfo": "Please visit http://Dell.com/Command for additional help on using CABs for OS Deployment.",
+      "format": "cab",
+      "vendorVersion": "1.0",
+      "dellVersion": "A23",
+      "dateTime": "2018-11-21T00:00:00",
+      "hashMD5": "87FC2363BF818266A20964E0AB64C993",
+      "sizeBytes": 179684132,
+      "path": "FOLDER05323227M/1/WinPE3.0-Drivers-A23-MJ53D.CAB",
+      "downloadUrl": "https://downloads.dell.com/FOLDER05323227M/1/WinPE3.0-Drivers-A23-MJ53D.CAB",
+      "supportedSystems": [],
+      "supportedOperatingSystems": [
+        {
+          "osCode": "winpe3x",
+          "osVendor": "Microsoft",
+          "osArch": "x86",
+          "osType": "client",
+          "majorVersion": 6,
+          "minorVersion": 1,
+          "spMajorVersion": 0,
+          "spMinorVersion": 0
+        },
+        {
+          "osCode": "winpe3x",
+          "osVendor": "Microsoft",
+          "osArch": "x64",
+          "osType": "client",
+          "majorVersion": 6,
+          "minorVersion": 1,
+          "spMajorVersion": 0,
+          "spMinorVersion": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Foundry Dell Catalog",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAtUtc",
+    "category",
+    "source",
+    "catalog",
+    "itemCount",
+    "items"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "generatedAtUtc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "DriverPack",
+        "WinPE"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "name",
+        "catalogCabUri",
+        "catalogXmlFile",
+        "catalogCabSha256",
+        "catalogXmlSha256"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "catalogCabUri": {
+          "type": "string"
+        },
+        "catalogXmlFile": {
+          "type": "string"
+        },
+        "catalogCabSha256": {
+          "type": "string"
+        },
+        "catalogXmlSha256": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "catalog": {
+      "type": "object",
+      "required": [
+        "version",
+        "schemaVersion",
+        "baseLocation",
+        "baseLocationAccessProtocols",
+        "dateTime"
+      ],
+      "properties": {
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "schemaVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "baseLocation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "baseLocationAccessProtocols": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dateTime": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "itemCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "releaseId",
+          "type",
+          "path",
+          "downloadUrl",
+          "supportedSystems",
+          "supportedOperatingSystems"
+        ],
+        "properties": {
+          "releaseId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "Win",
+              "WinPE"
+            ]
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "importantInfo": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "format": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "vendorVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dellVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dateTime": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hashMD5": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sizeBytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "path": {
+            "type": "string"
+          },
+          "downloadUrl": {
+            "type": "string"
+          },
+          "supportedSystems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "brandKey",
+                "brandPrefix",
+                "systemId",
+                "systemName"
+              ],
+              "properties": {
+                "brandKey": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "brandPrefix": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "systemId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "systemName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "generation": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "rtsDate": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "supportedOperatingSystems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "osCode",
+                "osVendor",
+                "osArch",
+                "majorVersion",
+                "minorVersion",
+                "spMajorVersion",
+                "spMinorVersion"
+              ],
+              "properties": {
+                "osCode": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "osVendor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "osArch": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "osType": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "majorVersion": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "minorVersion": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "spMajorVersion": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "spMinorVersion": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

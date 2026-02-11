@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DellCatalog schemaVersion="1" generatedAtUtc="2026-02-11T20:42:06Z" category="WinPE">
+  <Source catalogXmlFile="DriverPackCatalog.xml" catalogCabSha256="430735c667283b1facc6c35eb039686f8f9f65cb9f5ed444ce790fdbe6312e06" catalogCabUri="https://downloads.dell.com/catalog/DriverPackCatalog.cab" name="Dell Driver Pack Catalog" catalogXmlSha256="1cc6805b87c92f957d95475d59e8813645add432cab540be1ac73bf007739956" />
+  <CatalogMetadata schemaVersion="2.3" baseLocation="downloads.dell.com" dateTime="2026-02-09T07:06:54" baseLocationAccessProtocols="HTTP FTP" version="2026.02.02" />
+  <Items>
+    <Item>
+      <releaseId>0VJ7T</releaseId>
+      <type>WinPE</type>
+      <name>WinPE10.0-Drivers-A38-0VJ7T.cab</name>
+      <description>With the Dell Command Deploy Driver Packs, an I/T Administrator can perform the following tasks:
+1) Use Microsoft Windows OS-based PnP enumeration capabilities to install drivers for applicable devices
+2) Create a system-level optimized deployment sequence
+3) Setup an appropriate boot control sequence.
+4) Optimize the deployment of targeted system-specific driver packages.</description>
+      <importantInfo>Please visit http://Dell.com/Command for additional help on using CABs for OS Deployment.</importantInfo>
+      <format>cab</format>
+      <vendorVersion>1.0</vendorVersion>
+      <dellVersion>A38</dellVersion>
+      <dateTime>2025-12-19T05:12:43</dateTime>
+      <hashMD5>FC37E3069C8C628385945BE3D78BD8B6</hashMD5>
+      <sizeBytes>139610032</sizeBytes>
+      <path>FOLDER14002063M/1/WinPE10.0-Drivers-A38-0VJ7T.cab</path>
+      <downloadUrl>https://downloads.dell.com/FOLDER14002063M/1/WinPE10.0-Drivers-A38-0VJ7T.cab</downloadUrl>
+      <SupportedSystems />
+      <SupportedOperatingSystems>
+        <OperatingSystem osCode="winpe10x" osVendor="Microsoft" osArch="x86" osType="client" majorVersion="10" minorVersion="0" spMajorVersion="0" spMinorVersion="0" />
+        <OperatingSystem osCode="winpe10x" osVendor="Microsoft" osArch="x64" osType="client" majorVersion="10" minorVersion="0" spMajorVersion="0" spMinorVersion="0" />
+      </SupportedOperatingSystems>
+    </Item>
+    <Item>
+      <releaseId>2F5W2</releaseId>
+      <type>WinPE</type>
+      <name>WinPE5.0-Drivers-A10-2F5W2.CAB</name>
+      <description>With the Dell Command Deploy Driver Packs, an I/T Administrator can perform the following tasks:
+1) Use Microsoft Windows OS-based PnP enumeration capabilities to install drivers for applicable devices
+2) Create a system-level optimized deployment sequence
+3) Setup an appropriate boot control sequence.
+4) Optimize the deployment of targeted system-specific driver packages.</description>
+      <importantInfo>Please visit http://Dell.com/Command for additional help on using CABs for OS Deployment.</importantInfo>
+      <format>cab</format>
+      <vendorVersion>1.0</vendorVersion>
+      <dellVersion>A10</dellVersion>
+      <dateTime>2017-11-30T00:00:00</dateTime>
+      <hashMD5>43AA87C03D61206CA4E7324F16954CE6</hashMD5>
+      <sizeBytes>103883414</sizeBytes>
+      <path>FOLDER04560673M/1/WinPE5.0-Drivers-A10-2F5W2.CAB</path>
+      <downloadUrl>https://downloads.dell.com/FOLDER04560673M/1/WinPE5.0-Drivers-A10-2F5W2.CAB</downloadUrl>
+      <SupportedSystems />
+      <SupportedOperatingSystems>
+        <OperatingSystem osCode="winpe5x" osVendor="Microsoft" osArch="x86" osType="client" majorVersion="6" minorVersion="3" spMajorVersion="0" spMinorVersion="0" />
+        <OperatingSystem osCode="winpe5x" osVendor="Microsoft" osArch="x64" osType="client" majorVersion="6" minorVersion="3" spMajorVersion="0" spMinorVersion="0" />
+      </SupportedOperatingSystems>
+    </Item>
+    <Item>
+      <releaseId>2V5TD</releaseId>
+      <type>WinPE</type>
+      <name>WinPE11.0-Drivers-A08-2V5TD.cab</name>
+      <description>With the Dell Command Deploy Driver Packs, an I/T Administrator can perform the following tasks:
+1) Use Microsoft Windows OS-based PnP enumeration capabilities to install drivers for applicable devices
+2) Create a system-level optimized deployment sequence
+3) Setup an appropriate boot control sequence.
+4) Optimize the deployment of targeted system-specific driver packages.</description>
+      <importantInfo>Please visit http://Dell.com/Command for additional help on using CABs for OS Deployment.</importantInfo>
+      <format>cab</format>
+      <vendorVersion>1.0</vendorVersion>
+      <dellVersion>A08</dellVersion>
+      <dateTime>2025-12-19T05:13:37</dateTime>
+      <hashMD5>03997A6A0A66962F1AE39DD5935728D5</hashMD5>
+      <sizeBytes>29028403</sizeBytes>
+      <path>FOLDER14002062M/1/WinPE11.0-Drivers-A08-2V5TD.cab</path>
+      <downloadUrl>https://downloads.dell.com/FOLDER14002062M/1/WinPE11.0-Drivers-A08-2V5TD.cab</downloadUrl>
+      <SupportedSystems />
+      <SupportedOperatingSystems>
+        <OperatingSystem osCode="winpe11x" osVendor="Microsoft" osArch="x64" osType="client" majorVersion="10" minorVersion="0" spMajorVersion="0" spMinorVersion="0" />
+      </SupportedOperatingSystems>
+    </Item>
+    <Item>
+      <releaseId>F1YJC</releaseId>
+      <type>WinPE</type>
+      <name>WinPE4.0-Drivers-A06-F1YJC.CAB</name>
+      <description>With the Dell Command Deploy Driver Packs, an I/T Administrator can perform the following tasks:
+1) Use Microsoft Windows OS-based PnP enumeration capabilities to install drivers for applicable devices
+2) Create a system-level optimized deployment sequence
+3) Setup an appropriate boot control sequence.
+4) Optimize the deployment of targeted system-specific driver packages.</description>
+      <importantInfo>Please visit http://Dell.com/Command for additional help on using CABs for OS Deployment.</importantInfo>
+      <format>cab</format>
+      <vendorVersion>1.0</vendorVersion>
+      <dellVersion>A06</dellVersion>
+      <dateTime>2015-06-02T00:00:00</dateTime>
+      <hashMD5>96DAA271FB10208B464FBD98E83C0528</hashMD5>
+      <sizeBytes>14122848</sizeBytes>
+      <path>FOLDER03048988M/1/WinPE4.0-Drivers-A06-F1YJC.CAB</path>
+      <downloadUrl>https://downloads.dell.com/FOLDER03048988M/1/WinPE4.0-Drivers-A06-F1YJC.CAB</downloadUrl>
+      <SupportedSystems />
+      <SupportedOperatingSystems>
+        <OperatingSystem osCode="winpe4x" osVendor="Microsoft" osArch="x86" osType="client" majorVersion="4" minorVersion="0" spMajorVersion="0" spMinorVersion="0" />
+        <OperatingSystem osCode="winpe4x" osVendor="Microsoft" osArch="x64" osType="client" majorVersion="4" minorVersion="0" spMajorVersion="0" spMinorVersion="0" />
+      </SupportedOperatingSystems>
+    </Item>
+    <Item>
+      <releaseId>MJ53D</releaseId>
+      <type>WinPE</type>
+      <name>WinPE3.0-Drivers-A23-MJ53D.CAB</name>
+      <description>With the Dell Command Deploy Driver Packs, an I/T Administrator can perform the following tasks:
+1) Use Microsoft Windows OS-based PnP enumeration capabilities to install drivers for applicable devices
+2) Create a system-level optimized deployment sequence
+3) Setup an appropriate boot control sequence.
+4) Optimize the deployment of targeted system-specific driver packages.</description>
+      <importantInfo>Please visit http://Dell.com/Command for additional help on using CABs for OS Deployment.</importantInfo>
+      <format>cab</format>
+      <vendorVersion>1.0</vendorVersion>
+      <dellVersion>A23</dellVersion>
+      <dateTime>2018-11-21T00:00:00</dateTime>
+      <hashMD5>87FC2363BF818266A20964E0AB64C993</hashMD5>
+      <sizeBytes>179684132</sizeBytes>
+      <path>FOLDER05323227M/1/WinPE3.0-Drivers-A23-MJ53D.CAB</path>
+      <downloadUrl>https://downloads.dell.com/FOLDER05323227M/1/WinPE3.0-Drivers-A23-MJ53D.CAB</downloadUrl>
+      <SupportedSystems />
+      <SupportedOperatingSystems>
+        <OperatingSystem osCode="winpe3x" osVendor="Microsoft" osArch="x86" osType="client" majorVersion="6" minorVersion="1" spMajorVersion="0" spMinorVersion="0" />
+        <OperatingSystem osCode="winpe3x" osVendor="Microsoft" osArch="x64" osType="client" majorVersion="6" minorVersion="1" spMajorVersion="0" spMinorVersion="0" />
+      </SupportedOperatingSystems>
+    </Item>
+  </Items>
+</DellCatalog>
