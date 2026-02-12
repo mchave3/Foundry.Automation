@@ -315,15 +315,11 @@ function Write-LenovoOutputs {
     }
 
     $filePrefix = 'DriverPack_Lenovo'
-    $jsonPath = Join-Path -Path $OutputDirectory -ChildPath ($filePrefix + '.json')
     $xmlPath = Join-Path -Path $OutputDirectory -ChildPath ($filePrefix + '.xml')
     $mdPath = Join-Path -Path $OutputDirectory -ChildPath 'README.md'
 
-    $json = ConvertTo-DeterministicJson -Object $Catalog
-    Write-Utf8NoBomFile -Path $jsonPath -Content $json
-    Write-LenovoCatalogXml -Path $xmlPath -Catalog $Catalog
+        Write-LenovoCatalogXml -Path $xmlPath -Catalog $Catalog
 
-    $jsonHash = (Get-FileHash -Path $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant()
     $xmlHash = (Get-FileHash -Path $xmlPath -Algorithm SHA256).Hash.ToLowerInvariant()
     $status = if ($Catalog.itemCount -gt 0) { 'SUCCESS' } else { 'WARNING' }
     $durationSeconds = [int][Math]::Round(((Get-Date) - $StartedAt).TotalSeconds)
@@ -340,7 +336,6 @@ function Write-LenovoOutputs {
         "| Catalog Version | $($Catalog.catalog.catalogVersion) |",
         "| Models | $($Catalog.catalog.modelCount) |",
         "| Duration (Seconds) | $durationSeconds |",
-        "| SHA256 JSON | $jsonHash |",
         "| SHA256 XML | $xmlHash |"
     )
 
@@ -348,7 +343,6 @@ function Write-LenovoOutputs {
 
     return [pscustomobject]@{
         Category = $Catalog.category
-        JsonPath = $jsonPath
         XmlPath = $xmlPath
         MarkdownPath = $mdPath
         Items = $Catalog.itemCount
@@ -356,7 +350,7 @@ function Write-LenovoOutputs {
     }
 }
 
-#endregion Utility Functions
+#endregion Lenovo-Specific Functions
 
 #region Main Execution
 

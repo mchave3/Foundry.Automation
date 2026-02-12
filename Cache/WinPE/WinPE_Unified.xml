@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DriverPackCatalog schemaVersion="1" generatedAtUtc="2026-02-12T15:14:39Z" totalItems="11" category="WinPE">
+  <Metadata name="Foundry Unified WinPE Catalog" description="Normalized WinPE catalog containing driver packs from Dell, HP, Lenovo, and Microsoft" />
+  <Sources>
+    <Source manufacturer="Dell" catalogUrl="https://downloads.dell.com/catalog/DriverPackCatalog.cab" lastUpdated="2014-07-11T00:00:00" itemCount="5" />
+    <Source manufacturer="HP" catalogUrl="https://hpia.hpcloud.hp.com/downloads/driverpackcatalog/HPClientDriverPackCatalog.cab" lastUpdated="7/23/2021 12:00:00 AM" itemCount="6" />
+  </Sources>
+  <DriverPacks>
+    <DriverPack id="0VJ7T" packageId="0VJ7T" manufacturer="Dell" name="WinPE10.0-Drivers-A38-0VJ7T.cab" version="A38" fileName="WinPE10.0-Drivers-A38-0VJ7T.cab" downloadUrl="https://downloads.dell.com/FOLDER14002063M/1/WinPE10.0-Drivers-A38-0VJ7T.cab" sizeBytes="139610032" format="cab" type="WinPE" releaseDate="2025-12-19T05:12:43">
+      <OsInfo name="WinPE" architecture="x86" />
+      <Hashes md5="FC37E3069C8C628385945BE3D78BD8B6" />
+    </DriverPack>
+    <DriverPack id="2V5TD" packageId="2V5TD" manufacturer="Dell" name="WinPE11.0-Drivers-A08-2V5TD.cab" version="A08" fileName="WinPE11.0-Drivers-A08-2V5TD.cab" downloadUrl="https://downloads.dell.com/FOLDER14002062M/1/WinPE11.0-Drivers-A08-2V5TD.cab" sizeBytes="29028403" format="cab" type="WinPE" releaseDate="2025-12-19T05:13:37">
+      <OsInfo name="WinPE" architecture="x64" />
+      <Hashes md5="03997A6A0A66962F1AE39DD5935728D5" />
+    </DriverPack>
+    <DriverPack id="MJ53D" packageId="MJ53D" manufacturer="Dell" name="WinPE3.0-Drivers-A23-MJ53D.CAB" version="A23" fileName="WinPE3.0-Drivers-A23-MJ53D.CAB" downloadUrl="https://downloads.dell.com/FOLDER05323227M/1/WinPE3.0-Drivers-A23-MJ53D.CAB" sizeBytes="179684132" format="cab" type="WinPE" releaseDate="2018-11-21T00:00:00">
+      <OsInfo name="WinPE" architecture="x86" />
+      <Hashes md5="87FC2363BF818266A20964E0AB64C993" />
+    </DriverPack>
+    <DriverPack id="F1YJC" packageId="F1YJC" manufacturer="Dell" name="WinPE4.0-Drivers-A06-F1YJC.CAB" version="A06" fileName="WinPE4.0-Drivers-A06-F1YJC.CAB" downloadUrl="https://downloads.dell.com/FOLDER03048988M/1/WinPE4.0-Drivers-A06-F1YJC.CAB" sizeBytes="14122848" format="cab" type="WinPE" releaseDate="2015-06-02T00:00:00">
+      <OsInfo name="WinPE" architecture="x86" />
+      <Hashes md5="96DAA271FB10208B464FBD98E83C0528" />
+    </DriverPack>
+    <DriverPack id="2F5W2" packageId="2F5W2" manufacturer="Dell" name="WinPE5.0-Drivers-A10-2F5W2.CAB" version="A10" fileName="WinPE5.0-Drivers-A10-2F5W2.CAB" downloadUrl="https://downloads.dell.com/FOLDER04560673M/1/WinPE5.0-Drivers-A10-2F5W2.CAB" sizeBytes="103883414" format="cab" type="WinPE" releaseDate="2017-11-30T00:00:00">
+      <OsInfo name="WinPE" architecture="x86" />
+      <Hashes md5="43AA87C03D61206CA4E7324F16954CE6" />
+    </DriverPack>
+    <DriverPack id="sp155634" packageId="sp155634" manufacturer="HP" name="sp155634" version="3.00" fileName="sp155634.exe" downloadUrl="https://ftp.ext.hp.com/pub/softpaq/sp155501-156000/sp155634.exe" format="exe" type="WinPE" releaseDate="11/12/2024">
+      <OsInfo name="WinPE" architecture="x64" />
+    </DriverPack>
+    <DriverPack id="sp161830" packageId="sp161830" manufacturer="HP" name="sp161830" version="3.10" fileName="sp161830.exe" downloadUrl="https://ftp.ext.hp.com/pub/softpaq/sp161501-162000/sp161830.exe" format="exe" type="WinPE" releaseDate="08/22/2025">
+      <OsInfo name="WinPE" architecture="x64" />
+    </DriverPack>
+    <DriverPack id="sp165773" packageId="sp165773" manufacturer="HP" name="sp165773" version="3.20" fileName="sp165773.exe" downloadUrl="https://ftp.ext.hp.com/pub/softpaq/sp165501-166000/sp165773.exe" format="exe" type="WinPE" releaseDate="12/17/2025">
+      <OsInfo name="WinPE" architecture="x64" />
+    </DriverPack>
+    <DriverPack id="sp64529" packageId="sp64529" manufacturer="HP" name="sp64529" version="1.01" fileName="sp64529.exe" downloadUrl="https://ftp.hp.com/pub/softpaq/sp64501-65000/sp64529.exe" format="exe" type="WinPE" releaseDate="12/04/2013">
+      <OsInfo name="WinPE" architecture="x64" />
+    </DriverPack>
+    <DriverPack id="sp71912" packageId="sp71912" manufacturer="HP" name="sp71912" version="1.03" fileName="sp71912.exe" downloadUrl="https://ftp.hp.com/pub/softpaq/sp71501-72000/sp71912.exe" format="exe" type="WinPE" releaseDate="09/14/2015">
+      <OsInfo name="WinPE" architecture="x64" />
+    </DriverPack>
+    <DriverPack id="sp87510" packageId="sp87510" manufacturer="HP" name="sp87510" version="1.07" fileName="sp87510.exe" downloadUrl="https://ftp.hp.com/pub/softpaq/sp87501-88000/sp87510.exe" format="exe" type="WinPE" releaseDate="05/30/2018">
+      <OsInfo name="WinPE" architecture="x64" />
+    </DriverPack>
+  </DriverPacks>
+</DriverPackCatalog>

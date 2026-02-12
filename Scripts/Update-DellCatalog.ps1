@@ -24,155 +24,26 @@ param(
     [Parameter()]
     [ValidateRange(0, 200000)]
     [int]$MinimumWinPECount = 1
+
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 #endregion Parameters
 
-#region Utility Functions
+#region Import Helpers
 
-# Serialize JSON deterministically with normalized line endings.
-function ConvertTo-DeterministicJson {
-    param(
-        [Parameter(Mandatory = $true)]
-        [object]$Object
-    )
-
-    $json = ConvertTo-Json -InputObject $Object -Depth 12
-    return ($json -replace "`r?`n", "`r`n").TrimEnd("`r", "`n")
+$helpersPath = Join-Path -Path $PSScriptRoot -ChildPath '..' -AdditionalChildPath @('Helpers', 'FoundryHelpers.psm1')
+if (Test-Path -Path $helpersPath) {
+    Import-Module -Name $helpersPath -Force -ErrorAction Stop
+}
+else {
+    throw "Helpers module not found at: $helpersPath"
 }
 
-# Write text file as UTF-8 without BOM.
-function Write-Utf8NoBomFile {
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$Path,
+#endregion Import Helpers
 
-        [Parameter(Mandatory = $true)]
-        [string]$Content
-    )
-
-    $encoding = [System.Text.UTF8Encoding]::new($false)
-    $normalized = ($Content -replace "`r?`n", "`r`n").TrimEnd("`r", "`n") + "`r`n"
-    [System.IO.File]::WriteAllText($Path, $normalized, $encoding)
-}
-
-# Resolve a writable temporary root directory in a cross-platform way.
-function Get-TemporaryRootPath {
-    $tempPath = [System.IO.Path]::GetTempPath()
-    if (-not $tempPath) {
-        return '/tmp'
-    }
-
-    return $tempPath
-}
-
-# Resolve 7-Zip executable path for cross-platform CAB extraction.
-function Get-SevenZipCommandPath {
-    $candidates = @('7zz', '7z')
-    foreach ($candidate in $candidates) {
-        $command = Get-Command -Name $candidate -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
-        if ($command) {
-            return [string]$command.Source
-        }
-    }
-
-    throw 'Required tool not found: 7-Zip CLI (7zz or 7z). Install 7-Zip/p7zip before running this script.'
-}
-
-# Extract file patterns from an archive using 7-Zip.
-function Invoke-SevenZipExtract {
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$SevenZipPath,
-
-        [Parameter(Mandatory = $true)]
-        [string]$ArchivePath,
-
-        [Parameter(Mandatory = $true)]
-        [string]$OutputDirectory,
-
-        [Parameter(Mandatory = $true)]
-        [string[]]$Patterns
-    )
-
-    $arguments = @('e', '-y', "-o$OutputDirectory", $ArchivePath)
-    $arguments += $Patterns
-    & $SevenZipPath @arguments | Out-Null
-}
-
-# Return safe integer conversion for XML numeric attributes.
-function ConvertTo-IntOrNull {
-    param(
-        [Parameter()]
-        [AllowNull()]
-        [AllowEmptyString()]
-        [string]$Value
-    )
-
-    if (-not $Value) {
-        return $null
-    }
-
-    [int]$parsed = 0
-    if ([int]::TryParse($Value, [ref]$parsed)) {
-        return $parsed
-    }
-
-    return $null
-}
-
-# Return safe int64 conversion for XML numeric attributes.
-function ConvertTo-Int64OrNull {
-    param(
-        [Parameter()]
-        [AllowNull()]
-        [AllowEmptyString()]
-        [string]$Value
-    )
-
-    if (-not $Value) {
-        return $null
-    }
-
-    [long]$parsed = 0
-    if ([long]::TryParse($Value, [ref]$parsed)) {
-        return $parsed
-    }
-
-    return $null
-}
-
-# Return text content from XML elements including CDATA payloads.
-function Get-XmlInnerText {
-    param(
-        [Parameter()]
-        [AllowNull()]
-        [object]$Node
-    )
-
-    if ($null -eq $Node) {
-        return $null
-    }
-
-    if ($Node -is [string]) {
-        if ([string]::IsNullOrWhiteSpace($Node)) {
-            return $null
-        }
-
-        return $Node.Trim()
-    }
-
-    if ($Node.PSObject.Properties.Name -contains 'InnerText') {
-        $innerText = [string]$Node.InnerText
-        if (-not [string]::IsNullOrWhiteSpace($innerText)) {
-            return $innerText.Trim()
-        }
-    }
-
-    return $null
-}
+#region Dell-Specific Functions
 
 # Build absolute download URL from base location and package relative path.
 function Join-DellDownloadUrl {
@@ -462,7 +333,7 @@ function Write-DellCatalogXml {
     }
 }
 
-# Write JSON/XML/MD outputs for one category folder.
+# Write XML/README outputs for one category folder.
 function Write-DellCategoryOutputs {
     param(
         [Parameter(Mandatory = $true)]
@@ -480,40 +351,26 @@ function Write-DellCategoryOutputs {
     }
 
     $filePrefix = if ($Catalog.category -eq 'DriverPack') { 'DriverPack_Dell' } else { 'WinPE_Dell' }
-    $jsonPath = Join-Path -Path $OutputDirectory -ChildPath ($filePrefix + '.json')
     $xmlPath = Join-Path -Path $OutputDirectory -ChildPath ($filePrefix + '.xml')
     $mdPath = Join-Path -Path $OutputDirectory -ChildPath 'README.md'
 
-    $json = ConvertTo-DeterministicJson -Object $Catalog
-    Write-Utf8NoBomFile -Path $jsonPath -Content $json
     Write-DellCatalogXml -Path $xmlPath -Catalog $Catalog
-
-    $jsonHash = (Get-FileHash -Path $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant()
     $xmlHash = (Get-FileHash -Path $xmlPath -Algorithm SHA256).Hash.ToLowerInvariant()
 
     $status = if ($Catalog.itemCount -gt 0) { 'SUCCESS' } else { 'WARNING' }
     $durationSeconds = [int][Math]::Round(((Get-Date) - $StartedAt).TotalSeconds)
 
-    $summaryLines = @(
-        '# Dell Summary',
-        '',
-        '| Metric | Value |',
-        '| --- | --- |',
-        "| Executed At (UTC) | $($Catalog.generatedAtUtc -replace 'T', ' ' -replace 'Z', ' UTC') |",
-        "| Category | $($Catalog.category) |",
-        "| Status | $status |",
-        "| Items | $($Catalog.itemCount) |",
-        "| Catalog Version | $($Catalog.catalog.version) |",
-        "| Duration (Seconds) | $durationSeconds |",
-        "| SHA256 JSON | $jsonHash |",
-        "| SHA256 XML | $xmlHash |"
-    )
-
-    Write-Utf8NoBomFile -Path $mdPath -Content ($summaryLines -join "`r`n")
+    Write-CatalogReadme -Path $mdPath `
+        -Manufacturer 'Dell' `
+        -Category $Catalog.category `
+        -GeneratedAtUtc $Catalog.generatedAtUtc `
+        -ItemCount $Catalog.itemCount `
+        -CatalogVersion $Catalog.catalog.version `
+        -DurationSeconds $durationSeconds `
+        -XmlHash $xmlHash
 
     return [pscustomobject]@{
         Category = $Catalog.category
-        JsonPath = $jsonPath
         XmlPath = $xmlPath
         MarkdownPath = $mdPath
         Items = $Catalog.itemCount
@@ -521,7 +378,7 @@ function Write-DellCategoryOutputs {
     }
 }
 
-#endregion Utility Functions
+#endregion Dell-Specific Functions
 
 #region Main Execution
 
@@ -601,10 +458,12 @@ try {
     $driverPackOutput = Write-DellCategoryOutputs -OutputDirectory $DriverPackOutputDirectory -Catalog $driverPackCatalog -StartedAt $startedAt
     $winPEOutput = Write-DellCategoryOutputs -OutputDirectory $WinPEOutputDirectory -Catalog $winPECatalog -StartedAt $startedAt
 
-    [pscustomobject]@{
+    $result = [pscustomobject]@{
         DriverPack = $driverPackOutput
         WinPE = $winPEOutput
     }
+
+    return $result
 }
 finally {
     Remove-Item -Path $tempRoot -Recurse -Force -ErrorAction SilentlyContinue

@@ -36,98 +36,26 @@ param(
     [Parameter()]
     [ValidateRange(0, 1000000)]
     [int]$MinimumWinPECount = 1
+
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 #endregion Parameters
 
-#region Utility Functions
+#region Import Helpers
 
-function ConvertTo-DeterministicJson {
-    param(
-        [Parameter(Mandatory = $true)]
-        [object]$Object
-    )
-
-    $json = ConvertTo-Json -InputObject $Object -Depth 12
-    return ($json -replace "`r?`n", "`r`n").TrimEnd("`r", "`n")
+$helpersPath = Join-Path -Path $PSScriptRoot -ChildPath '..' -AdditionalChildPath @('Helpers', 'FoundryHelpers.psm1')
+if (Test-Path -Path $helpersPath) {
+    Import-Module -Name $helpersPath -Force -ErrorAction Stop
+}
+else {
+    throw "Helpers module not found at: $helpersPath"
 }
 
-function Write-Utf8NoBomFile {
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$Path,
+#endregion Import Helpers
 
-        [Parameter(Mandatory = $true)]
-        [string]$Content
-    )
-
-    $encoding = [System.Text.UTF8Encoding]::new($false)
-    $normalized = ($Content -replace "`r?`n", "`r`n").TrimEnd("`r", "`n") + "`r`n"
-    [System.IO.File]::WriteAllText($Path, $normalized, $encoding)
-}
-
-function Get-TemporaryRootPath {
-    $tempPath = [System.IO.Path]::GetTempPath()
-    if (-not $tempPath) {
-        return '/tmp'
-    }
-
-    return $tempPath
-}
-
-function Get-SevenZipCommandPath {
-    $candidates = @('7zz', '7z')
-    foreach ($candidate in $candidates) {
-        $command = Get-Command -Name $candidate -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
-        if ($command) {
-            return [string]$command.Source
-        }
-    }
-
-    throw 'Required tool not found: 7-Zip CLI (7zz or 7z). Install 7-Zip/p7zip before running this script.'
-}
-
-function Invoke-SevenZipExtract {
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$SevenZipPath,
-
-        [Parameter(Mandatory = $true)]
-        [string]$ArchivePath,
-
-        [Parameter(Mandatory = $true)]
-        [string]$OutputDirectory,
-
-        [Parameter(Mandatory = $true)]
-        [string[]]$Patterns
-    )
-
-    $arguments = @('e', '-y', "-o$OutputDirectory", $ArchivePath)
-    $arguments += $Patterns
-    & $SevenZipPath @arguments | Out-Null
-}
-
-function ConvertTo-Int64OrNull {
-    param(
-        [Parameter()]
-        [AllowNull()]
-        [AllowEmptyString()]
-        [string]$Value
-    )
-
-    if (-not $Value) {
-        return $null
-    }
-
-    [long]$parsed = 0
-    if ([long]::TryParse($Value, [ref]$parsed)) {
-        return $parsed
-    }
-
-    return $null
-}
+#region HP-Specific Functions
 
 function Get-XmlNodeText {
     param(
@@ -504,40 +432,26 @@ function Write-HPCategoryOutputs {
     }
 
     $filePrefix = if ($Catalog.category -eq 'DriverPack') { 'DriverPack_HP' } else { 'WinPE_HP' }
-    $jsonPath = Join-Path -Path $OutputDirectory -ChildPath ($filePrefix + '.json')
     $xmlPath = Join-Path -Path $OutputDirectory -ChildPath ($filePrefix + '.xml')
     $mdPath = Join-Path -Path $OutputDirectory -ChildPath 'README.md'
 
-    $json = ConvertTo-DeterministicJson -Object $Catalog
-    Write-Utf8NoBomFile -Path $jsonPath -Content $json
     Write-HPCatalogXml -Path $xmlPath -Catalog $Catalog
-
-    $jsonHash = (Get-FileHash -Path $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant()
     $xmlHash = (Get-FileHash -Path $xmlPath -Algorithm SHA256).Hash.ToLowerInvariant()
 
     $status = if ($Catalog.itemCount -gt 0) { 'SUCCESS' } else { 'WARNING' }
     $durationSeconds = [int][Math]::Round(((Get-Date) - $StartedAt).TotalSeconds)
 
-    $summaryLines = @(
-        '# HP Summary',
-        '',
-        '| Metric | Value |',
-        '| --- | --- |',
-        "| Executed At (UTC) | $($Catalog.generatedAtUtc -replace 'T', ' ' -replace 'Z', ' UTC') |",
-        "| Category | $($Catalog.category) |",
-        "| Status | $status |",
-        "| Items | $($Catalog.itemCount) |",
-        "| Catalog Version | $($Catalog.catalog.schemaVersion) |",
-        "| Duration (Seconds) | $durationSeconds |",
-        "| SHA256 JSON | $jsonHash |",
-        "| SHA256 XML | $xmlHash |"
-    )
-
-    Write-Utf8NoBomFile -Path $mdPath -Content ($summaryLines -join "`r`n")
+    Write-CatalogReadme -Path $mdPath `
+        -Manufacturer 'HP' `
+        -Category $Catalog.category `
+        -GeneratedAtUtc $Catalog.generatedAtUtc `
+        -ItemCount $Catalog.itemCount `
+        -CatalogVersion $Catalog.catalog.schemaVersion `
+        -DurationSeconds $durationSeconds `
+        -XmlHash $xmlHash
 
     return [pscustomobject]@{
         Category = $Catalog.category
-        JsonPath = $jsonPath
         XmlPath = $xmlPath
         MarkdownPath = $mdPath
         Items = $Catalog.itemCount
@@ -545,7 +459,7 @@ function Write-HPCategoryOutputs {
     }
 }
 
-#endregion Utility Functions
+#endregion HP-Specific Functions
 
 #region Main Execution
 
@@ -673,10 +587,12 @@ try {
     $driverPackOutput = Write-HPCategoryOutputs -OutputDirectory $DriverPackOutputDirectory -Catalog $driverPackCatalog -StartedAt $startedAt
     $winPEOutput = Write-HPCategoryOutputs -OutputDirectory $WinPEOutputDirectory -Catalog $winPECatalog -StartedAt $startedAt
 
-    [pscustomobject]@{
+    $result = [pscustomobject]@{
         DriverPack = $driverPackOutput
         WinPE = $winPEOutput
     }
+
+    return $result
 }
 finally {
     Remove-Item -Path $tempRoot -Recurse -Force -ErrorAction SilentlyContinue

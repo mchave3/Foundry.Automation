@@ -506,7 +506,7 @@ function Write-OperatingSystemXml {
     }
 }
 
-#endregion Utility Functions
+#endregion OS-Specific Functions
 
 #region Main Execution
 
@@ -709,15 +709,11 @@ $catalog = [ordered]@{
     items = $itemsSorted
 }
 
-$jsonPath = Join-Path -Path $OutputDirectory -ChildPath 'OperatingSystem.json'
 $xmlPath = Join-Path -Path $OutputDirectory -ChildPath 'OperatingSystem.xml'
 $mdPath = Join-Path -Path $OutputDirectory -ChildPath 'README.md'
 
-$json = ConvertTo-DeterministicJson -Object $catalog
-Write-Utf8NoBomFile -Path $jsonPath -Content $json
 Write-OperatingSystemXml -Path $xmlPath -Catalog $catalog
 
-$jsonHash = (Get-FileHash -Path $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant()
 $xmlHash = (Get-FileHash -Path $xmlPath -Algorithm SHA256).Hash.ToLowerInvariant()
 
 $status = if ($itemsSorted.Count -gt 0) { 'SUCCESS' } else { 'WARNING' }
@@ -734,7 +730,6 @@ $summaryLines = @(
     "| Sources Skipped | $skippedSources |",
     "| Items | $($itemsSorted.Count) |",
     "| Duration (Seconds) | $durationSeconds |",
-    "| SHA256 JSON | $jsonHash |",
     "| SHA256 XML | $xmlHash |"
 )
 
@@ -756,7 +751,6 @@ if ($skippedSourceDetails.Count -gt 0) {
 Write-Utf8NoBomFile -Path $mdPath -Content ($summaryLines -join "`r`n")
 
 [pscustomobject]@{
-    JsonPath = $jsonPath
     XmlPath = $xmlPath
     MarkdownPath = $mdPath
     LatestFwlinks = $latestFwlinks.Count

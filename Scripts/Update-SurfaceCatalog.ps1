@@ -300,15 +300,11 @@ function Write-SurfaceCategoryOutputs {
     }
 
     $filePrefix = 'DriverPack_Surface'
-    $jsonPath = Join-Path -Path $OutputDirectory -ChildPath ($filePrefix + '.json')
     $xmlPath = Join-Path -Path $OutputDirectory -ChildPath ($filePrefix + '.xml')
     $mdPath = Join-Path -Path $OutputDirectory -ChildPath 'README.md'
 
-    $json = ConvertTo-DeterministicJson -Object $Catalog
-    Write-Utf8NoBomFile -Path $jsonPath -Content $json
-    Write-SurfaceCatalogXml -Path $xmlPath -Catalog $Catalog
+        Write-SurfaceCatalogXml -Path $xmlPath -Catalog $Catalog
 
-    $jsonHash = (Get-FileHash -Path $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant()
     $xmlHash = (Get-FileHash -Path $xmlPath -Algorithm SHA256).Hash.ToLowerInvariant()
     $status = if ($Catalog.itemCount -gt 0) { 'SUCCESS' } else { 'WARNING' }
     $durationSeconds = [int][Math]::Round(((Get-Date) - $StartedAt).TotalSeconds)
@@ -324,7 +320,6 @@ function Write-SurfaceCategoryOutputs {
         "| Items | $($Catalog.itemCount) |",
         "| Last Published | $($Catalog.catalog.lastPublishedDate) |",
         "| Duration (Seconds) | $durationSeconds |",
-        "| SHA256 JSON | $jsonHash |",
         "| SHA256 XML | $xmlHash |"
     )
 
@@ -332,7 +327,6 @@ function Write-SurfaceCategoryOutputs {
 
     return [pscustomobject]@{
         Category = $Catalog.category
-        JsonPath = $jsonPath
         XmlPath = $xmlPath
         MarkdownPath = $mdPath
         Items = $Catalog.itemCount
@@ -340,7 +334,7 @@ function Write-SurfaceCategoryOutputs {
     }
 }
 
-#endregion Utility Functions
+#endregion Surface-Specific Functions
 
 #region Main Execution
 

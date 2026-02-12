@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://foundry.local/schemas/driverpack"
+           xmlns="http://foundry.local/schemas/driverpack"
+           elementFormDefault="qualified">
+
+  <xs:annotation>
+    <xs:documentation>
+      Foundry Unified DriverPack Catalog Schema
+      Normalized schema for all manufacturer driver packs (Dell, HP, Lenovo, Microsoft)
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="DriverPackCatalog" type="DriverPackCatalogType"/>
+
+  <xs:complexType name="DriverPackCatalogType">
+    <xs:sequence>
+      <xs:element name="Metadata" type="MetadataType"/>
+      <xs:element name="Sources" type="SourcesType"/>
+      <xs:element name="DriverPacks" type="DriverPacksType"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:integer" use="required" fixed="1"/>
+    <xs:attribute name="generatedAtUtc" type="xs:dateTime" use="required"/>
+    <xs:attribute name="totalItems" type="xs:integer" use="required"/>
+    <xs:attribute name="category" type="CatalogCategoryType" use="required"/>
+  </xs:complexType>
+
+  <xs:simpleType name="CatalogCategoryType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DriverPack"/>
+      <xs:enumeration value="WinPE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="MetadataType">
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="description" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="SourcesType">
+    <xs:sequence>
+      <xs:element name="Source" type="SourceType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SourceType">
+    <xs:attribute name="manufacturer" type="ManufacturerType" use="required"/>
+    <xs:attribute name="catalogUrl" type="xs:anyURI" use="required"/>
+    <xs:attribute name="catalogVersion" type="xs:string" use="optional"/>
+    <xs:attribute name="lastUpdated" type="xs:dateTime" use="required"/>
+    <xs:attribute name="itemCount" type="xs:integer" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="DriverPacksType">
+    <xs:sequence>
+      <xs:element name="DriverPack" type="DriverPackType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DriverPackType">
+    <xs:sequence>
+      <xs:element name="Models" type="ModelsType" minOccurs="0"/>
+      <xs:element name="OsInfo" type="OsInfoType"/>
+      <xs:element name="Hashes" type="HashesType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="packageId" type="xs:string" use="required"/>
+    <xs:attribute name="manufacturer" type="ManufacturerType" use="required"/>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="version" type="xs:string" use="optional"/>
+    <xs:attribute name="fileName" type="xs:string" use="required"/>
+    <xs:attribute name="downloadUrl" type="xs:anyURI" use="required"/>
+    <xs:attribute name="sizeBytes" type="xs:long" use="optional"/>
+    <xs:attribute name="format" type="FormatType" use="required"/>
+    <xs:attribute name="type" type="DriverPackTypeEnum" use="required"/>
+    <xs:attribute name="releaseDate" type="xs:date" use="optional"/>
+    <xs:attribute name="legacy" type="xs:boolean" use="optional" default="false"/>
+  </xs:complexType>
+
+  <xs:complexType name="ModelsType">
+    <xs:sequence>
+      <xs:element name="Model" type="ModelType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ModelType">
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="systemId" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="OsInfoType">
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="releaseId" type="xs:string" use="optional"/>
+    <xs:attribute name="build" type="xs:string" use="optional"/>
+    <xs:attribute name="architecture" type="ArchitectureType" use="optional" default="x64"/>
+  </xs:complexType>
+
+  <xs:complexType name="HashesType">
+    <xs:attribute name="md5" type="xs:string" use="optional"/>
+    <xs:attribute name="sha256" type="xs:string" use="optional"/>
+    <xs:attribute name="crc" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:simpleType name="ManufacturerType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Dell"/>
+      <xs:enumeration value="HP"/>
+      <xs:enumeration value="Lenovo"/>
+      <xs:enumeration value="Microsoft"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DriverPackTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Win"/>
+      <xs:enumeration value="WinPE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="FormatType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="cab"/>
+      <xs:enumeration value="exe"/>
+      <xs:enumeration value="msi"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ArchitectureType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="x86"/>
+      <xs:enumeration value="x64"/>
+      <xs:enumeration value="arm64"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
