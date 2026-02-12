@@ -1,16 +1,19 @@
 {
-  "generatedAtUtc": "2026-02-11T23:19:44Z",
   "source": {
-    "name": "Microsoft Surface Drivers and Firmware",
-    "uri": "https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120",
+    "catalogSha256": "2e318bd3af43f6f7795e9ccc97cdbc9ed36ce3e1d7beca0fee8166aa54043831",
     "catalogType": "SupportArticle",
-    "catalogSha256": "66c78de67459cb103d6efb06647113f121f6369591aa64c6798a51d2c116d1f1"
+    "uri": "https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120",
+    "name": "Microsoft Surface Drivers and Firmware"
   },
   "catalog": {
     "lastPublishedDate": "2025-12-12",
-    "articleGuid": "09bb2e09-2a4b-cb69-0951-078a7739e120",
-    "firstPublishedDate": "2020-09-01"
+    "firstPublishedDate": "2020-09-01",
+    "articleGuid": "09bb2e09-2a4b-cb69-0951-078a7739e120"
   },
+  "category": "DriverPack",
+  "generatedAtUtc": "2026-02-12T03:52:30Z",
+  "itemCount": 216,
+  "schemaVersion": 1,
   "items": [
     {
       "id": "101974|SurfaceHub2S_Win10_18363_22.052.18245.0.msi",
@@ -2820,8 +2823,5 @@
       "hidMiniZipUrl": null,
       "guidanceUrl": null
     }
-  ],
-  "itemCount": 216,
-  "schemaVersion": 1,
-  "category": "DriverPack"
+  ]
 }
