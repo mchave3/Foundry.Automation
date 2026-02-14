@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SurfaceCatalog schemaVersion="1" generatedAtUtc="2026-02-13T03:48:57Z" category="DriverPack">
-  <Source catalogSha256="b89c7058bacf3e45e48244227a137a693c19cf76d88e69a7c527d0d81590bba6" catalogType="SupportArticle" name="Microsoft Surface Drivers and Firmware" uri="https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120" />
-  <CatalogMetadata firstPublishedDate="2020-09-01" articleGuid="09bb2e09-2a4b-cb69-0951-078a7739e120" lastPublishedDate="2025-12-12" />
+<SurfaceCatalog schemaVersion="1" generatedAtUtc="2026-02-14T03:45:01Z" category="DriverPack">
+  <Source catalogType="SupportArticle" uri="https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120" catalogSha256="11e7ac2afcb9e3af20c44e6775a048b59d0d72707bcddeae67103f745dcd04fc" name="Microsoft Surface Drivers and Firmware" />
+  <CatalogMetadata articleGuid="09bb2e09-2a4b-cb69-0951-078a7739e120" lastPublishedDate="2025-12-12" firstPublishedDate="2020-09-01" />
   <Items>
     <Item>
       <id>101974|SurfaceHub2S_Win10_18363_22.052.18245.0.msi</id>
@@ -796,12 +796,12 @@
       <fileName>SurfaceLaptop5_Win11_22631_26.011.7745.0.msi</fileName>
     </Item>
     <Item>
-      <id>108347|SurfaceLaptop7-5GforBusinesswithIntel_Win11_22631_25.122.23160.0.msi</id>
+      <id>108347|SurfaceLaptop7-5GforBusinesswithIntel_Win11_22631_26.013.30281.0.msi</id>
       <model>Download Surface Laptop 5G for Business (7th Edition) with Intel Drivers and Firmware from Official Microsoft Download Center</model>
       <packageId>108347</packageId>
       <downloadCenterUrl>https://www.microsoft.com/download/details.aspx?id=108347</downloadCenterUrl>
-      <msiUrl>https://download.microsoft.com/download/b6ba11a9-2e1b-401b-8cbc-2af02cda74e8/SurfaceLaptop7-5GforBusinesswithIntel_Win11_22631_25.122.23160.0.msi</msiUrl>
-      <fileName>SurfaceLaptop7-5GforBusinesswithIntel_Win11_22631_25.122.23160.0.msi</fileName>
+      <msiUrl>https://download.microsoft.com/download/b6ba11a9-2e1b-401b-8cbc-2af02cda74e8/SurfaceLaptop7-5GforBusinesswithIntel_Win11_22631_26.013.30281.0.msi</msiUrl>
+      <fileName>SurfaceLaptop7-5GforBusinesswithIntel_Win11_22631_26.013.30281.0.msi</fileName>
     </Item>
     <Item>
       <id>105946|SurfaceLaptop6forBusiness_Win10_19045_25.081.9434.0.msi</id>
@@ -828,12 +828,12 @@
       <fileName>SurfaceLaptop7_ARM_Win11_26100_25.101.12926.0.msi</fileName>
     </Item>
     <Item>
-      <id>108014|SurfaceLaptop7withIntel_Win11_22631_25.122.21761.0.msi</id>
+      <id>108014|SurfaceLaptop7withIntel_Win11_22631_26.012.20202.0.msi</id>
       <model>Download Surface Laptop 7th Edition with Intel Drivers and Firmware from Official Microsoft Download Center</model>
       <packageId>108014</packageId>
       <downloadCenterUrl>https://www.microsoft.com/download/details.aspx?id=108014</downloadCenterUrl>
-      <msiUrl>https://download.microsoft.com/download/1543bd80-9cae-498d-8b0f-9841e4d7b2a8/SurfaceLaptop7withIntel_Win11_22631_25.122.21761.0.msi</msiUrl>
-      <fileName>SurfaceLaptop7withIntel_Win11_22631_25.122.21761.0.msi</fileName>
+      <msiUrl>https://download.microsoft.com/download/1543bd80-9cae-498d-8b0f-9841e4d7b2a8/SurfaceLaptop7withIntel_Win11_22631_26.012.20202.0.msi</msiUrl>
+      <fileName>SurfaceLaptop7withIntel_Win11_22631_26.012.20202.0.msi</fileName>
     </Item>
     <Item>
       <id>55489|SurfaceLaptop_Win10_17134_19.091.8183.0.msi</id>
@@ -1562,6 +1562,14 @@
       <fileName>SurfacePro9_Win11_22621_25.083.31014.0.msi</fileName>
     </Item>
     <Item>
+      <id>104680|SurfacePro9_Win11_22631_26.011.7934.0.msi</id>
+      <model>Download Surface Pro 9 with Intel Processor Drivers and Firmware from Official Microsoft Download Center</model>
+      <packageId>104680</packageId>
+      <downloadCenterUrl>https://www.microsoft.com/download/details.aspx?id=104680</downloadCenterUrl>
+      <msiUrl>https://download.microsoft.com/download/9a27d0e5-cbce-4933-8fc6-ec5fe5315c69/SurfacePro9_Win11_22631_26.011.7934.0.msi</msiUrl>
+      <fileName>SurfacePro9_Win11_22631_26.011.7934.0.msi</fileName>
+    </Item>
+    <Item>
       <id>49038</id>
       <model>Download Surface Pro Drivers and Firmware from Official Microsoft Download Center</model>
       <packageId>49038</packageId>
@@ -1632,12 +1640,12 @@
       <fileName>SurfaceStudio2_Win11_22621_24.093.36095.0.msi</fileName>
     </Item>
     <Item>
-      <id>104681|SurfaceStudio2+_Win11_22621_25.083.31453.0.msi</id>
+      <id>104681|SurfaceStudio2+_Win11_22631_25.122.22050.0.msi</id>
       <model>Download Surface Studio 2+ Drivers and Firmware from Official Microsoft Download Center</model>
       <packageId>104681</packageId>
       <downloadCenterUrl>https://www.microsoft.com/download/details.aspx?id=104681</downloadCenterUrl>
-      <msiUrl>https://download.microsoft.com/download/3fcf5151-489a-4091-ac14-d5662ad964f3/SurfaceStudio2+_Win11_22621_25.083.31453.0.msi</msiUrl>
-      <fileName>SurfaceStudio2+_Win11_22621_25.083.31453.0.msi</fileName>
+      <msiUrl>https://download.microsoft.com/download/3fcf5151-489a-4091-ac14-d5662ad964f3/SurfaceStudio2+_Win11_22631_25.122.22050.0.msi</msiUrl>
+      <fileName>SurfaceStudio2+_Win11_22631_25.122.22050.0.msi</fileName>
     </Item>
     <Item>
       <id>54311|SurfaceStudio_Win10_17134_19.082.19414.0.msi</id>
