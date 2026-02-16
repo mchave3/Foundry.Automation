@@ -55,6 +55,47 @@ function Get-StringSha256 {
     ).ToLowerInvariant()
 }
 
+function Invoke-WebRequestWithRetry {
+    param(
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [string]$Uri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]$OperationName = 'web request',
+
+        [Parameter()]
+        [ValidateRange(0, 10)]
+        [int]$RetryCount = 3,
+
+        [Parameter()]
+        [ValidateRange(1, 120)]
+        [int]$RetryDelaySeconds = 2,
+
+        [Parameter()]
+        [ValidateRange(5, 300)]
+        [int]$TimeoutSeconds = 45
+    )
+
+    $attempt = 0
+    $maxAttempts = $RetryCount + 1
+    while ($attempt -lt $maxAttempts) {
+        $attempt++
+        try {
+            return Invoke-WebRequest -Uri $Uri -TimeoutSec $TimeoutSeconds -ErrorAction Stop
+        }
+        catch {
+            if ($attempt -ge $maxAttempts) {
+                throw
+            }
+
+            Write-Warning ("{0} failed for '{1}' (attempt {2}/{3}): {4}" -f $OperationName, $Uri, $attempt, $maxAttempts, $_.Exception.Message)
+            Start-Sleep -Seconds $RetryDelaySeconds
+        }
+    }
+}
+
 function Get-HtmlMetaContent {
     param(
         [Parameter(Mandatory = $true)]
@@ -101,21 +142,32 @@ function Get-SurfaceDriverPackItems {
         [string]$ArticleUri
     )
 
-    $articleResponse = Invoke-WebRequest -Uri $ArticleUri -ErrorAction Stop
+    $articleResponse = Invoke-WebRequestWithRetry -Uri $ArticleUri -OperationName 'Surface support article request'
     $articleHtml = $articleResponse.Content
 
     $downloadCenterMatches = [regex]::Matches(
         $articleHtml,
-        'https://www\.microsoft\.com/download/details\.aspx\?id=(\d+)',
+        'https://www\.microsoft\.com/(?:[a-z]{2}-[a-z]{2}/)?download/details\.aspx\?id=(\d+)',
         [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
     )
 
     $downloadCenterLinks = @($downloadCenterMatches | ForEach-Object { $_.Value } | Sort-Object -Unique)
 
+    if ($downloadCenterLinks.Count -eq 0) {
+        throw ("No Microsoft Download Center links were extracted from Surface support article '{0}'." -f $ArticleUri)
+    }
+
     $items = @()
     foreach ($downloadCenterUrl in $downloadCenterLinks) {
-        $detailResponse = Invoke-WebRequest -Uri $downloadCenterUrl -ErrorAction Stop
-        $detailHtml = $detailResponse.Content
+        $detailHtml = $null
+        try {
+            $detailResponse = Invoke-WebRequestWithRetry -Uri $downloadCenterUrl -OperationName 'Surface package detail request'
+            $detailHtml = $detailResponse.Content
+        }
+        catch {
+            Write-Warning ("Skipping Surface package detail page due to repeated request failure: {0}. Error: {1}" -f $downloadCenterUrl, $_.Exception.Message)
+            continue
+        }
 
         $titleMatch = [regex]::Match($detailHtml, '(?is)<title>(.*?)</title>')
         $title = if ($titleMatch.Success) { [System.Net.WebUtility]::HtmlDecode($titleMatch.Groups[1].Value).Trim() } else { $null }
@@ -133,7 +185,13 @@ function Get-SurfaceDriverPackItems {
 
         if ($msiUrls.Count -gt 0) {
             foreach ($msiUrl in $msiUrls) {
-                $fileName = [System.IO.Path]::GetFileName($msiUrl)
+                $fileName = $null
+                try {
+                    $fileName = [System.IO.Path]::GetFileName(([System.Uri]$msiUrl).LocalPath)
+                }
+                catch {
+                    $fileName = [System.IO.Path]::GetFileName($msiUrl)
+                }
                 $id = ($packageId + '|' + $fileName)
 
                 $items += [pscustomobject]([ordered]@{
