@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SurfaceCatalog schemaVersion="1" generatedAtUtc="2026-02-15T03:50:05Z" category="DriverPack">
-  <Source catalogSha256="9604ff84954466e9a4883fbe5f3597c76c4887d956327d3408491ac795d9c78f" uri="https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120" catalogType="SupportArticle" name="Microsoft Surface Drivers and Firmware" />
-  <CatalogMetadata lastPublishedDate="2025-12-12" firstPublishedDate="2020-09-01" articleGuid="09bb2e09-2a4b-cb69-0951-078a7739e120" />
+<SurfaceCatalog schemaVersion="1" generatedAtUtc="2026-02-16T22:20:20Z" category="DriverPack">
+  <Source name="Microsoft Surface Drivers and Firmware" uri="https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120" catalogSha256="55b7fe2a74f91bbe61b9e7ae98c54970d50773ec6e1bdd449e168a83dfc0d8ab" catalogType="SupportArticle" />
+  <CatalogMetadata firstPublishedDate="2020-09-01" lastPublishedDate="2025-12-12" articleGuid="09bb2e09-2a4b-cb69-0951-078a7739e120" />
   <Items>
     <Item>
       <id>101974|SurfaceHub2S_Win10_18363_22.052.18245.0.msi</id>
