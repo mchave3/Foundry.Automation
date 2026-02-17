@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DriverPackCatalog schemaVersion="1" generatedAtUtc="2026-02-17T22:12:30Z" totalItems="15" category="WinPE">
+<DriverPackCatalog schemaVersion="1" generatedAtUtc="2026-02-17T22:19:59Z" totalItems="15" category="WinPE">
   <Metadata name="Foundry Unified WinPE Catalog" description="Normalized WinPE catalog containing driver packs from Dell, HP, Lenovo, and Microsoft" />
   <Sources>
     <Source manufacturer="Dell" catalogUrl="https://downloads.dell.com/catalog/DriverPackCatalog.cab" lastUpdated="2025-12-19T00:00:00Z" itemCount="9" />
@@ -18,27 +18,27 @@
       <OsInfo name="WinPE" releaseId="11" architecture="x64" />
       <Hashes md5="03997A6A0A66962F1AE39DD5935728D5" sha256="B1216F4B758B0B7377D805C0B256B1D8A412B2D4FB1E3C39C8B7F36004BEF1C1" />
     </DriverPack>
-    <DriverPack id="MJ53D|x86" packageId="MJ53D" manufacturer="Dell" name="WinPE3.0-Drivers-A23-MJ53D.CAB" version="A23" fileName="WinPE3.0-Drivers-A23-MJ53D.CAB" downloadUrl="https://downloads.dell.com/FOLDER05323227M/1/WinPE3.0-Drivers-A23-MJ53D.CAB" sizeBytes="179684132" format="cab" type="WinPE" releaseDate="2018-11-20">
+    <DriverPack id="MJ53D|x86" packageId="MJ53D" manufacturer="Dell" name="WinPE3.0-Drivers-A23-MJ53D.CAB" version="A23" fileName="WinPE3.0-Drivers-A23-MJ53D.CAB" downloadUrl="https://downloads.dell.com/FOLDER05323227M/1/WinPE3.0-Drivers-A23-MJ53D.CAB" sizeBytes="179684132" format="cab" type="WinPE" releaseDate="2018-11-21">
       <OsInfo name="WinPE" releaseId="3" architecture="x86" />
       <Hashes md5="87FC2363BF818266A20964E0AB64C993" sha256="9B289DD44259A8E3F8A67BE22FCC5A00F9CB36F723D990228258E8D4573A9085" />
     </DriverPack>
-    <DriverPack id="MJ53D|x64" packageId="MJ53D" manufacturer="Dell" name="WinPE3.0-Drivers-A23-MJ53D.CAB" version="A23" fileName="WinPE3.0-Drivers-A23-MJ53D.CAB" downloadUrl="https://downloads.dell.com/FOLDER05323227M/1/WinPE3.0-Drivers-A23-MJ53D.CAB" sizeBytes="179684132" format="cab" type="WinPE" releaseDate="2018-11-20">
+    <DriverPack id="MJ53D|x64" packageId="MJ53D" manufacturer="Dell" name="WinPE3.0-Drivers-A23-MJ53D.CAB" version="A23" fileName="WinPE3.0-Drivers-A23-MJ53D.CAB" downloadUrl="https://downloads.dell.com/FOLDER05323227M/1/WinPE3.0-Drivers-A23-MJ53D.CAB" sizeBytes="179684132" format="cab" type="WinPE" releaseDate="2018-11-21">
       <OsInfo name="WinPE" releaseId="3" architecture="x64" />
       <Hashes md5="87FC2363BF818266A20964E0AB64C993" sha256="9B289DD44259A8E3F8A67BE22FCC5A00F9CB36F723D990228258E8D4573A9085" />
     </DriverPack>
-    <DriverPack id="F1YJC|x86" packageId="F1YJC" manufacturer="Dell" name="WinPE4.0-Drivers-A06-F1YJC.CAB" version="A06" fileName="WinPE4.0-Drivers-A06-F1YJC.CAB" downloadUrl="https://downloads.dell.com/FOLDER03048988M/1/WinPE4.0-Drivers-A06-F1YJC.CAB" sizeBytes="14122848" format="cab" type="WinPE" releaseDate="2015-06-01">
+    <DriverPack id="F1YJC|x86" packageId="F1YJC" manufacturer="Dell" name="WinPE4.0-Drivers-A06-F1YJC.CAB" version="A06" fileName="WinPE4.0-Drivers-A06-F1YJC.CAB" downloadUrl="https://downloads.dell.com/FOLDER03048988M/1/WinPE4.0-Drivers-A06-F1YJC.CAB" sizeBytes="14122848" format="cab" type="WinPE" releaseDate="2015-06-02">
       <OsInfo name="WinPE" releaseId="4" architecture="x86" />
       <Hashes md5="96DAA271FB10208B464FBD98E83C0528" sha256="CFA582D6753A914EA4ED94FA8DB9B389097FF28F6145BEFE9796C2157B1F366B" />
     </DriverPack>
-    <DriverPack id="F1YJC|x64" packageId="F1YJC" manufacturer="Dell" name="WinPE4.0-Drivers-A06-F1YJC.CAB" version="A06" fileName="WinPE4.0-Drivers-A06-F1YJC.CAB" downloadUrl="https://downloads.dell.com/FOLDER03048988M/1/WinPE4.0-Drivers-A06-F1YJC.CAB" sizeBytes="14122848" format="cab" type="WinPE" releaseDate="2015-06-01">
+    <DriverPack id="F1YJC|x64" packageId="F1YJC" manufacturer="Dell" name="WinPE4.0-Drivers-A06-F1YJC.CAB" version="A06" fileName="WinPE4.0-Drivers-A06-F1YJC.CAB" downloadUrl="https://downloads.dell.com/FOLDER03048988M/1/WinPE4.0-Drivers-A06-F1YJC.CAB" sizeBytes="14122848" format="cab" type="WinPE" releaseDate="2015-06-02">
       <OsInfo name="WinPE" releaseId="4" architecture="x64" />
       <Hashes md5="96DAA271FB10208B464FBD98E83C0528" sha256="CFA582D6753A914EA4ED94FA8DB9B389097FF28F6145BEFE9796C2157B1F366B" />
     </DriverPack>
-    <DriverPack id="2F5W2|x86" packageId="2F5W2" manufacturer="Dell" name="WinPE5.0-Drivers-A10-2F5W2.CAB" version="A10" fileName="WinPE5.0-Drivers-A10-2F5W2.CAB" downloadUrl="https://downloads.dell.com/FOLDER04560673M/1/WinPE5.0-Drivers-A10-2F5W2.CAB" sizeBytes="103883414" format="cab" type="WinPE" releaseDate="2017-11-29">
+    <DriverPack id="2F5W2|x86" packageId="2F5W2" manufacturer="Dell" name="WinPE5.0-Drivers-A10-2F5W2.CAB" version="A10" fileName="WinPE5.0-Drivers-A10-2F5W2.CAB" downloadUrl="https://downloads.dell.com/FOLDER04560673M/1/WinPE5.0-Drivers-A10-2F5W2.CAB" sizeBytes="103883414" format="cab" type="WinPE" releaseDate="2017-11-30">
       <OsInfo name="WinPE" releaseId="5" architecture="x86" />
       <Hashes md5="43AA87C03D61206CA4E7324F16954CE6" sha256="DA2F295C64DA5D4592DCC59623F19DAF2E1CCA3BB964759AD3B578915F634B6A" />
     </DriverPack>
-    <DriverPack id="2F5W2|x64" packageId="2F5W2" manufacturer="Dell" name="WinPE5.0-Drivers-A10-2F5W2.CAB" version="A10" fileName="WinPE5.0-Drivers-A10-2F5W2.CAB" downloadUrl="https://downloads.dell.com/FOLDER04560673M/1/WinPE5.0-Drivers-A10-2F5W2.CAB" sizeBytes="103883414" format="cab" type="WinPE" releaseDate="2017-11-29">
+    <DriverPack id="2F5W2|x64" packageId="2F5W2" manufacturer="Dell" name="WinPE5.0-Drivers-A10-2F5W2.CAB" version="A10" fileName="WinPE5.0-Drivers-A10-2F5W2.CAB" downloadUrl="https://downloads.dell.com/FOLDER04560673M/1/WinPE5.0-Drivers-A10-2F5W2.CAB" sizeBytes="103883414" format="cab" type="WinPE" releaseDate="2017-11-30">
       <OsInfo name="WinPE" releaseId="5" architecture="x64" />
       <Hashes md5="43AA87C03D61206CA4E7324F16954CE6" sha256="DA2F295C64DA5D4592DCC59623F19DAF2E1CCA3BB964759AD3B578915F634B6A" />
     </DriverPack>
