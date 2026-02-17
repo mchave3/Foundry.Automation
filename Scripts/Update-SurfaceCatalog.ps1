@@ -126,14 +126,171 @@ function Get-DriverPackItemModel {
     }
 
     $clean = $Title
+    $clean = [System.Net.WebUtility]::HtmlDecode($clean)
+    $clean = $clean -replace '(?i)^\s*Download\s+', ''
+    $clean = $clean -replace '(?i)\s+from\s+Official\s+Microsoft\s+Download\s+Center\s*$', ''
     $clean = $clean -replace '(?i)\s*-\s*Official Microsoft Download Center\s*$', ''
     $clean = $clean -replace '(?i)\s*Download\s*$', ''
+    $clean = $clean -replace '(?i)^Drivers?\s+and\s+Firmware\s+for\s+.+?\s+on\s+(Surface .+)$', '$1'
+    $clean = $clean -replace '(?i)^(Surface .+?)\s+Drivers?\s+and\s+Firmware$', '$1'
+    $clean = $clean -replace '(?i)^(Surface .+?)\s+Firmware\s+and\s+Drivers$', '$1'
+    $clean = $clean -replace '(?i)^(Surface .+?)\s+Driver\s+and\s+Firmware$', '$1'
     $clean = $clean.Trim()
     if (-not $clean) {
         return $null
     }
 
     return $clean
+}
+
+function ConvertTo-Int64OrNull {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [object]$Value
+    )
+
+    if ($null -eq $Value) {
+        return $null
+    }
+
+    [int64]$parsed = 0
+    if ([int64]::TryParse(([string]$Value), [ref]$parsed)) {
+        return $parsed
+    }
+
+    return $null
+}
+
+function ConvertTo-SurfaceDateOrNull {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Value
+    )
+
+    if (-not $Value) {
+        return $null
+    }
+
+    [datetimeoffset]$parsedOffset = [datetimeoffset]::MinValue
+    $styles = [System.Globalization.DateTimeStyles]::AllowWhiteSpaces
+    if ([datetimeoffset]::TryParse($Value, [System.Globalization.CultureInfo]::InvariantCulture, $styles, [ref]$parsedOffset)) {
+        return $parsedOffset.ToUniversalTime().ToString('yyyy-MM-dd')
+    }
+    if ([datetimeoffset]::TryParse($Value, [System.Globalization.CultureInfo]::CurrentCulture, $styles, [ref]$parsedOffset)) {
+        return $parsedOffset.ToUniversalTime().ToString('yyyy-MM-dd')
+    }
+
+    [datetime]$parsedDate = [datetime]::MinValue
+    if ([datetime]::TryParse($Value, [System.Globalization.CultureInfo]::InvariantCulture, $styles, [ref]$parsedDate)) {
+        return $parsedDate.ToString('yyyy-MM-dd')
+    }
+    if ([datetime]::TryParse($Value, [System.Globalization.CultureInfo]::CurrentCulture, $styles, [ref]$parsedDate)) {
+        return $parsedDate.ToString('yyyy-MM-dd')
+    }
+
+    return $null
+}
+
+function Get-UriFileName {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Uri
+    )
+
+    if (-not $Uri) {
+        return $null
+    }
+
+    try {
+        return [System.IO.Path]::GetFileName(([System.Uri]$Uri).LocalPath)
+    }
+    catch {
+        return [System.IO.Path]::GetFileName($Uri)
+    }
+}
+
+function Get-SurfaceDlcDetails {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Html
+    )
+
+    $marker = 'window.__DLCDetails__'
+    $markerIndex = $Html.IndexOf($marker, [System.StringComparison]::Ordinal)
+    if ($markerIndex -lt 0) {
+        return $null
+    }
+
+    $equalsIndex = $Html.IndexOf('=', $markerIndex)
+    if ($equalsIndex -lt 0) {
+        return $null
+    }
+
+    $jsonStart = $Html.IndexOf('{', $equalsIndex)
+    if ($jsonStart -lt 0) {
+        return $null
+    }
+
+    $depth = 0
+    $inString = $false
+    $escape = $false
+    $jsonEnd = -1
+
+    for ($position = $jsonStart; $position -lt $Html.Length; $position++) {
+        $char = $Html[$position]
+
+        if ($inString) {
+            if ($escape) {
+                $escape = $false
+                continue
+            }
+
+            if ($char -eq '\') {
+                $escape = $true
+                continue
+            }
+
+            if ($char -eq '"') {
+                $inString = $false
+            }
+
+            continue
+        }
+
+        if ($char -eq '"') {
+            $inString = $true
+            continue
+        }
+
+        if ($char -eq '{') {
+            $depth++
+            continue
+        }
+
+        if ($char -eq '}') {
+            $depth--
+            if ($depth -eq 0) {
+                $jsonEnd = $position
+                break
+            }
+        }
+    }
+
+    if ($jsonEnd -lt $jsonStart) {
+        return $null
+    }
+
+    $json = $Html.Substring($jsonStart, ($jsonEnd - $jsonStart + 1))
+    try {
+        return ($json | ConvertFrom-Json -Depth 20 -ErrorAction Stop)
+    }
+    catch {
+        Write-Verbose ("Unable to parse Surface DLC details JSON: {0}" -f $_.Exception.Message)
+        return $null
+    }
 }
 
 function Get-SurfaceDriverPackItems {
@@ -171,36 +328,84 @@ function Get-SurfaceDriverPackItems {
 
         $titleMatch = [regex]::Match($detailHtml, '(?is)<title>(.*?)</title>')
         $title = if ($titleMatch.Success) { [System.Net.WebUtility]::HtmlDecode($titleMatch.Groups[1].Value).Trim() } else { $null }
-        $model = Get-DriverPackItemModel -Title $title
 
         $packageIdMatch = [regex]::Match($downloadCenterUrl, '(?i)id=(\d+)')
         $packageId = if ($packageIdMatch.Success) { $packageIdMatch.Groups[1].Value } else { $null }
 
-        $msiMatches = [regex]::Matches(
-            $detailHtml,
-            'https://download\.microsoft\.com/download/[^"\s<>]+?\.msi',
-            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
-        )
-        $msiUrls = @($msiMatches | ForEach-Object { $_.Value } | Sort-Object -Unique)
+        $dlcDetails = Get-SurfaceDlcDetails -Html $detailHtml
+        $detailView = if ($dlcDetails -and ($dlcDetails.PSObject.Properties.Name -contains 'dlcDetailsView')) { $dlcDetails.dlcDetailsView } else { $null }
 
-        if ($msiUrls.Count -gt 0) {
-            foreach ($msiUrl in $msiUrls) {
-                $fileName = $null
-                try {
-                    $fileName = [System.IO.Path]::GetFileName(([System.Uri]$msiUrl).LocalPath)
+        $downloadTitle = if ($detailView -and [string]$detailView.downloadTitle) { [string]$detailView.downloadTitle } else { $null }
+        $model = $null
+        if ($downloadTitle) {
+            $model = Get-DriverPackItemModel -Title $downloadTitle
+        }
+        if (-not $model) {
+            $model = Get-DriverPackItemModel -Title $title
+        }
+
+        $supportedOperatingSystems = if ($detailView -and [string]$detailView.systemRequirementsSection_supportedOS) { [string]$detailView.systemRequirementsSection_supportedOS } else { $null }
+
+        $downloadFiles = @()
+        if ($detailView -and ($detailView.PSObject.Properties.Name -contains 'downloadFile')) {
+            foreach ($downloadFile in @($detailView.downloadFile)) {
+                $downloadUrl = if ([string]$downloadFile.url) { [string]$downloadFile.url } else { $null }
+                if (-not $downloadUrl) {
+                    continue
                 }
-                catch {
-                    $fileName = [System.IO.Path]::GetFileName($msiUrl)
-                }
-                $id = ($packageId + '|' + $fileName)
+
+                $fileName = if ([string]$downloadFile.name) { [string]$downloadFile.name } else { Get-UriFileName -Uri $downloadUrl }
+                $extension = if ($fileName) { [System.IO.Path]::GetExtension($fileName) } else { [System.IO.Path]::GetExtension((Get-UriFileName -Uri $downloadUrl)) }
+                $format = if ($extension) { $extension.TrimStart('.').ToLowerInvariant() } else { $null }
+
+                $downloadFiles += [pscustomobject]([ordered]@{
+                        downloadUrl = $downloadUrl
+                        fileName = $fileName
+                        format = $format
+                        version = if ([string]$downloadFile.version) { [string]$downloadFile.version } else { $null }
+                        sizeBytes = ConvertTo-Int64OrNull -Value $downloadFile.size
+                        datePublished = ConvertTo-SurfaceDateOrNull -Value ([string]$downloadFile.datePublished)
+                    })
+            }
+        }
+
+        if ($downloadFiles.Count -lt 1) {
+            $msiMatches = [regex]::Matches(
+                $detailHtml,
+                'https://download\.microsoft\.com/download/[^"\s<>]+?\.msi',
+                [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+            )
+            foreach ($msiUrl in @($msiMatches | ForEach-Object { $_.Value } | Sort-Object -Unique)) {
+                $downloadFiles += [pscustomobject]([ordered]@{
+                        downloadUrl = $msiUrl
+                        fileName = Get-UriFileName -Uri $msiUrl
+                        format = 'msi'
+                        version = $null
+                        sizeBytes = $null
+                        datePublished = $null
+                    })
+            }
+        }
+
+        if ($downloadFiles.Count -gt 0) {
+            foreach ($downloadFile in $downloadFiles) {
+                $itemFileName = if ([string]$downloadFile.fileName) { [string]$downloadFile.fileName } else { Get-UriFileName -Uri ([string]$downloadFile.downloadUrl) }
+                $id = if ($packageId -and $itemFileName) { ($packageId + '|' + $itemFileName) } elseif ($packageId) { $packageId } else { [string]$downloadFile.downloadUrl }
 
                 $items += [pscustomobject]([ordered]@{
                         id = $id
                         model = $model
+                        downloadTitle = $downloadTitle
                         packageId = $packageId
                         downloadCenterUrl = $downloadCenterUrl
-                        msiUrl = $msiUrl
-                        fileName = $fileName
+                        downloadUrl = [string]$downloadFile.downloadUrl
+                        msiUrl = if ([string]$downloadFile.format -eq 'msi') { [string]$downloadFile.downloadUrl } else { $null }
+                        fileName = $itemFileName
+                        format = [string]$downloadFile.format
+                        version = if ([string]$downloadFile.version) { [string]$downloadFile.version } else { $null }
+                        sizeBytes = ConvertTo-Int64OrNull -Value $downloadFile.sizeBytes
+                        datePublished = if ([string]$downloadFile.datePublished) { [string]$downloadFile.datePublished } else { $null }
+                        supportedOperatingSystems = $supportedOperatingSystems
                         device = $null
                         importFolderCount = $null
                         importFolders = $null
@@ -208,23 +413,30 @@ function Get-SurfaceDriverPackItems {
                         guidanceUrl = $null
                     })
             }
+            continue
         }
-        else {
-            $id = if ($packageId) { $packageId } else { $downloadCenterUrl }
-            $items += [pscustomobject]([ordered]@{
-                    id = $id
-                    model = $model
-                    packageId = $packageId
-                    downloadCenterUrl = $downloadCenterUrl
-                    msiUrl = $null
-                    fileName = $null
-                    device = $null
-                    importFolderCount = $null
-                    importFolders = $null
-                    hidMiniZipUrl = $null
-                    guidanceUrl = $null
-                })
-        }
+
+        $id = if ($packageId) { $packageId } else { $downloadCenterUrl }
+        $items += [pscustomobject]([ordered]@{
+                id = $id
+                model = $model
+                downloadTitle = $downloadTitle
+                packageId = $packageId
+                downloadCenterUrl = $downloadCenterUrl
+                downloadUrl = $null
+                msiUrl = $null
+                fileName = $null
+                format = $null
+                version = $null
+                sizeBytes = $null
+                datePublished = $null
+                supportedOperatingSystems = $supportedOperatingSystems
+                device = $null
+                importFolderCount = $null
+                importFolders = $null
+                hidMiniZipUrl = $null
+                guidanceUrl = $null
+            })
     }
 
     $metadata = [ordered]@{

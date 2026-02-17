@@ -173,6 +173,18 @@
               "null"
             ]
           },
+          "hashSHA1": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hashSHA256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "sizeBytes": {
             "type": [
               "integer",
@@ -181,6 +193,12 @@
           },
           "path": {
             "type": "string"
+          },
+          "delta": {
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "downloadUrl": {
             "type": "string"

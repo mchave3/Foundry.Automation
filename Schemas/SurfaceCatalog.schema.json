@@ -104,6 +104,12 @@
               "null"
             ]
           },
+          "downloadTitle": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "packageId": {
             "type": [
               "string",
@@ -122,7 +128,43 @@
               "null"
             ]
           },
+          "downloadUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "fileName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "format": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sizeBytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "datePublished": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "supportedOperatingSystems": {
             "type": [
               "string",
               "null"

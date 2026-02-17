@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DellCatalog schemaVersion="1" generatedAtUtc="2026-02-17T03:47:21Z" category="WinPE">
-  <Source name="Dell Driver Pack Catalog" catalogCabSha256="430735c667283b1facc6c35eb039686f8f9f65cb9f5ed444ce790fdbe6312e06" catalogXmlSha256="1cc6805b87c92f957d95475d59e8813645add432cab540be1ac73bf007739956" catalogXmlFile="DriverPackCatalog.xml" catalogCabUri="https://downloads.dell.com/catalog/DriverPackCatalog.cab" />
-  <CatalogMetadata baseLocation="downloads.dell.com" baseLocationAccessProtocols="HTTP FTP" dateTime="2026-02-09T07:06:54" schemaVersion="2.3" version="2026.02.02" />
+<DellCatalog schemaVersion="1" generatedAtUtc="2026-02-17T21:45:33Z" category="WinPE">
+  <Source name="Dell Driver Pack Catalog" catalogXmlSha256="1cc6805b87c92f957d95475d59e8813645add432cab540be1ac73bf007739956" catalogCabSha256="430735c667283b1facc6c35eb039686f8f9f65cb9f5ed444ce790fdbe6312e06" catalogXmlFile="DriverPackCatalog.xml" catalogCabUri="https://downloads.dell.com/catalog/DriverPackCatalog.cab" />
+  <CatalogMetadata dateTime="2026-02-09T07:06:54" version="2026.02.02" schemaVersion="2.3" baseLocationAccessProtocols="HTTP FTP" baseLocation="downloads.dell.com" />
   <Items>
     <Item>
       <releaseId>0VJ7T</releaseId>
@@ -18,6 +18,8 @@
       <dellVersion>A38</dellVersion>
       <dateTime>2025-12-19T05:12:43</dateTime>
       <hashMD5>FC37E3069C8C628385945BE3D78BD8B6</hashMD5>
+      <hashSHA1>3249D5F62913CCD5C8358A5C098797E0088345A7</hashSHA1>
+      <hashSHA256>08E3886BE4F606E8249779F8D1592BCA234FEC7C0C7E752CA6B7866B31D21AD8</hashSHA256>
       <sizeBytes>139610032</sizeBytes>
       <path>FOLDER14002063M/1/WinPE10.0-Drivers-A38-0VJ7T.cab</path>
       <downloadUrl>https://downloads.dell.com/FOLDER14002063M/1/WinPE10.0-Drivers-A38-0VJ7T.cab</downloadUrl>
@@ -42,8 +44,11 @@
       <dellVersion>A10</dellVersion>
       <dateTime>2017-11-30T00:00:00</dateTime>
       <hashMD5>43AA87C03D61206CA4E7324F16954CE6</hashMD5>
+      <hashSHA1>93A87FB871DF960CB90B4AEB45D5106087312491</hashSHA1>
+      <hashSHA256>DA2F295C64DA5D4592DCC59623F19DAF2E1CCA3BB964759AD3B578915F634B6A</hashSHA256>
       <sizeBytes>103883414</sizeBytes>
       <path>FOLDER04560673M/1/WinPE5.0-Drivers-A10-2F5W2.CAB</path>
+      <delta>/techcenter/enterprise-client/w/wiki/5029.winpe-5-0-driver-cab</delta>
       <downloadUrl>https://downloads.dell.com/FOLDER04560673M/1/WinPE5.0-Drivers-A10-2F5W2.CAB</downloadUrl>
       <SupportedSystems />
       <SupportedOperatingSystems>
@@ -66,6 +71,8 @@
       <dellVersion>A08</dellVersion>
       <dateTime>2025-12-19T05:13:37</dateTime>
       <hashMD5>03997A6A0A66962F1AE39DD5935728D5</hashMD5>
+      <hashSHA1>E4A9C5423D36CFFCF712DF39AC5DF9F3F891B0CC</hashSHA1>
+      <hashSHA256>B1216F4B758B0B7377D805C0B256B1D8A412B2D4FB1E3C39C8B7F36004BEF1C1</hashSHA256>
       <sizeBytes>29028403</sizeBytes>
       <path>FOLDER14002062M/1/WinPE11.0-Drivers-A08-2V5TD.cab</path>
       <downloadUrl>https://downloads.dell.com/FOLDER14002062M/1/WinPE11.0-Drivers-A08-2V5TD.cab</downloadUrl>
@@ -89,8 +96,11 @@
       <dellVersion>A06</dellVersion>
       <dateTime>2015-06-02T00:00:00</dateTime>
       <hashMD5>96DAA271FB10208B464FBD98E83C0528</hashMD5>
+      <hashSHA1>DD70B02815DB37C0265E5878AA50D8F584A655CC</hashSHA1>
+      <hashSHA256>CFA582D6753A914EA4ED94FA8DB9B389097FF28F6145BEFE9796C2157B1F366B</hashSHA256>
       <sizeBytes>14122848</sizeBytes>
       <path>FOLDER03048988M/1/WinPE4.0-Drivers-A06-F1YJC.CAB</path>
+      <delta>/techcenter/enterprise-client/w/wiki/4376.winpe-4-0-driver-cab</delta>
       <downloadUrl>https://downloads.dell.com/FOLDER03048988M/1/WinPE4.0-Drivers-A06-F1YJC.CAB</downloadUrl>
       <SupportedSystems />
       <SupportedOperatingSystems>
@@ -113,8 +123,11 @@
       <dellVersion>A23</dellVersion>
       <dateTime>2018-11-21T00:00:00</dateTime>
       <hashMD5>87FC2363BF818266A20964E0AB64C993</hashMD5>
+      <hashSHA1>18053AA755F5C5F8B124226FD1197A7A38A6C99B</hashSHA1>
+      <hashSHA256>9B289DD44259A8E3F8A67BE22FCC5A00F9CB36F723D990228258E8D4573A9085</hashSHA256>
       <sizeBytes>179684132</sizeBytes>
       <path>FOLDER05323227M/1/WinPE3.0-Drivers-A23-MJ53D.CAB</path>
+      <delta>/techcenter/enterprise-client/w/wiki/2069.winpe-3-0-driver-cab</delta>
       <downloadUrl>https://downloads.dell.com/FOLDER05323227M/1/WinPE3.0-Drivers-A23-MJ53D.CAB</downloadUrl>
       <SupportedSystems />
       <SupportedOperatingSystems>

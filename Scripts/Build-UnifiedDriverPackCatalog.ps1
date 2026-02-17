@@ -81,6 +81,403 @@ function Get-XmlElementText {
     return $null
 }
 
+function ConvertTo-ParsedDateTimeOffset {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Value
+    )
+
+    if (-not $Value) {
+        return $null
+    }
+
+    $styles = [System.Globalization.DateTimeStyles]::AllowWhiteSpaces
+    [datetimeoffset]$parsedOffset = [datetimeoffset]::MinValue
+    if ([datetimeoffset]::TryParse($Value, [System.Globalization.CultureInfo]::InvariantCulture, $styles, [ref]$parsedOffset)) {
+        return $parsedOffset
+    }
+    if ([datetimeoffset]::TryParse($Value, [System.Globalization.CultureInfo]::CurrentCulture, $styles, [ref]$parsedOffset)) {
+        return $parsedOffset
+    }
+
+    [datetime]$parsedDate = [datetime]::MinValue
+    if ([datetime]::TryParse($Value, [System.Globalization.CultureInfo]::InvariantCulture, $styles, [ref]$parsedDate)) {
+        return [datetimeoffset]::new($parsedDate)
+    }
+    if ([datetime]::TryParse($Value, [System.Globalization.CultureInfo]::CurrentCulture, $styles, [ref]$parsedDate)) {
+        return [datetimeoffset]::new($parsedDate)
+    }
+
+    return $null
+}
+
+function ConvertTo-IsoDateOrNull {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Value
+    )
+
+    if (-not $Value) {
+        return $null
+    }
+
+    $normalized = $Value.Trim()
+    if (-not $normalized) {
+        return $null
+    }
+
+    if ($normalized -match '^\d{4}-\d{2}-\d{2}$') {
+        return $normalized
+    }
+
+    $hasExplicitTime = ($normalized -match 'T\d{1,2}:\d{2}') -or ($normalized -match '\d{1,2}:\d{2}')
+    if (-not $hasExplicitTime) {
+        [datetime]$dateOnly = [datetime]::MinValue
+        if ([datetime]::TryParse($normalized, [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::AllowWhiteSpaces, [ref]$dateOnly)) {
+            return $dateOnly.ToString('yyyy-MM-dd')
+        }
+        if ([datetime]::TryParse($normalized, [System.Globalization.CultureInfo]::CurrentCulture, [System.Globalization.DateTimeStyles]::AllowWhiteSpaces, [ref]$dateOnly)) {
+            return $dateOnly.ToString('yyyy-MM-dd')
+        }
+    }
+
+    $parsed = ConvertTo-ParsedDateTimeOffset -Value $normalized
+    if ($null -eq $parsed) {
+        return $null
+    }
+
+    return $parsed.ToUniversalTime().ToString('yyyy-MM-dd')
+}
+
+function Normalize-OsArchitecture {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Architecture,
+
+        [Parameter()]
+        [ValidateSet('x86', 'x64', 'arm64')]
+        [string]$Default = 'x64'
+    )
+
+    if (-not $Architecture) {
+        return $Default
+    }
+
+    switch -Regex ($Architecture.Trim().ToLowerInvariant()) {
+        '^(x64|amd64|64-bit|64)$' { return 'x64' }
+        '^(x86|86|32-bit|32|ia32)$' { return 'x86' }
+        '^(arm64|aarch64)$' { return 'arm64' }
+        default { return $Default }
+    }
+}
+
+function Get-ReleaseIdFromBuild {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Build
+    )
+
+    [int]$buildNumber = 0
+    if (-not [int]::TryParse($Build, [ref]$buildNumber)) {
+        return $null
+    }
+
+    switch ($buildNumber) {
+        { $_ -ge 26200 } { return '25H2' }
+        { $_ -ge 26100 } { return '24H2' }
+        { $_ -ge 22631 } { return '23H2' }
+        { $_ -ge 22621 } { return '22H2' }
+        { $_ -ge 22000 } { return '21H2' }
+        { $_ -ge 19045 } { return '22H2' }
+        { $_ -ge 19044 } { return '21H2' }
+        { $_ -ge 19043 } { return '21H1' }
+        { $_ -ge 19042 } { return '20H2' }
+        { $_ -ge 19041 } { return '2004' }
+        { $_ -ge 18363 } { return '1909' }
+        { $_ -ge 18362 } { return '1903' }
+        { $_ -ge 17763 } { return '1809' }
+        { $_ -ge 17134 } { return '1803' }
+        { $_ -ge 16299 } { return '1709' }
+        { $_ -ge 15063 } { return '1703' }
+        { $_ -ge 14393 } { return '1607' }
+        { $_ -ge 10586 } { return '1511' }
+        { $_ -ge 10240 } { return '1507' }
+        default { return $null }
+    }
+}
+
+function Normalize-LenovoOsName {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$OsValue
+    )
+
+    if (-not $OsValue) {
+        return $null
+    }
+
+    $value = $OsValue.Trim()
+    if ($value -match '^(?i)win(?:dows)?\s*(10|11)$') {
+        return "Windows $($matches[1])"
+    }
+    if ($value -match '^(10|11)$') {
+        return "Windows $value"
+    }
+    if ($value -match '^(?i)windows\s+') {
+        return ('Windows ' + ($value -replace '^(?i)windows\s*', '').Trim())
+    }
+
+    return "Windows $value"
+}
+
+function Normalize-DellOsName {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$OsCode
+    )
+
+    if (-not $OsCode) {
+        return $null
+    }
+
+    $value = $OsCode.Trim()
+    switch -Regex ($value) {
+        '^(?i)windows\s*11$|^Windows11$' { return 'Windows 11' }
+        '^(?i)windows\s*10$|^Windows10$' { return 'Windows 10' }
+        '^(?i)windows\s*8\.1$|^Windows8\.1$' { return 'Windows 8.1' }
+        '^(?i)windows\s*8$|^Windows8$' { return 'Windows 8' }
+        '^(?i)windows\s*7$|^Windows7$' { return 'Windows 7' }
+        '^(?i)vista$' { return 'Windows Vista' }
+        '^(?i)xp$' { return 'Windows XP' }
+        default { return $value }
+    }
+}
+
+function Get-WinPEReleaseId {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Text
+    )
+
+    if (-not $Text) {
+        return $null
+    }
+
+    $normalized = $Text.Trim().ToLowerInvariant()
+    if (-not $normalized) {
+        return $null
+    }
+
+    if ($normalized -match '10\s*/\s*11') {
+        return '10/11'
+    }
+
+    $codeMatch = [regex]::Match($normalized, 'winpe([0-9]+)x')
+    if ($codeMatch.Success) {
+        return $codeMatch.Groups[1].Value
+    }
+
+    $familyMatch = [regex]::Match($normalized, 'winpe\s*([0-9]+(?:\.[0-9]+)?)')
+    if ($familyMatch.Success) {
+        $majorMatch = [regex]::Match($familyMatch.Groups[1].Value, '^([0-9]+)')
+        if ($majorMatch.Success) {
+            return $majorMatch.Groups[1].Value
+        }
+    }
+
+    $fallbackMatch = [regex]::Match($normalized, '(^|[^0-9])(11|10|5|4|3)([^0-9]|$)')
+    if ($fallbackMatch.Success) {
+        return $fallbackMatch.Groups[2].Value
+    }
+
+    return $null
+}
+
+function Get-ReleaseIdFromText {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Text
+    )
+
+    if (-not $Text) {
+        return $null
+    }
+
+    $normalized = $Text.ToUpperInvariant()
+    $match = [regex]::Match($normalized, '(25H2|24H2|23H2|22H2|21H2|21H1|20H2|2004|1909|1903|1809|1803|1709|1703|1607|1511|1507)')
+    if ($match.Success) {
+        return $match.Groups[1].Value
+    }
+
+    return $null
+}
+
+function Get-PreferredReleaseIdFromCsv {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$CsvValue
+    )
+
+    if (-not $CsvValue) {
+        return $null
+    }
+
+    $candidates = @($CsvValue -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+    if ($candidates.Count -lt 1) {
+        return $null
+    }
+
+    function Get-ReleaseScore {
+        param([string]$Release)
+
+        if ($Release -match '^(\d{2})H([12])$') {
+            return ([int]$matches[1] * 10) + [int]$matches[2]
+        }
+        if ($Release -match '^\d{4}$') {
+            return [int]$Release
+        }
+
+        return -1
+    }
+
+    $best = $null
+    $bestScore = -1
+    foreach ($candidate in $candidates) {
+        $score = Get-ReleaseScore -Release $candidate
+        if ($score -gt $bestScore) {
+            $bestScore = $score
+            $best = $candidate
+        }
+    }
+
+    if ($best) {
+        return $best
+    }
+
+    return $candidates[0]
+}
+
+function Normalize-DriverPackItems {
+    param(
+        [Parameter(Mandatory = $true)]
+        [array]$Items
+    )
+
+    $normalized = @()
+    foreach ($item in @($Items)) {
+        if ($null -eq $item) {
+            continue
+        }
+
+        $downloadUrl = [string]$item.downloadUrl
+        if (-not $downloadUrl) {
+            Write-Warning ("Skipping unified item '{0}' because downloadUrl is empty." -f [string]$item.id)
+            continue
+        }
+
+        $format = [string]$item.format
+        if ($format) {
+            $format = $format.ToLowerInvariant()
+        }
+        if (@('cab', 'exe', 'msi', 'zip') -notcontains $format) {
+            if ($downloadUrl -match '(?i)\.cab($|[?&])') {
+                $format = 'cab'
+            }
+            elseif ($downloadUrl -match '(?i)\.zip($|[?&])') {
+                $format = 'zip'
+            }
+            elseif ($downloadUrl -match '(?i)\.msi($|[?&])') {
+                $format = 'msi'
+            }
+            else {
+                $format = 'exe'
+            }
+        }
+
+        $normalized += [pscustomobject]([ordered]@{
+                id = [string]$item.id
+                packageId = [string]$item.packageId
+                manufacturer = [string]$item.manufacturer
+                name = [string]$item.name
+                version = if ([string]$item.version) { [string]$item.version } else { $null }
+                fileName = [string]$item.fileName
+                downloadUrl = $downloadUrl
+                sizeBytes = ConvertTo-Int64OrNull -Value $item.sizeBytes
+                format = $format
+                type = [string]$item.type
+                releaseDate = ConvertTo-IsoDateOrNull -Value ([string]$item.releaseDate)
+                legacy = $item.legacy
+                models = @($item.models)
+                osName = if ([string]$item.osName) { [string]$item.osName } else { 'Windows' }
+                osReleaseId = if ([string]$item.osReleaseId) { [string]$item.osReleaseId } else { $null }
+                osBuild = if ([string]$item.osBuild) { [string]$item.osBuild } else { $null }
+                osArchitecture = Normalize-OsArchitecture -Architecture ([string]$item.osArchitecture) -Default 'x64'
+                hashMD5 = if ([string]$item.hashMD5) { [string]$item.hashMD5 } else { $null }
+                hashSHA256 = if ([string]$item.hashSHA256) { [string]$item.hashSHA256 } else { $null }
+                hashCRC = if ([string]$item.hashCRC) { [string]$item.hashCRC } else { $null }
+            })
+    }
+
+    return $normalized
+}
+
+function Get-LastUpdatedUtcFromItems {
+    param(
+        [Parameter(Mandatory = $true)]
+        [array]$Items
+    )
+
+    $latest = $null
+    foreach ($item in @($Items)) {
+        $releaseDateValue = [string]$item.releaseDate
+        if (-not $releaseDateValue) {
+            continue
+        }
+
+        $normalizedReleaseDate = $releaseDateValue.Trim()
+        if (-not $normalizedReleaseDate) {
+            continue
+        }
+
+        $utc = $null
+        if ($normalizedReleaseDate -match '^\d{4}-\d{2}-\d{2}$') {
+            [datetime]$exactDate = [datetime]::MinValue
+            if ([datetime]::TryParseExact($normalizedReleaseDate, 'yyyy-MM-dd', [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::None, [ref]$exactDate)) {
+                $utc = [datetimeoffset]::new($exactDate, [timespan]::Zero)
+            }
+        }
+        else {
+            $parsed = ConvertTo-ParsedDateTimeOffset -Value $normalizedReleaseDate
+            if ($null -ne $parsed) {
+                $utc = $parsed.ToUniversalTime()
+            }
+        }
+
+        if ($null -eq $utc) {
+            continue
+        }
+
+        if (($null -eq $latest) -or ($utc -gt $latest)) {
+            $latest = $utc
+        }
+    }
+
+    if ($null -eq $latest) {
+        return (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+    }
+
+    return $latest.ToString('yyyy-MM-ddTHH:mm:ssZ')
+}
+
 function Import-DellDriverPacks {
     param([string]$DriverPackPath, [string]$WinPEPath)
 
@@ -98,36 +495,51 @@ function Import-DellDriverPacks {
                     })
             }
 
-            $osName = $null
-            $osArch = 'x64'
             $osNodes = @($item.SupportedOperatingSystems.OperatingSystem)
-            if ($osNodes.Count -gt 0 -and $osNodes[0]) {
-                $osName = [string]$osNodes[0].osCode
-                $osArch = [string]$osNodes[0].osArch
+            if ($osNodes.Count -lt 1) {
+                $osNodes = @($null)
             }
 
-            $items += [pscustomobject]([ordered]@{
-                    id = [string]$item.releaseId
-                    packageId = [string]$item.releaseId
-                    manufacturer = 'Dell'
-                    name = [string]$item.name
-                    version = [string]$item.dellVersion
-                    fileName = [string]$item.name
-                    downloadUrl = [string]$item.downloadUrl
-                    sizeBytes = ConvertTo-Int64OrNull -Value (Get-XmlElementText -Node $item -ElementName 'sizeBytes')
-                    format = [string]$item.format
-                    type = 'Win'
-                    releaseDate = [string]$item.dateTime
-                    legacy = $null
-                    models = $models
-                    osName = $osName
-                    osReleaseId = $null
-                    osBuild = $null
-                    osArchitecture = $osArch
-                    hashMD5 = Get-XmlElementText -Node $item -ElementName 'hashMD5'
-                    hashSHA256 = $null
-                    hashCRC = $null
-                })
+            $baseReleaseId = [string]$item.releaseId
+            $osSequence = 0
+            foreach ($osNode in $osNodes) {
+                $osSequence++
+                $osCode = if ($osNode) { [string]$osNode.osCode } else { $null }
+                $osArchRaw = if ($osNode) { [string]$osNode.osArch } else { $null }
+                $osArch = Normalize-OsArchitecture -Architecture $osArchRaw -Default 'x64'
+                $osName = Normalize-DellOsName -OsCode $osCode
+
+                $id = $baseReleaseId
+                if ($osNodes.Count -gt 1) {
+                    $id = "{0}|{1}" -f $baseReleaseId, $osArch
+                    if ($osSequence -gt 1 -and ($items | Where-Object { $_.id -eq $id })) {
+                        $id = "{0}|{1}|{2}" -f $baseReleaseId, $osArch, $osSequence
+                    }
+                }
+
+                $items += [pscustomobject]([ordered]@{
+                        id = $id
+                        packageId = $baseReleaseId
+                        manufacturer = 'Dell'
+                        name = [string]$item.name
+                        version = [string]$item.dellVersion
+                        fileName = [string]$item.name
+                        downloadUrl = [string]$item.downloadUrl
+                        sizeBytes = ConvertTo-Int64OrNull -Value (Get-XmlElementText -Node $item -ElementName 'sizeBytes')
+                        format = [string]$item.format
+                        type = 'Win'
+                        releaseDate = [string]$item.dateTime
+                        legacy = $null
+                        models = $models
+                        osName = $osName
+                        osReleaseId = Get-ReleaseIdFromText -Text $osCode
+                        osBuild = $null
+                        osArchitecture = $osArch
+                        hashMD5 = Get-XmlElementText -Node $item -ElementName 'hashMD5'
+                        hashSHA256 = Get-XmlElementText -Node $item -ElementName 'hashSHA256'
+                        hashCRC = $null
+                    })
+            }
         }
     }
 
@@ -136,34 +548,50 @@ function Import-DellDriverPacks {
 
         foreach ($item in $xml.DellCatalog.Items.Item) {
             $osName = 'WinPE'
-            $osArch = 'x64'
             $osNodes = @($item.SupportedOperatingSystems.OperatingSystem)
-            if ($osNodes.Count -gt 0 -and $osNodes[0]) {
-                $osArch = [string]$osNodes[0].osArch
+            if ($osNodes.Count -lt 1) {
+                $osNodes = @($null)
             }
 
-            $items += [pscustomobject]([ordered]@{
-                    id = [string]$item.releaseId
-                    packageId = [string]$item.releaseId
-                    manufacturer = 'Dell'
-                    name = [string]$item.name
-                    version = [string]$item.dellVersion
-                    fileName = [string]$item.name
-                    downloadUrl = [string]$item.downloadUrl
-                    sizeBytes = ConvertTo-Int64OrNull -Value (Get-XmlElementText -Node $item -ElementName 'sizeBytes')
-                    format = [string]$item.format
-                    type = 'WinPE'
-                    releaseDate = [string]$item.dateTime
-                    legacy = $null
-                    models = @()
-                    osName = $osName
-                    osReleaseId = $null
-                    osBuild = $null
-                    osArchitecture = $osArch
-                    hashMD5 = Get-XmlElementText -Node $item -ElementName 'hashMD5'
-                    hashSHA256 = $null
-                    hashCRC = $null
-                })
+            $baseReleaseId = [string]$item.releaseId
+            $osSequence = 0
+            foreach ($osNode in $osNodes) {
+                $osSequence++
+                $osCode = if ($osNode) { [string]$osNode.osCode } else { $null }
+                $osArchRaw = if ($osNode) { [string]$osNode.osArch } else { $null }
+                $osArch = Normalize-OsArchitecture -Architecture $osArchRaw -Default 'x64'
+
+                $id = $baseReleaseId
+                if ($osNodes.Count -gt 1) {
+                    $id = "{0}|{1}" -f $baseReleaseId, $osArch
+                    if ($osSequence -gt 1 -and ($items | Where-Object { $_.id -eq $id })) {
+                        $id = "{0}|{1}|{2}" -f $baseReleaseId, $osArch, $osSequence
+                    }
+                }
+
+                $items += [pscustomobject]([ordered]@{
+                        id = $id
+                        packageId = $baseReleaseId
+                        manufacturer = 'Dell'
+                        name = [string]$item.name
+                        version = [string]$item.dellVersion
+                        fileName = [string]$item.name
+                        downloadUrl = [string]$item.downloadUrl
+                        sizeBytes = ConvertTo-Int64OrNull -Value (Get-XmlElementText -Node $item -ElementName 'sizeBytes')
+                        format = [string]$item.format
+                        type = 'WinPE'
+                        releaseDate = [string]$item.dateTime
+                        legacy = $null
+                        models = @()
+                        osName = $osName
+                        osReleaseId = Get-WinPEReleaseId -Text $osCode
+                        osBuild = $null
+                        osArchitecture = $osArch
+                        hashMD5 = Get-XmlElementText -Node $item -ElementName 'hashMD5'
+                        hashSHA256 = Get-XmlElementText -Node $item -ElementName 'hashSHA256'
+                        hashCRC = $null
+                    })
+            }
         }
     }
 
@@ -187,11 +615,26 @@ function Import-HPDriverPacks {
             $osName = [string]$item.osName
             $osVersion = $null
             $osReleaseId = $null
-            if ($osName -match 'Windows (\d+)') {
+            if ($osName -match '(?i)Windows\s*(10|11)') {
                 $osVersion = "Windows $($matches[1])"
             }
-            if ($osName -match '(\d{4})$') {
-                $osReleaseId = $matches[1]
+            $osReleaseId = Get-ReleaseIdFromText -Text $osName
+            if (-not $osReleaseId) {
+                $preferredWin11 = Get-PreferredReleaseIdFromCsv -CsvValue (Get-XmlElementText -Node $item -ElementName 'platformWin11Releases')
+                $preferredWin10 = Get-PreferredReleaseIdFromCsv -CsvValue (Get-XmlElementText -Node $item -ElementName 'platformWin10Releases')
+
+                if ($osVersion -eq 'Windows 11' -and $preferredWin11) {
+                    $osReleaseId = $preferredWin11
+                }
+                elseif ($osVersion -eq 'Windows 10' -and $preferredWin10) {
+                    $osReleaseId = $preferredWin10
+                }
+                elseif ($preferredWin11) {
+                    $osReleaseId = $preferredWin11
+                }
+                elseif ($preferredWin10) {
+                    $osReleaseId = $preferredWin10
+                }
             }
 
             $items += [pscustomobject]([ordered]@{
@@ -208,10 +651,10 @@ function Import-HPDriverPacks {
                     releaseDate = [string]$item.dateReleased
                     legacy = $null
                     models = $models
-                    osName = $osVersion
+                    osName = if ($osVersion) { $osVersion } else { 'Windows' }
                     osReleaseId = $osReleaseId
                     osBuild = $null
-                    osArchitecture = if ([string]$item.architecture -eq '64-bit') { 'x64' } else { 'x86' }
+                    osArchitecture = Normalize-OsArchitecture -Architecture ([string]$item.architecture) -Default 'x64'
                     hashMD5 = Get-XmlElementText -Node $item -ElementName 'md5'
                     hashSHA256 = Get-XmlElementText -Node $item -ElementName 'sha256'
                     hashCRC = $null
@@ -223,6 +666,11 @@ function Import-HPDriverPacks {
         [xml]$xml = Get-Content -Path $WinPEPath -Raw
 
         foreach ($item in $xml.HPCatalog.Items.Item) {
+            $winpeFamily = Get-XmlElementText -Node $item -ElementName 'winpeFamily'
+            if (-not $winpeFamily) {
+                $winpeFamily = Get-XmlElementText -Node $item -ElementName 'osName'
+            }
+
             $items += [pscustomobject]([ordered]@{
                     id = [string]$item.id
                     packageId = [string]$item.softPaqId
@@ -238,9 +686,9 @@ function Import-HPDriverPacks {
                     legacy = $null
                     models = @()
                     osName = 'WinPE'
-                    osReleaseId = $null
+                    osReleaseId = Get-WinPEReleaseId -Text $winpeFamily
                     osBuild = $null
-                    osArchitecture = 'x64'
+                    osArchitecture = Normalize-OsArchitecture -Architecture ([string]$item.architecture) -Default 'x64'
                     hashMD5 = Get-XmlElementText -Node $item -ElementName 'md5'
                     hashSHA256 = Get-XmlElementText -Node $item -ElementName 'sha256'
                     hashCRC = $null
@@ -266,7 +714,7 @@ function Import-LenovoDriverPacks {
                     }))
 
             $osValue = Get-XmlElementText -Node $item -ElementName 'os'
-            $osVersion = if ($osValue) { "Windows $osValue" } else { $null }
+            $osVersion = Normalize-LenovoOsName -OsValue $osValue
             $osReleaseId = Get-XmlElementText -Node $item -ElementName 'osVersion'
 
             $items += [pscustomobject]([ordered]@{
@@ -306,53 +754,154 @@ function Import-MicrosoftDriverPacks {
         [xml]$xml = Get-Content -Path $DriverPackPath -Raw
 
         foreach ($item in $xml.SurfaceCatalog.Items.Item) {
-            $models = @([pscustomobject]([ordered]@{
-                        name = [string]$item.model
+            $models = @()
+            $modelName = Get-XmlElementText -Node $item -ElementName 'model'
+            if (-not $modelName) {
+                $modelName = Get-XmlElementText -Node $item -ElementName 'downloadTitle'
+            }
+            if ($modelName) {
+                $models += [pscustomobject]([ordered]@{
+                        name = $modelName
                         systemId = $null
-                    }))
+                    })
+            }
+
+            $downloadUrl = Get-XmlElementText -Node $item -ElementName 'downloadUrl'
+            if (-not $downloadUrl) {
+                $downloadUrl = Get-XmlElementText -Node $item -ElementName 'msiUrl'
+            }
+            if (-not $downloadUrl) {
+                $downloadUrl = Get-XmlElementText -Node $item -ElementName 'downloadCenterUrl'
+            }
+            if (-not $downloadUrl) {
+                Write-Warning ("Skipping Microsoft item '{0}' because no download URL was found." -f [string]$item.id)
+                continue
+            }
 
             $fileName = Get-XmlElementText -Node $item -ElementName 'fileName'
-            $osVersion = $null
-            $osReleaseId = $null
-            $osBuild = $null
-
-            if ($fileName -match 'Win(10|11)') {
-                $osVersion = "Windows $($matches[1])"
-            }
-            if ($fileName -match '(\d{5})') {
-                $osBuild = $matches[1]
-                $buildToRelease = @{
-                    '18362' = '1903'
-                    '18363' = '1909'
-                    '19041' = '2004'
-                    '19042' = '20H2'
-                    '19043' = '21H1'
-                    '19044' = '21H2'
-                    '19045' = '22H2'
-                    '22621' = '22H2'
-                    '22631' = '23H2'
+            if (-not $fileName) {
+                try {
+                    $fileName = [System.IO.Path]::GetFileName(([System.Uri]$downloadUrl).LocalPath)
                 }
-                $osReleaseId = $buildToRelease[$osBuild]
+                catch {
+                    $fileName = [System.IO.Path]::GetFileName($downloadUrl)
+                }
+            }
+
+            $format = Get-XmlElementText -Node $item -ElementName 'format'
+            if (-not $format) {
+                if ($fileName) {
+                    $extension = [System.IO.Path]::GetExtension($fileName)
+                    if ($extension) {
+                        $format = $extension.TrimStart('.').ToLowerInvariant()
+                    }
+                }
+                if (-not $format) {
+                    if ($downloadUrl -match '(?i)\.msi($|[?&])') {
+                        $format = 'msi'
+                    }
+                    elseif ($downloadUrl -match '(?i)\.zip($|[?&])') {
+                        $format = 'zip'
+                    }
+                    elseif ($downloadUrl -match '(?i)\.cab($|[?&])') {
+                        $format = 'cab'
+                    }
+                    else {
+                        $format = 'exe'
+                    }
+                }
+            }
+
+            $osVersion = Get-XmlElementText -Node $item -ElementName 'osName'
+            $osReleaseId = Get-XmlElementText -Node $item -ElementName 'osReleaseId'
+            $osBuild = Get-XmlElementText -Node $item -ElementName 'osBuild'
+            $supportedOperatingSystems = Get-XmlElementText -Node $item -ElementName 'supportedOperatingSystems'
+
+            if (-not $osVersion -and $fileName) {
+                if ($fileName -match '(?i)Win(?:dows)?[_\-]?(10|11)(?:[_\-.]|$)') {
+                    $osVersion = "Windows $($matches[1])"
+                }
+                elseif ($fileName -match '(?i)Win(?:dows)?[_\-]?(8x|8\.1|81)(?:[_\-.]|$)') {
+                    $osVersion = 'Windows 8.1'
+                }
+                elseif ($fileName -match '(?i)Win(?:dows)?[_\-]?8(?:[_\-.]|$)') {
+                    $osVersion = 'Windows 8'
+                }
+                elseif ($fileName -match '(?i)Win(?:dows)?[_\-]?7(?:[_\-.]|$)') {
+                    $osVersion = 'Windows 7'
+                }
+            }
+
+            if (-not $osVersion -and $supportedOperatingSystems) {
+                if ($supportedOperatingSystems -match '(?i)Windows\s*11') {
+                    $osVersion = 'Windows 11'
+                }
+                elseif ($supportedOperatingSystems -match '(?i)Windows\s*10') {
+                    $osVersion = 'Windows 10'
+                }
+                elseif ($supportedOperatingSystems -match '(?i)Windows\s*8\.1') {
+                    $osVersion = 'Windows 8.1'
+                }
+                elseif ($supportedOperatingSystems -match '(?i)Windows\s*8') {
+                    $osVersion = 'Windows 8'
+                }
+                elseif ($supportedOperatingSystems -match '(?i)Windows\s*7') {
+                    $osVersion = 'Windows 7'
+                }
+            }
+
+            if (-not $osBuild -and $fileName -match '(\d{5})') {
+                $osBuild = $matches[1]
+            }
+
+            if (-not $osReleaseId -and $osBuild) {
+                $osReleaseId = Get-ReleaseIdFromBuild -Build $osBuild
+            }
+
+            if (-not $osReleaseId -and $fileName) {
+                $osReleaseId = Get-ReleaseIdFromText -Text $fileName
+            }
+
+            if (-not $osReleaseId -and $fileName) {
+                $legacyReleaseMatch = [regex]::Match($fileName, '(?i)(1507|1511|1607|1703|1709|1803|1809|1903|1909|2004)')
+                if ($legacyReleaseMatch.Success) {
+                    $osReleaseId = $legacyReleaseMatch.Groups[1].Value.ToUpperInvariant()
+                }
+            }
+
+            if ((-not $osVersion) -and $osBuild) {
+                [int]$parsedBuild = 0
+                if ([int]::TryParse($osBuild, [ref]$parsedBuild)) {
+                    $osVersion = if ($parsedBuild -ge 22000) { 'Windows 11' } else { 'Windows 10' }
+                }
+            }
+
+            $osArchitecture = 'x64'
+            if ($fileName -match '(?i)(arm64|aarch64)') {
+                $osArchitecture = 'arm64'
+            }
+            elseif ($fileName -match '(?i)x86') {
+                $osArchitecture = 'x86'
             }
 
             $items += [pscustomobject]([ordered]@{
                     id = [string]$item.id
-                    packageId = Get-XmlElementText -Node $item -ElementName 'packageId'
+                    packageId = if (Get-XmlElementText -Node $item -ElementName 'packageId') { Get-XmlElementText -Node $item -ElementName 'packageId' } else { [string]$item.id }
                     manufacturer = 'Microsoft'
-                    name = Get-XmlElementText -Node $item -ElementName 'fileName'
-                    version = $null
-                    fileName = Get-XmlElementText -Node $item -ElementName 'fileName'
-                    downloadUrl = Get-XmlElementText -Node $item -ElementName 'msiUrl'
-                    sizeBytes = $null
-                    format = 'msi'
+                    name = if ($fileName) { $fileName } else { [string]$item.id }
+                    version = Get-XmlElementText -Node $item -ElementName 'version'
+                    fileName = if ($fileName) { $fileName } else { [string]$item.id }
+                    downloadUrl = $downloadUrl
+                    sizeBytes = ConvertTo-Int64OrNull -Value (Get-XmlElementText -Node $item -ElementName 'sizeBytes')
+                    format = $format
                     type = 'Win'
-                    releaseDate = $null
+                    releaseDate = Get-XmlElementText -Node $item -ElementName 'datePublished'
                     legacy = $null
                     models = $models
-                    osName = $osVersion
+                    osName = if ($osVersion) { $osVersion } else { 'Windows' }
                     osReleaseId = $osReleaseId
                     osBuild = $osBuild
-                    osArchitecture = 'x64'
+                    osArchitecture = $osArchitecture
                     hashMD5 = $null
                     hashSHA256 = $null
                     hashCRC = $null
@@ -402,9 +951,6 @@ function Write-UnifiedDriverPackXml {
         $writer.WriteStartElement('Sources')
         foreach ($source in ($Sources.GetEnumerator() | Sort-Object Key)) {
             $sourceItemCount = $source.Value.ItemCount
-            if ($Category -eq 'WinPE') {
-                $sourceItemCount = $source.Value.WinPEItemCount
-            }
             if ($sourceItemCount -gt 0) {
                 $writer.WriteStartElement('Source')
                 $writer.WriteAttributeString('manufacturer', $source.Key)
@@ -523,7 +1069,7 @@ $lenovoPacks = Import-LenovoDriverPacks -DriverPackPath $ManufacturerConfigs.Len
 Write-Verbose "Importing Microsoft driver packs..."
 $microsoftPacks = Import-MicrosoftDriverPacks -DriverPackPath $ManufacturerConfigs.Microsoft.DriverPackPath
 
-$allPacks = @($dellPacks) + @($hpPacks) + @($lenovoPacks) + @($microsoftPacks)
+$allPacks = Normalize-DriverPackItems -Items (@($dellPacks) + @($hpPacks) + @($lenovoPacks) + @($microsoftPacks))
 
 # Separate DriverPack and WinPE
 $driverPackItems = @($allPacks | Where-Object { $_.type -eq 'Win' })
@@ -534,41 +1080,71 @@ Write-Verbose "  - DriverPack items: $($driverPackItems.Count)"
 Write-Verbose "  - WinPE items: $($winPEItems.Count)"
 
 # Calculate counts per manufacturer
-$dellDriverPackCount = @($dellPacks | Where-Object { $_.type -eq 'Win' }).Count
-$dellWinPECount = @($dellPacks | Where-Object { $_.type -eq 'WinPE' }).Count
-$hpDriverPackCount = @($hpPacks | Where-Object { $_.type -eq 'Win' }).Count
-$hpWinPECount = @($hpPacks | Where-Object { $_.type -eq 'WinPE' }).Count
-$lenovoDriverPackCount = @($lenovoPacks | Where-Object { $_.type -eq 'Win' }).Count
-$microsoftDriverPackCount = @($microsoftPacks | Where-Object { $_.type -eq 'Win' }).Count
+$dellDriverPackItems = @($driverPackItems | Where-Object { $_.manufacturer -eq 'Dell' })
+$dellWinPEItems = @($winPEItems | Where-Object { $_.manufacturer -eq 'Dell' })
+$hpDriverPackItems = @($driverPackItems | Where-Object { $_.manufacturer -eq 'HP' })
+$hpWinPEItems = @($winPEItems | Where-Object { $_.manufacturer -eq 'HP' })
+$lenovoDriverPackItems = @($driverPackItems | Where-Object { $_.manufacturer -eq 'Lenovo' })
+$microsoftDriverPackItems = @($driverPackItems | Where-Object { $_.manufacturer -eq 'Microsoft' })
 
-$sources = @{
+$dellDriverPackCount = $dellDriverPackItems.Count
+$dellWinPECount = $dellWinPEItems.Count
+$hpDriverPackCount = $hpDriverPackItems.Count
+$hpWinPECount = $hpWinPEItems.Count
+$lenovoDriverPackCount = $lenovoDriverPackItems.Count
+$microsoftDriverPackCount = $microsoftDriverPackItems.Count
+
+$driverPackSources = @{
     Dell = @{
         Url = $ManufacturerConfigs.Dell.CatalogUrl
         Version = $null
-        LastUpdated = if ($dellPacks.Count -gt 0) { $dellPacks[0].releaseDate } else { (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ') }
+        LastUpdated = Get-LastUpdatedUtcFromItems -Items $dellDriverPackItems
         ItemCount = $dellDriverPackCount
-        WinPEItemCount = $dellWinPECount
     }
     HP = @{
         Url = $ManufacturerConfigs.HP.CatalogUrl
         Version = $null
-        LastUpdated = if ($hpPacks.Count -gt 0) { $hpPacks[0].releaseDate } else { (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ') }
+        LastUpdated = Get-LastUpdatedUtcFromItems -Items $hpDriverPackItems
         ItemCount = $hpDriverPackCount
-        WinPEItemCount = $hpWinPECount
     }
     Lenovo = @{
         Url = $ManufacturerConfigs.Lenovo.CatalogUrl
         Version = $null
-        LastUpdated = if ($lenovoPacks.Count -gt 0) { $lenovoPacks[0].releaseDate } else { (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ') }
+        LastUpdated = Get-LastUpdatedUtcFromItems -Items $lenovoDriverPackItems
         ItemCount = $lenovoDriverPackCount
-        WinPEItemCount = 0
     }
     Microsoft = @{
         Url = $ManufacturerConfigs.Microsoft.CatalogUrl
         Version = $null
-        LastUpdated = if ($microsoftPacks.Count -gt 0) { $microsoftPacks[0].releaseDate } else { (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ') }
+        LastUpdated = Get-LastUpdatedUtcFromItems -Items $microsoftDriverPackItems
         ItemCount = $microsoftDriverPackCount
-        WinPEItemCount = 0
+    }
+}
+
+$winPESources = @{
+    Dell = @{
+        Url = $ManufacturerConfigs.Dell.CatalogUrl
+        Version = $null
+        LastUpdated = Get-LastUpdatedUtcFromItems -Items $dellWinPEItems
+        ItemCount = $dellWinPECount
+    }
+    HP = @{
+        Url = $ManufacturerConfigs.HP.CatalogUrl
+        Version = $null
+        LastUpdated = Get-LastUpdatedUtcFromItems -Items $hpWinPEItems
+        ItemCount = $hpWinPECount
+    }
+    Lenovo = @{
+        Url = $ManufacturerConfigs.Lenovo.CatalogUrl
+        Version = $null
+        LastUpdated = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+        ItemCount = 0
+    }
+    Microsoft = @{
+        Url = $ManufacturerConfigs.Microsoft.CatalogUrl
+        Version = $null
+        LastUpdated = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+        ItemCount = 0
     }
 }
 
@@ -585,12 +1161,12 @@ if (-not (Test-Path -Path $winPEOutputDir)) {
 
 # Generate DriverPack unified catalog
 Write-Verbose "Generating unified DriverPack XML at: $DriverPackOutputPath"
-Write-UnifiedDriverPackXml -Path $DriverPackOutputPath -DriverPacks $driverPackItems -Sources $sources -Category 'DriverPack'
+Write-UnifiedDriverPackXml -Path $DriverPackOutputPath -DriverPacks $driverPackItems -Sources $driverPackSources -Category 'DriverPack'
 $driverPackXmlHash = (Get-FileHash -Path $DriverPackOutputPath -Algorithm SHA256).Hash.ToLowerInvariant()
 
 # Generate WinPE unified catalog
 Write-Verbose "Generating unified WinPE XML at: $WinPEOutputPath"
-Write-UnifiedDriverPackXml -Path $WinPEOutputPath -DriverPacks $winPEItems -Sources $sources -Category 'WinPE'
+Write-UnifiedDriverPackXml -Path $WinPEOutputPath -DriverPacks $winPEItems -Sources $winPESources -Category 'WinPE'
 $winPEXmlHash = (Get-FileHash -Path $WinPEOutputPath -Algorithm SHA256).Hash.ToLowerInvariant()
 
 $durationSeconds = [int][Math]::Round(((Get-Date) - $startedAt).TotalSeconds)

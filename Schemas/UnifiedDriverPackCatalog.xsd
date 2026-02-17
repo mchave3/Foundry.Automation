@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://foundry.local/schemas/driverpack"
-           xmlns="http://foundry.local/schemas/driverpack"
            elementFormDefault="qualified">
 
   <xs:annotation>
@@ -122,6 +120,7 @@
       <xs:enumeration value="cab"/>
       <xs:enumeration value="exe"/>
       <xs:enumeration value="msi"/>
+      <xs:enumeration value="zip"/>
     </xs:restriction>
   </xs:simpleType>
 

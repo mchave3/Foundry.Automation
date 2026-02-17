@@ -102,6 +102,24 @@ function ConvertFrom-DellDriverPackCatalogXml {
             continue
         }
 
+        $hashByAlgorithm = @{}
+        $hashNodes = @()
+        if ($package.Cryptography -and ($package.Cryptography.PSObject.Properties.Name -contains 'Hash')) {
+            $hashNodes = @($package.Cryptography.Hash)
+        }
+
+        foreach ($hashNode in $hashNodes) {
+            $algorithm = if ([string]$hashNode.algorithm) { ([string]$hashNode.algorithm).Trim().ToUpperInvariant() } else { $null }
+            $hashValue = Get-XmlInnerText -Node $hashNode
+            if (-not $algorithm -or -not $hashValue) {
+                continue
+            }
+
+            if (-not $hashByAlgorithm.ContainsKey($algorithm)) {
+                $hashByAlgorithm[$algorithm] = $hashValue
+            }
+        }
+
         $rawType = [string]$package.type
         $normalizedType = switch (($rawType).ToLowerInvariant()) {
             'win' { 'Win'; break }
@@ -179,9 +197,12 @@ function ConvertFrom-DellDriverPackCatalogXml {
                 vendorVersion = if ([string]$package.vendorVersion) { [string]$package.vendorVersion } else { $null }
                 dellVersion = if ([string]$package.dellVersion) { [string]$package.dellVersion } else { $null }
                 dateTime = if ([string]$package.dateTime) { [string]$package.dateTime } else { $null }
-                hashMD5 = if ([string]$package.hashMD5) { [string]$package.hashMD5 } else { $null }
+                hashMD5 = if ($hashByAlgorithm.ContainsKey('MD5')) { [string]$hashByAlgorithm['MD5'] } elseif ([string]$package.hashMD5) { [string]$package.hashMD5 } else { $null }
+                hashSHA1 = if ($hashByAlgorithm.ContainsKey('SHA1')) { [string]$hashByAlgorithm['SHA1'] } else { $null }
+                hashSHA256 = if ($hashByAlgorithm.ContainsKey('SHA256')) { [string]$hashByAlgorithm['SHA256'] } else { $null }
                 sizeBytes = ConvertTo-Int64OrNull -Value ([string]$package.size)
                 path = $relativePath
+                delta = if ([string]$package.delta) { [string]$package.delta } else { $null }
                 downloadUrl = Join-DellDownloadUrl -BaseLocation ([string]$manifest.baseLocation) -RelativePath $relativePath
                 supportedSystems = $supportedSystems
                 supportedOperatingSystems = $supportedOperatingSystems
@@ -282,7 +303,7 @@ function Write-DellCatalogXml {
         foreach ($item in $Catalog.items) {
             $writer.WriteStartElement('Item')
 
-            foreach ($field in @('releaseId', 'type', 'name', 'description', 'importantInfo', 'format', 'vendorVersion', 'dellVersion', 'dateTime', 'hashMD5', 'sizeBytes', 'path', 'downloadUrl')) {
+            foreach ($field in @('releaseId', 'type', 'name', 'description', 'importantInfo', 'format', 'vendorVersion', 'dellVersion', 'dateTime', 'hashMD5', 'hashSHA1', 'hashSHA256', 'sizeBytes', 'path', 'delta', 'downloadUrl')) {
                 $value = $item.$field
                 if ($null -eq $value) {
                     continue
