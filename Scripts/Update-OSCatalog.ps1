@@ -86,6 +86,164 @@ function ConvertTo-BuildParts {
     }
 }
 
+# Normalize architecture naming to a common set used across catalogs.
+function Normalize-OsArchitecture {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Architecture
+    )
+
+    if (-not $Architecture) {
+        return $null
+    }
+
+    $normalized = $Architecture.Trim().ToLowerInvariant()
+    switch -Regex ($normalized) {
+        '^(x64|amd64|x86_64|64)$' { return 'x64' }
+        '^(x86|86|ia32|32)$' { return 'x86' }
+        '^(arm64|aarch64|a64)$' { return 'arm64' }
+        default { return $Architecture.Trim() }
+    }
+}
+
+# Promote HTTP delivery links to HTTPS for consistency and transport security.
+function Normalize-DownloadUrl {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Url
+    )
+
+    if (-not $Url) {
+        return $null
+    }
+
+    $normalized = $Url.Trim()
+    if ($normalized -match '^(?i)http://') {
+        return ('https://' + $normalized.Substring(7))
+    }
+
+    return $normalized
+}
+
+# Convert source date values (e.g. 20251012) to ISO yyyy-MM-dd where possible.
+function ConvertTo-IsoDateFromSource {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Value
+    )
+
+    if (-not $Value) {
+        return $null
+    }
+
+    $normalized = $Value.Trim()
+    if (-not $normalized) {
+        return $null
+    }
+
+    if ($normalized -match '^\d{4}-\d{2}-\d{2}$') {
+        return $normalized
+    }
+
+    [datetime]$parsedDate = [datetime]::MinValue
+    if ([datetime]::TryParseExact($normalized, 'yyyyMMdd', [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::None, [ref]$parsedDate)) {
+        return $parsedDate.ToString('yyyy-MM-dd')
+    }
+    if ([datetime]::TryParse($normalized, [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::AllowWhiteSpaces, [ref]$parsedDate)) {
+        return $parsedDate.ToString('yyyy-MM-dd')
+    }
+    if ([datetime]::TryParse($normalized, [System.Globalization.CultureInfo]::CurrentCulture, [System.Globalization.DateTimeStyles]::AllowWhiteSpaces, [ref]$parsedDate)) {
+        return $parsedDate.ToString('yyyy-MM-dd')
+    }
+
+    return $normalized
+}
+
+# Infer client type from URL/file naming tokens when explicit metadata is absent.
+function Get-ClientTypeFromText {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Text
+    )
+
+    if (-not $Text) {
+        return $null
+    }
+
+    $value = $Text.ToUpperInvariant()
+    if ($value -match 'CLIENTBUSINESS|_VOL_|(^|[^A-Z])VOL([^A-Z]|$)') {
+        return 'CLIENTBUSINESS'
+    }
+    if ($value -match 'CLIENTCONSUMER|_RET_|(^|[^A-Z])RET([^A-Z]|$)') {
+        return 'CLIENTCONSUMER'
+    }
+
+    return $null
+}
+
+# Infer license channel (RET/VOL) from URL/file naming.
+function Get-LicenseChannelFromText {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [string]$Text
+    )
+
+    if (-not $Text) {
+        return $null
+    }
+
+    $value = $Text.ToUpperInvariant()
+    if ($value -match '_VOL_|(^|[^A-Z])VOL([^A-Z]|$)') {
+        return 'VOL'
+    }
+    if ($value -match '_RET_|(^|[^A-Z])RET([^A-Z]|$)') {
+        return 'RET'
+    }
+
+    return $null
+}
+
+# Map build major to public Windows release identifiers.
+function Get-WindowsReleaseIdFromBuildMajor {
+    param(
+        [Parameter()]
+        [AllowNull()]
+        [int]$BuildMajor
+    )
+
+    if (-not $BuildMajor) {
+        return $null
+    }
+
+    switch ($BuildMajor) {
+        { $_ -ge 26200 } { return '25H2' }
+        { $_ -ge 26100 } { return '24H2' }
+        { $_ -ge 22631 } { return '23H2' }
+        { $_ -ge 22621 } { return '22H2' }
+        { $_ -ge 22000 } { return '21H2' }
+        { $_ -ge 19045 } { return '22H2' }
+        { $_ -ge 19044 } { return '21H2' }
+        { $_ -ge 19043 } { return '21H1' }
+        { $_ -ge 19042 } { return '20H2' }
+        { $_ -ge 19041 } { return '2004' }
+        { $_ -ge 18363 } { return '1909' }
+        { $_ -ge 18362 } { return '1903' }
+        { $_ -ge 17763 } { return '1809' }
+        { $_ -ge 17134 } { return '1803' }
+        { $_ -ge 16299 } { return '1709' }
+        { $_ -ge 15063 } { return '1703' }
+        { $_ -ge 14393 } { return '1607' }
+        { $_ -ge 10586 } { return '1511' }
+        { $_ -ge 10240 } { return '1507' }
+        default { return $null }
+    }
+}
+
 # Serialize JSON deterministically with normalized line endings.
 function ConvertTo-DeterministicJson {
     param(
@@ -175,7 +333,7 @@ function Get-WorProjectCatalogSources {
             continue
         }
 
-        $latestFwlinkUrl = [string]$versionNode.latestCabLink
+        $latestFwlinkUrl = Normalize-DownloadUrl -Url ([string]$versionNode.latestCabLink)
         if ($latestFwlinkUrl) {
             $latestFwlinkId = Get-FwlinkIdFromUrl -Url $latestFwlinkUrl
             if ($latestFwlinkId) {
@@ -191,7 +349,7 @@ function Get-WorProjectCatalogSources {
         foreach ($releaseNode in @($versionNode.releases.release)) {
             $build = [string]$releaseNode.build
             $date = [string]$releaseNode.date
-            $cabUrl = [string]$releaseNode.cabLink
+            $cabUrl = Normalize-DownloadUrl -Url ([string]$releaseNode.cabLink)
 
             if (-not $build -or -not $cabUrl) {
                 continue
@@ -230,7 +388,7 @@ function Get-WorProjectCatalogSources {
                         build = $build
                         buildMajor = $parts.Major
                         buildUbr = $parts.Ubr
-                        date = if ($date) { $date } else { $null }
+                        date = ConvertTo-IsoDateFromSource -Value $date
                         cabUrl = $cabUrl
                     })
             }
@@ -304,7 +462,14 @@ function ConvertFrom-ProductsXml {
         return @()
     }
 
-    $clientTypeRegex = ($ClientTypes | ForEach-Object { [regex]::Escape($_) }) -join '|'
+    $allowedClientTypes = @(
+        $ClientTypes |
+        Where-Object { $_ } |
+        ForEach-Object { $_.Trim().ToUpperInvariant() } |
+        Where-Object { $_ } |
+        Select-Object -Unique
+    )
+    $clientTypeRegex = ($allowedClientTypes | ForEach-Object { [regex]::Escape($_) }) -join '|'
 
     $candidates = foreach ($node in $fileNodes) {
         if (-not $node) {
@@ -316,10 +481,11 @@ function ConvertFrom-ProductsXml {
             continue
         }
 
-        $filePath = Get-XmlNodePropertyValue -Node $node -Name 'FilePath'
-        if (-not $filePath) {
+        $filePathRaw = Get-XmlNodePropertyValue -Node $node -Name 'FilePath'
+        if (-not $filePathRaw) {
             continue
         }
+        $filePath = Normalize-DownloadUrl -Url $filePathRaw
 
         $sizeBytes = $null
         $sizeText = Get-XmlNodePropertyValue -Node $node -Name 'Size'
@@ -351,18 +517,35 @@ function ConvertFrom-ProductsXml {
         if ($buildMajor) {
             $windowsRelease = if ($buildMajor -ge 22000) { 11 } else { 10 }
         }
+        $releaseId = Get-WindowsReleaseIdFromBuildMajor -BuildMajor $buildMajor
 
         $clientType = $null
         if ($clientTypeRegex) {
-            $clientTypeMatch = [regex]::Match($filePath, $clientTypeRegex)
+            $clientTypeMatch = [regex]::Match([string]$filePath, $clientTypeRegex)
             if ($clientTypeMatch.Success) {
-                $clientType = $clientTypeMatch.Value
+                $clientType = $clientTypeMatch.Value.ToUpperInvariant()
             }
         }
 
+        if (-not $clientType -and $clientTypeRegex) {
+            $clientTypeMatch = [regex]::Match([string]$fileName, $clientTypeRegex)
+            if ($clientTypeMatch.Success) {
+                $clientType = $clientTypeMatch.Value.ToUpperInvariant()
+            }
+        }
+
+        if (-not $clientType) {
+            $clientType = Get-ClientTypeFromText -Text ("{0}|{1}" -f [string]$filePath, [string]$fileName)
+        }
+
+        $licenseChannel = Get-LicenseChannelFromText -Text ("{0}|{1}" -f [string]$filePath, [string]$fileName)
+
         $mctId = $null
         if ($node.PSObject.Properties.Name -contains 'id') {
-            $mctId = [string]$node.id
+            $parsedMctId = [string]$node.id
+            if (-not [string]::IsNullOrWhiteSpace($parsedMctId)) {
+                $mctId = $parsedMctId.Trim()
+            }
         }
 
         $isRetailOnly = $null
@@ -371,7 +554,7 @@ function ConvertFrom-ProductsXml {
             $isRetailOnly = ($isRetailOnlyText -match '^(?i:true)$')
         }
 
-        $architecture = Get-XmlNodePropertyValue -Node $node -Name 'Architecture'
+        $architecture = Normalize-OsArchitecture -Architecture (Get-XmlNodePropertyValue -Node $node -Name 'Architecture')
         $languageCode = Get-XmlNodePropertyValue -Node $node -Name 'LanguageCode'
         $language = Get-XmlNodePropertyValue -Node $node -Name 'Language'
         $edition = Get-XmlNodePropertyValue -Node $node -Name 'Edition'
@@ -382,6 +565,7 @@ function ConvertFrom-ProductsXml {
             mctId = $mctId
             clientType = $clientType
             windowsRelease = $windowsRelease
+            releaseId = $releaseId
             build = $build
             buildMajor = $buildMajor
             buildUbr = $buildUbr
@@ -393,6 +577,7 @@ function ConvertFrom-ProductsXml {
             sizeBytes = $sizeBytes
             sha1 = $sha1
             isRetailOnly = $isRetailOnly
+            licenseChannel = $licenseChannel
             url = $filePath
         }
 
@@ -408,9 +593,12 @@ function ConvertFrom-ProductsXml {
     }
 
     $items = @($candidates)
-    if ($clientTypeRegex) {
-        $filtered = @($items | Where-Object { $_.url -and [regex]::IsMatch([string]$_.url, $clientTypeRegex) })
-        # Some older catalogs do not expose expected client type markers in URL.
+    if ($allowedClientTypes.Count -gt 0) {
+        $filtered = @(
+            $items |
+            Where-Object { $_.clientType -and ($allowedClientTypes -contains $_.clientType.ToUpperInvariant()) }
+        )
+        # Some older catalogs do not expose client type reliably; fallback keeps full set.
         if ($filtered.Count -gt 0) {
             $items = $filtered
         }
@@ -536,7 +724,7 @@ $null = New-Item -Path $tempRoot -ItemType Directory -Force
 try {
     foreach ($sourceInput in $sourceInputs) {
         $sourceId = 'Win{0}_{1}' -f [string]$sourceInput.windowsMajor, [string]$sourceInput.build
-        $cabUrl = [string]$sourceInput.cabUrl
+        $cabUrl = Normalize-DownloadUrl -Url ([string]$sourceInput.cabUrl)
 
         if (-not $cabUrl) {
             $reason = 'cabUrl is missing'
@@ -637,6 +825,17 @@ try {
         }
 
         $sourceItems = ConvertFrom-ProductsXml -ProductsXml $productsXml -SourceId $sourceId -ClientTypes $ClientTypes -IncludeKey:$IncludeKey
+        if (@($sourceItems).Count -lt 1) {
+            $reason = 'products.xml yielded no matching ESD item after normalization/filtering'
+            Write-Warning -Message ("Skipping source '{0}' because {1}." -f $sourceId, $reason)
+            $skippedSources += 1
+            $skippedSourceDetails += [pscustomobject]@{
+                sourceId = $sourceId
+                reason = $reason
+            }
+            continue
+        }
+
         $itemsAll += @($sourceItems)
 
         $sources += [pscustomobject]([ordered]@{
@@ -645,7 +844,7 @@ try {
                 build = [string]$sourceInput.build
                 buildMajor = $sourceInput.buildMajor
                 buildUbr = $sourceInput.buildUbr
-                date = [string]$sourceInput.date
+                date = ConvertTo-IsoDateFromSource -Value ([string]$sourceInput.date)
                 cabUrl = $cabUrl
                 cabSha256 = $cabSha256
                 productsXmlSha256 = $productsXmlSha256

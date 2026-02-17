@@ -164,6 +164,12 @@
               11
             ]
           },
+          "releaseId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "build": {
             "type": [
               "string",
@@ -224,6 +230,12 @@
           "isRetailOnly": {
             "type": [
               "boolean",
+              "null"
+            ]
+          },
+          "licenseChannel": {
+            "type": [
+              "string",
               "null"
             ]
           },
