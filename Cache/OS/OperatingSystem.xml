@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<OperatingSystemCatalog schemaVersion="2" generatedAtUtc="2026-02-24T03:47:20Z">
+<OperatingSystemCatalog schemaVersion="2" generatedAtUtc="2026-02-24T22:40:32Z">
   <Source name="WORProject MCT Catalogs API" versionsUri="https://worproject.com/dldserv/esd/getversions.php" />
   <LatestFwlinks>
     <LatestFwlink windowsMajor="11" fwlinkId="2156292" fwlinkUrl="https://go.microsoft.com/fwlink/?LinkId=2156292" />
@@ -38,6 +38,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_zh-tw.esd</fileName>
       <sizeBytes>5252552366</sizeBytes>
+      <sha256>42e33312a3e584243364f617c44ae40e4253f7bd4b6ae161fdeaa6db597c0603</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/a1098807-e762-47d5-b91e-a2d490327a59/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_zh-tw.esd</url>
@@ -56,6 +57,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_zh-tw.esd</fileName>
       <sizeBytes>5228085016</sizeBytes>
+      <sha256>f2c63fb53c40c5a3b58ef802078caac2ef0be10100f634e4a20bb32168b1fb6c</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/6a35134d-8724-47c8-9ed4-4b09ca06bdbc/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_zh-tw.esd</url>
@@ -74,6 +76,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_zh-cn.esd</fileName>
       <sizeBytes>5339851054</sizeBytes>
+      <sha256>a95993a093d6735a2984c019f53d1704e095d132c780127a976686a0f007448a</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/0d753f1a-fb64-4e0c-ad86-45a489c050f1/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_zh-cn.esd</url>
@@ -92,6 +95,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_zh-cn.esd</fileName>
       <sizeBytes>5278060245</sizeBytes>
+      <sha256>84ba98d48b786be8495dcd548f0a29283300dd29f7637cf981efed42ddd7b3b7</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/d39cadcd-7f29-43d1-babc-6460e78ef978/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_zh-cn.esd</url>
@@ -110,6 +114,7 @@
       <edition>CoreCountrySpecific</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCHINA_RET_x64FRE_zh-cn.esd</fileName>
       <sizeBytes>5098235252</sizeBytes>
+      <sha256>7def0db122b6abc0abb58de6f8c077a028e4f9e34ed0704dc67714a4e247023a</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/141efdd8-a965-4fd2-b53b-5268f591a0d2/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCHINA_RET_x64FRE_zh-cn.esd</url>
@@ -128,6 +133,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_uk-ua.esd</fileName>
       <sizeBytes>5047107433</sizeBytes>
+      <sha256>487b44aff6e2a48ea10dd4c21cf5d88171b5c037d460abedaf43a4392c3125e1</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/a4dc0d9b-a807-4933-bb23-c0e69605d051/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_uk-ua.esd</url>
@@ -146,6 +152,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_uk-ua.esd</fileName>
       <sizeBytes>4990183591</sizeBytes>
+      <sha256>cde2c594251031b18345f24be069b60a3b5bc3dd1ebad0375dfe72f8e1076e38</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/42a57298-6050-431a-91e1-ebb871f9101a/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_uk-ua.esd</url>
@@ -164,6 +171,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_tr-tr.esd</fileName>
       <sizeBytes>5057852273</sizeBytes>
+      <sha256>9dd2b2d0d16ea9d9f8dd5fea1ffe9ff0eeba597cd6ff4c2c36dfec978c4dd015</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/9d754d4f-a304-4da2-94ab-746c3a5aaff7/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_tr-tr.esd</url>
@@ -182,6 +190,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_tr-tr.esd</fileName>
       <sizeBytes>4979836631</sizeBytes>
+      <sha256>beb691da8c14c775c34712a484644399e609e4f67c7a94511a4dbf3ca9c57f95</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/4d74434e-3e2d-4a38-9ed1-d75a5d5a05dd/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_tr-tr.esd</url>
@@ -200,6 +209,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_th-th.esd</fileName>
       <sizeBytes>5047944192</sizeBytes>
+      <sha256>0e22183617517c07bb3adcbe08c53ebe0ef3f78959d5e7c4b662e7c1c3181ece</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/dfc6fcb4-69b6-40c0-bb95-814e08347315/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_th-th.esd</url>
@@ -218,6 +228,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_th-th.esd</fileName>
       <sizeBytes>4981149968</sizeBytes>
+      <sha256>cf6ce002d9ed0212da17908d9401115b8255c1dd64480bdbd6fd1109c73398ae</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/f1c50a8e-f49d-4eb5-bd0c-ee5c0f017bb0/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_th-th.esd</url>
@@ -236,6 +247,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_sv-se.esd</fileName>
       <sizeBytes>5131343578</sizeBytes>
+      <sha256>44a13b0c4e0b581cd6f9b51266ff54f66cc2fac4ca0fb9f008537739069fbb53</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/91eee71d-bf38-4dda-8273-97cca301565c/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_sv-se.esd</url>
@@ -254,6 +266,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_sv-se.esd</fileName>
       <sizeBytes>5074585024</sizeBytes>
+      <sha256>fab2883025440d280ea102adaf8391c247b4f1dcd9f072ca62b4531b98e75608</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/7422df87-9418-407b-b64e-aaeab2f05837/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_sv-se.esd</url>
@@ -272,6 +285,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_sr-latn-rs.esd</fileName>
       <sizeBytes>5027760895</sizeBytes>
+      <sha256>ed139027765115fd61d47d1d99afef676cb6ffec43f68b69e0376689b4fdd3a4</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/c661da3e-95d2-4f1c-b26d-d188ad541f4a/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_sr-latn-rs.esd</url>
@@ -290,6 +304,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_sr-latn-rs.esd</fileName>
       <sizeBytes>4954330826</sizeBytes>
+      <sha256>01cbef5a284758b8328cf1763084d4cad54fa3a0f508854f7c7588341370a70c</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/841dceca-5c49-40ba-81ed-e82d251f480f/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_sr-latn-rs.esd</url>
@@ -308,6 +323,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_sl-si.esd</fileName>
       <sizeBytes>5119161644</sizeBytes>
+      <sha256>e7773ac49cca1af3d67da08a5d69cdfa47c1684f3923da946c4ae54c04dbe288</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/1854eef7-0a96-4c3c-aa2d-83301793b53a/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_sl-si.esd</url>
@@ -326,6 +342,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_sl-si.esd</fileName>
       <sizeBytes>5055013809</sizeBytes>
+      <sha256>61b6c3e148e688686b69a49302ab3cc109bf5979f895fbb907a0cf4df8529c7a</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/9493e9f4-ec6d-4afd-a784-4854551cdd56/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_sl-si.esd</url>
@@ -344,6 +361,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_sk-sk.esd</fileName>
       <sizeBytes>5116423099</sizeBytes>
+      <sha256>44b9e9e422b1def7c4bb5953b6e3bdb36da3b4017dd6c75911fecedd566c16cb</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/7e2a9145-759f-45cc-93a8-f5bec5a9e1a8/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_sk-sk.esd</url>
@@ -362,6 +380,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_sk-sk.esd</fileName>
       <sizeBytes>5069659210</sizeBytes>
+      <sha256>8b66d8a5d6312a7193b3b9b7f30ce399a4cb73fe85cf3eae3cc2020fa1e7a2a5</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/bbcd1df8-6e1b-4c5d-88b3-65b507a3e36c/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_sk-sk.esd</url>
@@ -380,6 +399,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_ru-ru.esd</fileName>
       <sizeBytes>5115057398</sizeBytes>
+      <sha256>32ce07575505749ac00390eddbda75b5da91906c88f5fa3357370fbb98f97307</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/de4fede5-a1c9-472a-870b-2fde7866b4e3/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_ru-ru.esd</url>
@@ -398,6 +418,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_ru-ru.esd</fileName>
       <sizeBytes>5024680099</sizeBytes>
+      <sha256>ca50e7e1d808585f19fe40db9f067a66cd1a25cca950d9957ef807fcb4f2b12b</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/14315c23-428f-40e5-a568-e90849183cfe/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_ru-ru.esd</url>
@@ -416,6 +437,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_ro-ro.esd</fileName>
       <sizeBytes>5097964420</sizeBytes>
+      <sha256>b6a58ee56ea69b270e2a296bea4248f9e55c42b49a16a90c97de6d9f88a38efa</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/e7392ac9-9e2d-4cf2-ae75-b0f98f29b298/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_ro-ro.esd</url>
@@ -434,6 +456,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_ro-ro.esd</fileName>
       <sizeBytes>5034480167</sizeBytes>
+      <sha256>7d56f3c0d58aacd3ce0b59315cf88120d1ef96aa97fcfdcda5894db448f98163</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/1b660443-3b94-4945-b480-24ce4962d038/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_ro-ro.esd</url>
@@ -452,6 +475,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_pt-pt.esd</fileName>
       <sizeBytes>5188088610</sizeBytes>
+      <sha256>8ee7c3ffd3eb99548fce0bf1bac27984ac29469a0e53690f50c38951bc6224b6</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/d337ba78-f7a0-40ef-b3c0-984f4a66b29c/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_pt-pt.esd</url>
@@ -470,6 +494,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_pt-pt.esd</fileName>
       <sizeBytes>5096813645</sizeBytes>
+      <sha256>e64dfc3e4bf4b23b12080df5a32f4b8f57642cee9db3a7140f5f0a2195c18878</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/7754d131-b4cc-4f6c-a41a-0d21fe3604e8/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_pt-pt.esd</url>
@@ -488,6 +513,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_pt-br.esd</fileName>
       <sizeBytes>5089675748</sizeBytes>
+      <sha256>8f3d7bd8d8f5154eee2282c61ee4088f0f7ea4bd9e1582990048178f90913ae9</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/ef72b822-8496-4296-98e6-52a69ada5608/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_pt-br.esd</url>
@@ -506,6 +532,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_pt-br.esd</fileName>
       <sizeBytes>5004787567</sizeBytes>
+      <sha256>f736f4159c7a2c4e3a6c6db080cf399e2ca01ecb982aaae1723e78337fb5a5f4</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/5e4b743d-0149-42b7-8562-02f4aac5d2e3/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_pt-br.esd</url>
@@ -524,6 +551,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_pl-pl.esd</fileName>
       <sizeBytes>5152371825</sizeBytes>
+      <sha256>11a51628e5d9cf66bdfa1d4f38e905338c08a95992ea0dd2e00b2d676da6f52e</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/26d8b7d9-0530-4102-9a2a-0bfe4c6ef4fd/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_pl-pl.esd</url>
@@ -542,6 +570,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_pl-pl.esd</fileName>
       <sizeBytes>5117701445</sizeBytes>
+      <sha256>f59febb6edce1bd688be36df0facd377a5cefbce1474b2deb085cd6c30595112</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/7d7d9220-e56e-4fbc-b7b7-be984da9dfb1/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_pl-pl.esd</url>
@@ -560,6 +589,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_nl-nl.esd</fileName>
       <sizeBytes>5143403835</sizeBytes>
+      <sha256>46e130ef50df6235f8ec92c66f75afe82648fbfcd91806b018a6782e3a4bc944</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/a0ecf675-b13e-4f4b-a703-2bda91c68d6d/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_nl-nl.esd</url>
@@ -578,6 +608,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_nl-nl.esd</fileName>
       <sizeBytes>5077614640</sizeBytes>
+      <sha256>c609573c4dc7f082ab6374fc152a4ebfff56169a7e3f6cd88c5d9034b3ac1b33</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/7a133eee-8cd1-40d9-8140-8d94a3f91b26/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_nl-nl.esd</url>
@@ -596,6 +627,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_nb-no.esd</fileName>
       <sizeBytes>5119738360</sizeBytes>
+      <sha256>b8b526ebe823902af61c137c295c099471e1fc38a0f594fd18e7b2930f4e6a01</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/b1f3370d-b3cb-4bae-bc73-647c35ed4e6c/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_nb-no.esd</url>
@@ -614,6 +646,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_nb-no.esd</fileName>
       <sizeBytes>5067059264</sizeBytes>
+      <sha256>108beaea5c6a49d885c699f2f3f225b61507f1aa674c609a48a2e29f6d8701f5</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/00d00c4f-ad06-47c5-985c-2a7d5e3a2c7c/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_nb-no.esd</url>
@@ -632,6 +665,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_lv-lv.esd</fileName>
       <sizeBytes>5093004514</sizeBytes>
+      <sha256>b7f47440725b84b996d30165e76842778e80ad811796e6e91b74f5951ca41ebf</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/19435016-4421-44fc-b12e-797080b045fc/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_lv-lv.esd</url>
@@ -650,6 +684,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_lv-lv.esd</fileName>
       <sizeBytes>5041553054</sizeBytes>
+      <sha256>37dac70b0ac2230f990c12ba9309547467e3270f07de39b14b279298c772566f</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/a63055a2-2ed5-4d63-9077-9e11b327b5ed/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_lv-lv.esd</url>
@@ -668,6 +703,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_lt-lt.esd</fileName>
       <sizeBytes>5097435457</sizeBytes>
+      <sha256>3aeaaba77d9d63e231f0ad8db4c08047ce3d5d189ff7e41a84cc8c321f5f6aa2</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/d7f924d4-00c4-41de-b38d-2ee6f0c4d5ea/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_lt-lt.esd</url>
@@ -686,6 +722,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_lt-lt.esd</fileName>
       <sizeBytes>5034255843</sizeBytes>
+      <sha256>25974595e363cea1a77e0c7def811457a9068200f3045c8747e1f299afc5a483</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/d56275a8-094b-410d-8df3-a1f32213da86/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_lt-lt.esd</url>
@@ -704,6 +741,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_ko-kr.esd</fileName>
       <sizeBytes>5086474469</sizeBytes>
+      <sha256>7054831aa5e84de581f262b3dfca9ddbb7b5cdb8c15493374b7f11390bf11b94</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/7aa8218d-8420-4bb3-99cb-8917755b58c9/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_ko-kr.esd</url>
@@ -722,6 +760,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_ko-kr.esd</fileName>
       <sizeBytes>5032124633</sizeBytes>
+      <sha256>7ebe0767ee77574773ac5c238b6f9f41b2359c8387856b4dbb3937aeb00f29a7</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/f2ef7d95-1f68-45a7-ba55-721bfc95fe12/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_ko-kr.esd</url>
@@ -740,6 +779,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_ja-jp.esd</fileName>
       <sizeBytes>5236236824</sizeBytes>
+      <sha256>bd70e7539d6c9904c26a179a670d991222fb312e6560ba81a65059c8fa9006c8</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/aca83cc7-1aa8-4154-be95-4798daff92f5/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_ja-jp.esd</url>
@@ -758,6 +798,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_ja-jp.esd</fileName>
       <sizeBytes>5223103654</sizeBytes>
+      <sha256>159aa9d61bb4b4917be8cadfaa61a7a07ccd9de9dc63512750ffc5f909b00736</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/b74e5dcf-ac79-4afa-aeb7-d708469fc13a/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_ja-jp.esd</url>
@@ -776,6 +817,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_it-it.esd</fileName>
       <sizeBytes>5162269211</sizeBytes>
+      <sha256>cf1d464bf58a1dc54c2d828f34c0cbe3bca2e799c2f06a91c1f1884d8c0ad445</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/30893613-0956-4ae4-acf4-f9f5a8f3c22c/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_it-it.esd</url>
@@ -794,6 +836,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_it-it.esd</fileName>
       <sizeBytes>5106802660</sizeBytes>
+      <sha256>7282517800b2b23e54ff3eb352a9714f020f8ea4fe1fddd7be8513d67949c00b</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/76040aaf-74cd-499e-bf1d-0dbcf8f0c767/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_it-it.esd</url>
@@ -812,6 +855,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_hu-hu.esd</fileName>
       <sizeBytes>5122594006</sizeBytes>
+      <sha256>ae1fbb29ae7a035461edbbea68b55432388827d5a52c16d3990769e829e233f7</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/60e354ce-429b-4129-8a3f-6a0eb15e57a8/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_hu-hu.esd</url>
@@ -830,6 +874,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_hu-hu.esd</fileName>
       <sizeBytes>5083269464</sizeBytes>
+      <sha256>7ba396b355cceb493d85a89ea430a7ef6509c62a8fdd8f4ba9afe63ffd7093ee</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/8d486fe0-389e-4b7b-acce-b297736be5cd/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_hu-hu.esd</url>
@@ -848,6 +893,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_hr-hr.esd</fileName>
       <sizeBytes>5105429764</sizeBytes>
+      <sha256>d6d5751ea0649d061973f9b1eb516ae6cc673c69c32aea394e4d196b1410d54b</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/f314075c-d7c5-48a8-9e8c-6cdae9bbd3e9/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_hr-hr.esd</url>
@@ -866,6 +912,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_hr-hr.esd</fileName>
       <sizeBytes>5036809841</sizeBytes>
+      <sha256>8af9164c5066d9cb15ce87e5a479e1c95e5b19acfaec33a1ce650e1884cc205a</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/5b78cd32-d1b2-4e83-93f6-2609b7ec0803/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_hr-hr.esd</url>
@@ -884,6 +931,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_he-il.esd</fileName>
       <sizeBytes>5046081079</sizeBytes>
+      <sha256>11e594338c42fe349ec415429319ec60a861d581c91759921c4253d56899f479</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/523e427f-27ed-40a1-b49e-11302c472576/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_he-il.esd</url>
@@ -902,6 +950,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_he-il.esd</fileName>
       <sizeBytes>5037523010</sizeBytes>
+      <sha256>33dde19b1db91af5856e88b7d11cb07122ad2a7809c1ad20af50899d1577682c</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/f6ba5637-eb88-42fb-9fa3-58b85a481776/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_he-il.esd</url>
@@ -920,6 +969,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_fr-fr.esd</fileName>
       <sizeBytes>5255179069</sizeBytes>
+      <sha256>72406fc608d6736943bc97c0affd51e3a0f2bab4c5d57e84441a95a2321bebc1</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/57097aac-7b30-4986-8930-b0aadd11bad8/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_fr-fr.esd</url>
@@ -938,6 +988,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_fr-fr.esd</fileName>
       <sizeBytes>5152512228</sizeBytes>
+      <sha256>7ff3a796b538982a01ff7321d3e43318f0632e1ecc3c95bef592c9198f30b630</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/d66cbd59-9187-4e9d-8635-53369844b9e1/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_fr-fr.esd</url>
@@ -956,6 +1007,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_fr-ca.esd</fileName>
       <sizeBytes>5095759287</sizeBytes>
+      <sha256>7259f75e952f8b5f9ae87e2da615a6815ea548d6e56f5c5c239fff29bf8fc15b</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/8bfb6eb9-31d3-4b1f-b6ca-fea8815fc327/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_fr-ca.esd</url>
@@ -974,6 +1026,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_fr-ca.esd</fileName>
       <sizeBytes>5046874203</sizeBytes>
+      <sha256>2a3b3f020b10a80502d9e2180538cd533a0438dc78d7f857b5c31394722d1c4a</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/304f3c1c-8734-4433-ae58-27808c2f4030/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_fr-ca.esd</url>
@@ -992,6 +1045,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_fi-fi.esd</fileName>
       <sizeBytes>5139381214</sizeBytes>
+      <sha256>729cd0fc8bbf93fee2f410191c092fd58168547c553325b4e4921cd31d32dd49</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/62cb1b7c-7514-4dd5-83a4-bfcd478e746e/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_fi-fi.esd</url>
@@ -1010,6 +1064,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_fi-fi.esd</fileName>
       <sizeBytes>5079413038</sizeBytes>
+      <sha256>74ff548aeb7ff242247115fd7f6b2592e58285ef3837059111aec994900eadbc</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/2742961f-aff7-4ec5-9d2a-5a2637e6eff2/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_fi-fi.esd</url>
@@ -1028,6 +1083,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_et-ee.esd</fileName>
       <sizeBytes>5108852105</sizeBytes>
+      <sha256>e58f3a0bd065501b02193674eba2e4f9c9e68c9e08feb3559ec2f0b59084ca6e</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/ac2b96bb-d718-40a7-92a8-7494c255f423/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_et-ee.esd</url>
@@ -1046,6 +1102,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_et-ee.esd</fileName>
       <sizeBytes>5049876864</sizeBytes>
+      <sha256>df7b07fd470fabe0ac0a40a13c6c154e4898833511efa3d2ad8e441c6a6fd6e8</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/f76b97cc-68dd-4c18-9672-90b3a0641f5d/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_et-ee.esd</url>
@@ -1064,6 +1121,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_es-mx.esd</fileName>
       <sizeBytes>5103608566</sizeBytes>
+      <sha256>5c51f5acb8c266eed487611638e536685d3c8cfdb851bce0a36d791be50c225a</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/b75865c4-c622-460d-8086-47f4be2bce29/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_es-mx.esd</url>
@@ -1082,6 +1140,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_es-mx.esd</fileName>
       <sizeBytes>5027637903</sizeBytes>
+      <sha256>75365ba2307fbeb372c4441af57e22a7a4fd3405ec4207c3af76bd2e6f16ebba</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/9224ad9b-d5c4-48bf-b5c9-12efc3bf735e/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_es-mx.esd</url>
@@ -1100,6 +1159,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_es-es.esd</fileName>
       <sizeBytes>5240421325</sizeBytes>
+      <sha256>2284b81a43335a6119ba2d226f7c2d1a0e265b480b786519f855524c658cc5c6</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/6b0a1d93-e2f3-43e1-847f-0fcff86c116b/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_es-es.esd</url>
@@ -1118,6 +1178,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_es-es.esd</fileName>
       <sizeBytes>5181210770</sizeBytes>
+      <sha256>9dc5303b75b3c9c329f468506f895fa7be374ff6d842150ce40cacc66bb33476</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/19a9fd78-cb66-491c-8090-f9ec2506c639/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_es-es.esd</url>
@@ -1136,6 +1197,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_en-us.esd</fileName>
       <sizeBytes>5245433539</sizeBytes>
+      <sha256>0a6c0dcc3cce095207447390b87992936a3d02f9ee76ec404d7b351f611224f1</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/0164917d-ef6d-4e13-bc12-47f2c6263fe2/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_en-us.esd</url>
@@ -1154,6 +1216,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_en-us.esd</fileName>
       <sizeBytes>5162646361</sizeBytes>
+      <sha256>493126e4511c70c31ae7d3252ccdf233ac208553cefdd49db5f3272c906a7229</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/6f3fd3e1-699a-4e7f-9d77-a963a0018813/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_en-us.esd</url>
@@ -1172,6 +1235,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_en-gb.esd</fileName>
       <sizeBytes>5265784383</sizeBytes>
+      <sha256>dafb0ae1239cf68aa1f02171a7934a9ac85b3cdacfc1f3cab5dbef59821c1eec</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/4d4f990f-1a17-4f96-98be-e33c7f96173b/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_en-gb.esd</url>
@@ -1190,6 +1254,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_en-gb.esd</fileName>
       <sizeBytes>5176850495</sizeBytes>
+      <sha256>f09b1e92ecd4643506d876545b41a1bd3494627e46d7e4722bda6fd47d8d248e</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/bcfed1aa-fbd5-466e-8c15-4b213e30faec/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_en-gb.esd</url>
@@ -1208,6 +1273,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_el-gr.esd</fileName>
       <sizeBytes>5159934626</sizeBytes>
+      <sha256>e890dbf284db439cb00e3ae8d49abcabdf5bc43a8ad1ef5853423d27a9c97bf3</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/6e0a18e4-7f96-4cc6-8636-e97bcf303253/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_el-gr.esd</url>
@@ -1226,6 +1292,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_el-gr.esd</fileName>
       <sizeBytes>5086806425</sizeBytes>
+      <sha256>2a0f202cad19b0db27169f243fe1c1b8eb01151ce74be5cd98b9c0fde723d69e</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/22841f7b-72cd-4062-bedf-b0e21646018f/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_el-gr.esd</url>
@@ -1244,6 +1311,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_de-de.esd</fileName>
       <sizeBytes>5254823730</sizeBytes>
+      <sha256>527e5128dd515d0fb7c16da75f813f8fe3a190cfb75c75a5aff7d6db5897fd03</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/d7674ac2-b57f-476b-9534-daeb3fb42472/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_de-de.esd</url>
@@ -1262,6 +1330,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_de-de.esd</fileName>
       <sizeBytes>5189023986</sizeBytes>
+      <sha256>8194f1dda4b78ae92c153babe07395e5195c7e182c9ebf006c7fe79782fc179b</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/b34a30dd-e872-47e3-907b-eddb1637f13e/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_de-de.esd</url>
@@ -1280,6 +1349,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_da-dk.esd</fileName>
       <sizeBytes>5167086146</sizeBytes>
+      <sha256>005275072c6406aca4446b16c0e0ecd8bf6109acfdfab13b869f2276df502129</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/fd186fa2-81e8-40b1-9be8-d9f8edeacf67/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_da-dk.esd</url>
@@ -1298,6 +1368,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_da-dk.esd</fileName>
       <sizeBytes>5097686236</sizeBytes>
+      <sha256>ed0f8d19317111691fe48dd3ab0dbfe887bbb7e592cb49ff5d3b49f76b72c69a</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/3bc79d2e-b156-46c5-8fd8-abaf67d019ab/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_da-dk.esd</url>
@@ -1316,6 +1387,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_cs-cz.esd</fileName>
       <sizeBytes>5115115994</sizeBytes>
+      <sha256>f4d47c95877f469c99951e5dae9af7053c65d8f15331a687d135c41e3f3582ac</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/db1825b7-e71b-421b-ab45-4288c2e92ba3/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_cs-cz.esd</url>
@@ -1334,6 +1406,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_cs-cz.esd</fileName>
       <sizeBytes>5078191033</sizeBytes>
+      <sha256>5187b7c4c9bbd1ec414f0dfc03d74d9425c3d0065462ec801ec2e274cea22aa2</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/5c452f4b-b736-479b-95f4-94f826c721b2/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_cs-cz.esd</url>
@@ -1352,6 +1425,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_bg-bg.esd</fileName>
       <sizeBytes>5133512415</sizeBytes>
+      <sha256>56485e90bf5353431880ba2b062d44ab5faa3e60c01f400eb07108f1371639b2</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/36b79804-fec0-448b-8196-b689effda474/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_bg-bg.esd</url>
@@ -1370,6 +1444,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_bg-bg.esd</fileName>
       <sizeBytes>5082874876</sizeBytes>
+      <sha256>4c8f8f71c68d94be63fc1ea6e10d947d122f6bfbfa78e47347af87296156bd4a</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/398179cb-02eb-43b3-b4bd-4396f48b343f/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_bg-bg.esd</url>
@@ -1388,6 +1463,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_ar-sa.esd</fileName>
       <sizeBytes>5062075199</sizeBytes>
+      <sha256>5fa74108d9ef5a3084af7265c22cbafe3c8b70dbfd2f711455762cb1057faaba</sha256>
       <isRetailOnly>False</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/ab3d370f-1bea-4cfb-8cb3-6cb1e9b702bf/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_x64FRE_ar-sa.esd</url>
@@ -1406,6 +1482,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_ar-sa.esd</fileName>
       <sizeBytes>5016059682</sizeBytes>
+      <sha256>b91064e425883dbc9ec416049cdf9e6b36025bb2b6f5a88aa5b72d95c31fd9d3</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/c9dcc260-e7be-457a-ad38-5974df598ef8/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_x64FRE_ar-sa.esd</url>
@@ -1424,6 +1501,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_zh-tw.esd</fileName>
       <sizeBytes>5227040801</sizeBytes>
+      <sha256>4ec4e65888325231408744cdc9be68eff545a246d0c3fb2f4e4ad9a5e8ac21e9</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/d423af40-c89f-4a2c-9204-b84250ecc595/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_zh-tw.esd</url>
@@ -1442,6 +1520,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_zh-tw.esd</fileName>
       <sizeBytes>5195760863</sizeBytes>
+      <sha256>e5aa1a39294191408baa98e784e614aac052095be2f9ad2103e995e0db7a6c00</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/43dacb28-6ebe-4ec3-baa1-e72aaa75190c/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_zh-tw.esd</url>
@@ -1460,6 +1539,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_zh-cn.esd</fileName>
       <sizeBytes>5314477979</sizeBytes>
+      <sha256>efb5714d8ddefc1cccfa3209db1bfae5e35d0abd18964ab4f15c7264f4418ca8</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/1f152ab3-f6c6-4303-a699-e1ed8ab24f49/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_zh-cn.esd</url>
@@ -1478,6 +1558,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_zh-cn.esd</fileName>
       <sizeBytes>5257068474</sizeBytes>
+      <sha256>0a070d320280f15e2384df95a9425629ed5fd6f08c7a48392b63c4a54bb66bf6</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/e0f47888-4c57-453c-ab53-818489eb6284/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_zh-cn.esd</url>
@@ -1496,6 +1577,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_uk-ua.esd</fileName>
       <sizeBytes>5018808572</sizeBytes>
+      <sha256>e6c7590a779d976746b57954e7c2c796e8ba8f456eb467aea315cb1d747d25c5</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/276ca234-1762-466a-868c-d155c51bd8e6/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_uk-ua.esd</url>
@@ -1514,6 +1596,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_uk-ua.esd</fileName>
       <sizeBytes>4952299583</sizeBytes>
+      <sha256>1f71595d1fdcbf4da9ae9115977c15cf5d4285cbce45de0fee545359a8619c14</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/f4ceff56-8778-416a-b700-f0fbf9aefa7d/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_uk-ua.esd</url>
@@ -1532,6 +1615,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_tr-tr.esd</fileName>
       <sizeBytes>5021662971</sizeBytes>
+      <sha256>b5144e131a1657d37ad80f993189d5a640289c0028add66d11827e99accb7e82</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/912b6ce6-5222-424a-a972-1829f4fefa86/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_tr-tr.esd</url>
@@ -1550,6 +1634,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_tr-tr.esd</fileName>
       <sizeBytes>4941702794</sizeBytes>
+      <sha256>c6454d17a38e61e321e7866dcf3325b2f4784299eb0635df2277222e30c1ff3a</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/553706c9-edd9-4061-9f02-c04fbd9b3b8d/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_tr-tr.esd</url>
@@ -1568,6 +1653,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_th-th.esd</fileName>
       <sizeBytes>5022899592</sizeBytes>
+      <sha256>c74e5cef6619c4b0f5a4b32545a923ef8d5653399458c2a706f42db5f0b5db78</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/46fccb46-40b5-4f84-a2a9-4c84cf2f5e6d/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_th-th.esd</url>
@@ -1586,6 +1672,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_th-th.esd</fileName>
       <sizeBytes>4943345443</sizeBytes>
+      <sha256>87010e54df282eafdb4175f86fa49c37a8792badfeccdcae16f066d82b42e26b</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/9f6ab222-3b58-4e35-b9a1-c5b845a14bb9/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_th-th.esd</url>
@@ -1604,6 +1691,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_sv-se.esd</fileName>
       <sizeBytes>4986286809</sizeBytes>
+      <sha256>b60ed6d9fc6629b7c86f085acd76f26cf72de42f26b137a5508e45b57b552f0a</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/ded10536-ad1f-4ef8-adfa-1658a588e68f/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_sv-se.esd</url>
@@ -1622,6 +1710,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_sv-se.esd</fileName>
       <sizeBytes>4947056010</sizeBytes>
+      <sha256>e3ecefb3ab9fe50869e7072a9a48b516c450d0af22d87f0a8db0c23109102c7d</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/3962a202-b484-4fe2-9520-2d4f85f49a92/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_sv-se.esd</url>
@@ -1640,6 +1729,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_sr-latn-rs.esd</fileName>
       <sizeBytes>4992459700</sizeBytes>
+      <sha256>5ee085a5d2b16d887ced80ddaf887d725ac68ec7b4e397119bbdff1247235041</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/9ea5335c-b6b3-4713-ba22-18eaa920c75a/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_sr-latn-rs.esd</url>
@@ -1658,6 +1748,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_sr-latn-rs.esd</fileName>
       <sizeBytes>4950271837</sizeBytes>
+      <sha256>af5235700118fc717167d43acebfefbf7a3d0d6c2a006e7bb3b34615d6609aec</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/158c2566-d6a3-4f0d-83b1-b3e9d6e9420d/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_sr-latn-rs.esd</url>
@@ -1676,6 +1767,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_sl-si.esd</fileName>
       <sizeBytes>4965771753</sizeBytes>
+      <sha256>aa05f4bbd7f201281a9101df69e30a7d56ac52c0eed83fc59c2a44be0a9e8b94</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/07a1ed29-b410-4d70-b77e-302736e3ea3f/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_sl-si.esd</url>
@@ -1694,6 +1786,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_sl-si.esd</fileName>
       <sizeBytes>4948360461</sizeBytes>
+      <sha256>646cf84fce7274386a6843118c5ed91de8e8febc88ad1325fa217cc26b289490</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/8ce0218a-2cf9-4d65-af2e-269c57e9ca08/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_sl-si.esd</url>
@@ -1712,6 +1805,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_sk-sk.esd</fileName>
       <sizeBytes>4975656826</sizeBytes>
+      <sha256>e499fcfd029fdd7387eddd592b5d739bf06b62c5d8c30969f647df01e732cd57</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/c17a380e-b6da-43df-9055-b345f5952a21/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_sk-sk.esd</url>
@@ -1730,6 +1824,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_sk-sk.esd</fileName>
       <sizeBytes>4948975174</sizeBytes>
+      <sha256>bf118d934a0ee7d4d45c8287faa891997e9cab1559d332c6bbddeb95a63b9968</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/2bf8a48c-274a-4d57-988d-b22c38af5bf1/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_sk-sk.esd</url>
@@ -1748,6 +1843,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_ru-ru.esd</fileName>
       <sizeBytes>5090027198</sizeBytes>
+      <sha256>5315f149ae01548cdb1d28897d70495dac8be3ef0adcc7d38e36a1dfa679aa65</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/a52cc113-7ec1-42dc-880c-080305989d55/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_ru-ru.esd</url>
@@ -1766,6 +1862,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_ru-ru.esd</fileName>
       <sizeBytes>4998597823</sizeBytes>
+      <sha256>ad76959f7ca4a33e2853bb4aa0b30f2f289ba7ff9d5553d58057922b8dc6c95b</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/57d84585-6d53-4a36-a5a5-94a05db507a9/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_ru-ru.esd</url>
@@ -1784,6 +1881,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_ro-ro.esd</fileName>
       <sizeBytes>4957550895</sizeBytes>
+      <sha256>4dcea8afad1e944dd23dc5ca097199cd2247e9d589999c032be8c60e65c78745</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/effc646d-83f7-4d34-9281-23aaf7cf4494/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_ro-ro.esd</url>
@@ -1802,6 +1900,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_ro-ro.esd</fileName>
       <sizeBytes>4944619779</sizeBytes>
+      <sha256>d2181a919ca3e4456d887ba04c21114f7efaab3e6f3d9dbd000efd6e242aeb5d</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/d847ad02-4050-460b-b62d-6e7fabf0efd4/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_ro-ro.esd</url>
@@ -1820,6 +1919,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_pt-pt.esd</fileName>
       <sizeBytes>5025070200</sizeBytes>
+      <sha256>8ca3e98d995223ed43a8630bfed19079e50694a65b992cfd96eed851c22c4989</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/8f78a507-ca32-45ca-b8b4-c369b89589f3/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_pt-pt.esd</url>
@@ -1838,6 +1938,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_pt-pt.esd</fileName>
       <sizeBytes>4960219237</sizeBytes>
+      <sha256>351ce6154aadb7b41ebb9fa06d157f2bd331688fdda963a94f901265d9fcd7d3</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/ccc60d68-2dc3-49a8-a1cc-1c5e49aaf883/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_pt-pt.esd</url>
@@ -1856,6 +1957,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_pt-br.esd</fileName>
       <sizeBytes>5058414244</sizeBytes>
+      <sha256>c4817cabd9be4c0abfeed45cf04bf52eb76504352fc56e2ca14f35c019e4ea72</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/8723585a-b4aa-4e40-8102-a76fe66cfa27/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_pt-br.esd</url>
@@ -1874,6 +1976,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_pt-br.esd</fileName>
       <sizeBytes>5004698183</sizeBytes>
+      <sha256>c2b7067097cee2bbbd2eb7f8dbe154a37f86ed1299fcdb313736868e73c35bb0</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/07910289-cad3-4038-a708-3269a1e0463e/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_pt-br.esd</url>
@@ -1892,6 +1995,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_pl-pl.esd</fileName>
       <sizeBytes>5008390706</sizeBytes>
+      <sha256>a866f3f488bea290f37ad0a0a58b63da11f4aa69c12b8c85ea55b81b04784218</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/ea234c7e-2775-4d12-aede-f8c8e972d194/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_pl-pl.esd</url>
@@ -1910,6 +2014,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_pl-pl.esd</fileName>
       <sizeBytes>4966500647</sizeBytes>
+      <sha256>343b1b31b20c1a49518bdd1172a3591c0dc35e5a12e6eb165a85df2b50235f61</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/5c0a5726-0754-4e7b-a822-58a9b0aad96c/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_pl-pl.esd</url>
@@ -1928,6 +2033,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_nl-nl.esd</fileName>
       <sizeBytes>4993951090</sizeBytes>
+      <sha256>cae16e110d48b1db8ff071f551ec9d0d80cbac5dbb4dc57eaa0365a0bc4b5b29</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/a3df2525-1e54-48d8-94c9-8332b66efaef/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_nl-nl.esd</url>
@@ -1946,6 +2052,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_nl-nl.esd</fileName>
       <sizeBytes>4952036903</sizeBytes>
+      <sha256>89f2eeaa4d54b740eb95397bb442bb8f37804959c1dd29c542aed77fb671f0dc</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/1463c5e8-7ed4-42ac-bdb4-bcb3ff035d3d/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_nl-nl.esd</url>
@@ -1964,6 +2071,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_nb-no.esd</fileName>
       <sizeBytes>4992778331</sizeBytes>
+      <sha256>4a54c731b3c5ac2dd766b50b4f1aab957d76c69e3227abf73d8082fd380f17e4</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/e95bcb21-b181-4a3f-8b7a-1d0f75396736/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_nb-no.esd</url>
@@ -1982,6 +2090,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_nb-no.esd</fileName>
       <sizeBytes>4932390942</sizeBytes>
+      <sha256>2a7709628580ce7a475f807dcc9ba596026538464ea58796fc30e623723849d0</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/61c2bcd7-4417-4615-8bd7-827df43ba488/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_nb-no.esd</url>
@@ -2000,6 +2109,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_lv-lv.esd</fileName>
       <sizeBytes>4952402593</sizeBytes>
+      <sha256>95e4d3ab703649f6c98d166f3bafd2342ffee9abf3b6148ead4abf6b3fe06c99</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/ce644b26-ab8e-4014-9fdf-8e9a69da3a34/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_lv-lv.esd</url>
@@ -2018,6 +2128,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_lv-lv.esd</fileName>
       <sizeBytes>4940406891</sizeBytes>
+      <sha256>fb277ff90881962caa0d659c756e7a62fd2bcd8d952f6fe13623c2ed369b01c2</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/5e04c361-3089-43d3-9a9f-37689996e226/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_lv-lv.esd</url>
@@ -2036,6 +2147,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_lt-lt.esd</fileName>
       <sizeBytes>4955333356</sizeBytes>
+      <sha256>cd0ab0c5bbb3a7490d674089a60c8e8d6c2e0018bdef7542f21b3c331719ed7c</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/c0be9078-5f42-46b7-ae6b-b02a3e7c24eb/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_lt-lt.esd</url>
@@ -2054,6 +2166,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_lt-lt.esd</fileName>
       <sizeBytes>4953083766</sizeBytes>
+      <sha256>e00f02dde6a19075f61dfa575ed456c5169ddb22b1fb4f9811e031b78ccb0c5d</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/3988e2a0-86a0-4a7f-8125-38ff899e1789/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_lt-lt.esd</url>
@@ -2072,6 +2185,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_ko-kr.esd</fileName>
       <sizeBytes>5055713473</sizeBytes>
+      <sha256>7009c844b8f622fdfd13be3d17c589ccc75eb8ff3d172ffdb366794e301437df</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/735c3187-59f1-4c99-bf1c-dabbf74351e4/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_ko-kr.esd</url>
@@ -2090,6 +2204,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_ko-kr.esd</fileName>
       <sizeBytes>5007631749</sizeBytes>
+      <sha256>949d033a8b3aa9d7524e5a0c76e1cd7407d915594030aaa9e925beee633f0e79</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/97309e57-dadf-414c-b48b-f311bdbcc622/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_ko-kr.esd</url>
@@ -2108,6 +2223,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_ja-jp.esd</fileName>
       <sizeBytes>5211700452</sizeBytes>
+      <sha256>e6d64e623976024db7b28e3900bca004de0c1d1847c0dccff40e5432c6bb7010</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/5be2e479-fb2f-479f-af36-a9dbeaa48214/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_ja-jp.esd</url>
@@ -2126,6 +2242,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_ja-jp.esd</fileName>
       <sizeBytes>5183752667</sizeBytes>
+      <sha256>64b1b2907a99c3d75771d4c24ee5df03381f5c3f3021da1b54d50d32b369ec81</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/1b4f1ab0-73e1-402c-9834-ff13571b4371/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_ja-jp.esd</url>
@@ -2144,6 +2261,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_it-it.esd</fileName>
       <sizeBytes>5038019862</sizeBytes>
+      <sha256>dbaeabd3f1067ab8227abe146fc5f459ed8aa24a8e994ea9e7aba52f92861067</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/9e9839be-65bf-4970-8db0-c626465c25d5/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_it-it.esd</url>
@@ -2162,6 +2280,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_it-it.esd</fileName>
       <sizeBytes>4988730848</sizeBytes>
+      <sha256>18c266143f2819fa633ae5dec79ae8bf4847904e59ecc804687aa24a477d2017</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/ff430b81-0d36-4e04-b384-6dd8798b9c2f/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_it-it.esd</url>
@@ -2180,6 +2299,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_hu-hu.esd</fileName>
       <sizeBytes>4981537380</sizeBytes>
+      <sha256>d2a77289050addbbc412d2591f9552fbe46d4e3fb293bc0112c35bc9bbf26f41</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/ec296750-47c1-4a08-8fa1-226bff05f8f3/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_hu-hu.esd</url>
@@ -2198,6 +2318,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_hu-hu.esd</fileName>
       <sizeBytes>4947049956</sizeBytes>
+      <sha256>db735d755d2628502ea95a854e9e82730dea3e3ca0ec0d5578f1bfd4c350edc9</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/5414757b-0b22-4d4a-b056-d3a6276a491e/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_hu-hu.esd</url>
@@ -2216,6 +2337,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_hr-hr.esd</fileName>
       <sizeBytes>4961183156</sizeBytes>
+      <sha256>c9037c176c79c3e96af19f702a7b55502d124fdf82ea4c3f7c47da071fa9eac2</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/8c0a5ad0-76c2-4bcd-ac29-6bf7938e7822/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_hr-hr.esd</url>
@@ -2234,6 +2356,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_hr-hr.esd</fileName>
       <sizeBytes>4935678697</sizeBytes>
+      <sha256>644bdc7f9ae0194287702ca2a663aa116a7d634b95addcc513c9a9aeee997f58</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/64e90d3a-affd-45d6-b4e4-9c4cf6b4c17e/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_hr-hr.esd</url>
@@ -2252,6 +2375,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_he-il.esd</fileName>
       <sizeBytes>5012757018</sizeBytes>
+      <sha256>54f930b348562de444a02f295c68b8f4a39ed0b38e1a3f3cd5a0e3d548a885f1</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/6cc6b80a-9f61-4689-afe3-2aae53910f42/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_he-il.esd</url>
@@ -2270,6 +2394,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_he-il.esd</fileName>
       <sizeBytes>4998028348</sizeBytes>
+      <sha256>671377e583aaaefe9a3ff81c0c06933fbc24ab0ffe86d5c06d327138a92c80be</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/f2aeccfe-2df0-48f2-930d-7d3246d5028d/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_he-il.esd</url>
@@ -2288,6 +2413,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_fr-fr.esd</fileName>
       <sizeBytes>5117106429</sizeBytes>
+      <sha256>89cba707008c368244ea17c0f8ca58d65085a5aac2686dece3e8afb9d2470741</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/b1d006d9-3e48-414c-a87f-092ee3955d68/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_fr-fr.esd</url>
@@ -2306,6 +2432,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_fr-fr.esd</fileName>
       <sizeBytes>5057731380</sizeBytes>
+      <sha256>292d51135bf2302e64a1c88a27bf12fde9a6db1dd5652651bb3afff8d92bf307</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/4b8fd3b6-1f20-4168-8f7c-697de381998d/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_fr-fr.esd</url>
@@ -2324,6 +2451,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_fr-ca.esd</fileName>
       <sizeBytes>5054789139</sizeBytes>
+      <sha256>65e5e508f6e76150ba70e3064fe823a9cae72da330eef076a9d7678e71860891</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/c893ace1-96f0-4081-8de7-0b97bbdb8bb1/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_fr-ca.esd</url>
@@ -2342,6 +2470,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_fr-ca.esd</fileName>
       <sizeBytes>4996344052</sizeBytes>
+      <sha256>f7873cf9212c01c345493165008e8224e14ce2c836a96ca7afb520ffccab0965</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/b6c764e7-b1f3-4f3a-9b5f-abb988620fba/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_fr-ca.esd</url>
@@ -2360,6 +2489,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_fi-fi.esd</fileName>
       <sizeBytes>5000178286</sizeBytes>
+      <sha256>58e7f12baf5cfc959e943038db78261024e0f6ffa903557daceb3c23127c5cc2</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/68f2d18d-c53a-4541-aff7-a27230f762e3/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_fi-fi.esd</url>
@@ -2378,6 +2508,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_fi-fi.esd</fileName>
       <sizeBytes>4939203566</sizeBytes>
+      <sha256>aa72087ba494ebf40db100c981cf8f9aa280637b354940020c481996550c9686</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/5392bf1d-dcf2-40ac-9119-f86225725925/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_fi-fi.esd</url>
@@ -2396,6 +2527,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_et-ee.esd</fileName>
       <sizeBytes>4962440706</sizeBytes>
+      <sha256>415abc7e8fc5e43a8f9404aa8c484199fc830d3c83bc09092f6c1b11eb4d1907</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/d4aa2deb-b1e4-4a98-bb29-6e6091d34555/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_et-ee.esd</url>
@@ -2414,6 +2546,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_et-ee.esd</fileName>
       <sizeBytes>4920235659</sizeBytes>
+      <sha256>1b70bdf3ecfed3e3921c58800b41593705be8f29813ffce9f5ea0dae4b894fd6</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/b6a39a8b-7516-404d-a062-ef8ff159c3a2/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_et-ee.esd</url>
@@ -2432,6 +2565,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_es-mx.esd</fileName>
       <sizeBytes>5055666084</sizeBytes>
+      <sha256>e6e7094f27c9ebc1f44a4d36f03f89af80bdb9b18a8be24958381a2d9f5bcfe9</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/1dc56689-d078-42ac-9955-7837ea356f38/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_es-mx.esd</url>
@@ -2450,6 +2584,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_es-mx.esd</fileName>
       <sizeBytes>5004215253</sizeBytes>
+      <sha256>2b4dcac4348aab95e5c2607840c6007b1a9ee214e22c7b0ae90af3be03b736ae</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/8b5a0ffb-1e73-4697-b3fd-1134c8d09cd0/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_es-mx.esd</url>
@@ -2468,6 +2603,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_es-es.esd</fileName>
       <sizeBytes>5102741154</sizeBytes>
+      <sha256>470d0f05c680aa1f2f3898163d1c02436d8d9d28a2f21647d869c98525e2252c</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/fb4a2358-c1f2-426b-97c8-8af4c80b75d7/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_es-es.esd</url>
@@ -2486,6 +2622,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_es-es.esd</fileName>
       <sizeBytes>5038476153</sizeBytes>
+      <sha256>e17fcebdcd4066ffa77c73b0d40a9894d3b682b7e246d0062282e335f913598b</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/26cacf4e-a44f-4536-88e8-0374588cb635/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_es-es.esd</url>
@@ -2504,6 +2641,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_en-us.esd</fileName>
       <sizeBytes>5115605969</sizeBytes>
+      <sha256>b1aeb771aae362f542d8a12747be9dae0398d02ef193f020a11171300339fb80</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/826e5c00-e4bf-42b9-9419-3bc999053e41/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_en-us.esd</url>
@@ -2522,6 +2660,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_en-us.esd</fileName>
       <sizeBytes>5057083648</sizeBytes>
+      <sha256>d8f0f011c2e4a03d29d637bbbd2662a73771235989dda67e55e6f8899e1fca5c</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/6625a054-74a5-44c6-b6dc-b99ec1eedefb/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_en-us.esd</url>
@@ -2540,6 +2679,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_en-gb.esd</fileName>
       <sizeBytes>5114818835</sizeBytes>
+      <sha256>1c97d42cc5041fc6d884c1d13963f2f7b2048702b401442c1d659abe291d036d</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/0a9facfc-6e94-4dc2-a00c-13c78596280e/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_en-gb.esd</url>
@@ -2558,6 +2698,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_en-gb.esd</fileName>
       <sizeBytes>5032363297</sizeBytes>
+      <sha256>7ae7f4d90442d71488a60b736a7a16a20d9c4c4ee2af10e207fcb188439ae1f2</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/f48d9e5d-eabc-4cb0-8070-9633136e6058/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_en-gb.esd</url>
@@ -2576,6 +2717,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_el-gr.esd</fileName>
       <sizeBytes>5000959863</sizeBytes>
+      <sha256>9f113ae717d004554f3715dba7799815fa74efa3c298364147960365aa608e74</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/5cf755ef-7764-416e-85b3-669cb296aa84/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_el-gr.esd</url>
@@ -2594,6 +2736,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_el-gr.esd</fileName>
       <sizeBytes>4977088481</sizeBytes>
+      <sha256>e0a18e6f088d7e6b3fe2e2ba2eac5b2b1df47189f14153c2914622f987b7ff6c</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/ef1489ed-83d8-4e8f-8f9a-bef36e0d654f/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_el-gr.esd</url>
@@ -2612,6 +2755,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_de-de.esd</fileName>
       <sizeBytes>5093537094</sizeBytes>
+      <sha256>8b9fcc59295392e1fd3a3d716431ba2e9d39840cf70d935866fb14ee7d25b4de</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/b8b88663-9cea-4462-a14a-ce2bc6f6f0f1/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_de-de.esd</url>
@@ -2630,6 +2774,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_de-de.esd</fileName>
       <sizeBytes>5068575925</sizeBytes>
+      <sha256>3f180d5a3824a3c76d9eedeacae79ce14982220aecddd68c952dd7a5179601cc</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/6190fcc1-e909-4083-957f-a1807e96757f/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_de-de.esd</url>
@@ -2648,6 +2793,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_da-dk.esd</fileName>
       <sizeBytes>5013848014</sizeBytes>
+      <sha256>9a78057c0a1c22e146529f8f6ec486ced8a12d0000fce61b9078a8eda014cf01</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/3b9f39fe-7051-41ef-a714-964ab4d7c261/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_da-dk.esd</url>
@@ -2666,6 +2812,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_da-dk.esd</fileName>
       <sizeBytes>4976602698</sizeBytes>
+      <sha256>0a8c10589f0cfa3395a8b5bfe23a45315ec52ed30745514ebc6699bf6dd60e57</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/fd886dad-6dec-4289-aa44-e033302be116/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_da-dk.esd</url>
@@ -2684,6 +2831,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_cs-cz.esd</fileName>
       <sizeBytes>4986413083</sizeBytes>
+      <sha256>b54e582961e618c4261b27e3c93f98ec5be02e918a0da7598187a6fe05155bfd</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/d6d8938b-8ed4-4231-b8e4-3e71a41e30f9/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_cs-cz.esd</url>
@@ -2702,6 +2850,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_cs-cz.esd</fileName>
       <sizeBytes>4932461052</sizeBytes>
+      <sha256>ebe8c7d72e3f90c64fd21fe11ef45802ae7f7a29aeecb3392239da29ecd8ccf9</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/32541f56-4b76-4eb4-8fbb-791306e8792a/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_cs-cz.esd</url>
@@ -2720,6 +2869,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_bg-bg.esd</fileName>
       <sizeBytes>4986583818</sizeBytes>
+      <sha256>a117980bbffaf49cca0921741142d39d5356e1d667d310911552bc8474c46d08</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/5c7ed63d-b8e7-407b-8892-2aaa33651d55/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_bg-bg.esd</url>
@@ -2738,6 +2888,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_bg-bg.esd</fileName>
       <sizeBytes>4957897991</sizeBytes>
+      <sha256>b2c730a37155c40f8bcaff3f118a7b860ec0b1e4af390e3bd1ece2157f7611ca</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/2c12eaee-a6e2-442a-b88e-920687eb5b9a/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_bg-bg.esd</url>
@@ -2756,6 +2907,7 @@
       <edition>UltimateN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_ar-sa.esd</fileName>
       <sizeBytes>5045215857</sizeBytes>
+      <sha256>61b2a64958c8f6ee8291d8b9fb3a6f2054a498f79d8425edb1bb7f3eae964ba0</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>RET</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/e5e32742-d821-4fcf-aeb2-09e6671b20b1/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTCONSUMER_RET_A64FRE_ar-sa.esd</url>
@@ -2774,6 +2926,7 @@
       <edition>EnterpriseN</edition>
       <fileName>26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_ar-sa.esd</fileName>
       <sizeBytes>4985135544</sizeBytes>
+      <sha256>4d03dc265679c162f1485db3b54f2f234692e7da9bdfcf03f37bb34f6826e0e9</sha256>
       <isRetailOnly>True</isRetailOnly>
       <licenseChannel>VOL</licenseChannel>
       <url>https://dl.delivery.mp.microsoft.com/filestreamingservice/files/9b03f742-6368-4762-bfa1-b78bb1b06255/26200.6899.251011-1532.25h2_ge_release_svc_refresh_CLIENTBUSINESS_VOL_A64FRE_ar-sa.esd</url>

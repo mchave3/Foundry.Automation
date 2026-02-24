@@ -559,6 +559,7 @@ function ConvertFrom-ProductsXml {
         $language = Get-XmlNodePropertyValue -Node $node -Name 'Language'
         $edition = Get-XmlNodePropertyValue -Node $node -Name 'Edition'
         $sha1 = Get-XmlNodePropertyValue -Node $node -Name 'Sha1'
+        $sha256 = Get-XmlNodePropertyValue -Node $node -Name 'Sha256'
 
         $item = [ordered]@{
             sourceId = $SourceId
@@ -576,6 +577,7 @@ function ConvertFrom-ProductsXml {
             fileName = $fileName
             sizeBytes = $sizeBytes
             sha1 = $sha1
+            sha256 = $sha256
             isRetailOnly = $isRetailOnly
             licenseChannel = $licenseChannel
             url = $filePath
@@ -612,7 +614,8 @@ function ConvertFrom-ProductsXml {
             @{ Expression = { $_.languageCode } },
             @{ Expression = { $_.edition } },
             @{ Expression = { $_.fileName } },
-            @{ Expression = { $_.sha1 } }
+            @{ Expression = { $_.sha1 } },
+            @{ Expression = { $_.sha256 } }
         ))
 }
 
@@ -863,12 +866,16 @@ if (-not $itemsAll -or $itemsAll.Count -lt $MinimumItemCount) {
 $dedupMap = [ordered]@{}
 foreach ($item in $itemsAll) {
     $key = $null
-    if ($item.sha1) {
+    if ($item.sha256) {
         # Prefer stable content hash when available.
+        $key = 'sha256:' + [string]$item.sha256
+    }
+    elseif ($item.sha1) {
+        # Backward-compatible fallback for older feeds.
         $key = 'sha1:' + [string]$item.sha1
     }
     else {
-        # Fallback key for older entries missing SHA1.
+        # Fallback key for entries missing content hashes.
         $key = 'url:' + [string]$item.url + '|fn:' + [string]$item.fileName
     }
 
@@ -885,7 +892,8 @@ $itemsSorted = @($dedupMap.Values | Sort-Object -Descending -Property @(
         @{ Expression = { $_.languageCode } },
         @{ Expression = { $_.edition } },
         @{ Expression = { $_.fileName } },
-        @{ Expression = { $_.sha1 } }
+        @{ Expression = { $_.sha1 } },
+        @{ Expression = { $_.sha256 } }
     ))
 
 $sourcesSorted = @($sources | Sort-Object -Descending -Property @(

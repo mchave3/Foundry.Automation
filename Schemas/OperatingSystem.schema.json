@@ -227,6 +227,12 @@
               "null"
             ]
           },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "isRetailOnly": {
             "type": [
               "boolean",
