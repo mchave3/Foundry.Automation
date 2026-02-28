@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SurfaceCatalog schemaVersion="1" generatedAtUtc="2026-02-27T03:44:41Z" category="DriverPack">
-  <Source uri="https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120" catalogType="SupportArticle" catalogSha256="9c029e8ed5993ea56375629bbd24026dc0205723cdac5b74c04f13f2d965102c" name="Microsoft Surface Drivers and Firmware" />
-  <CatalogMetadata lastPublishedDate="2025-12-12" firstPublishedDate="2020-09-01" articleGuid="09bb2e09-2a4b-cb69-0951-078a7739e120" />
+<SurfaceCatalog schemaVersion="1" generatedAtUtc="2026-02-28T03:33:19Z" category="DriverPack">
+  <Source uri="https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120" catalogSha256="000bdda0d4e6d511b88efb3373c500bd8b8337ba4755c9fea461da7fb61a94f7" name="Microsoft Surface Drivers and Firmware" catalogType="SupportArticle" />
+  <CatalogMetadata articleGuid="09bb2e09-2a4b-cb69-0951-078a7739e120" firstPublishedDate="2020-09-01" lastPublishedDate="2025-12-12" />
   <Items>
     <Item>
       <id>49039|Surface3_4GLTE-ATT_Win10_18362_1902003_0.msi</id>
