@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<OperatingSystemCatalog schemaVersion="3" generatedAtUtc="2026-03-10T18:09:56Z">
-  <Source name="Local Microsoft products.xml files" directory="Microsoft" />
+<OperatingSystemCatalog schemaVersion="3" generatedAtUtc="2026-03-10T18:33:35Z">
+  <Source name="Foundry Automated OS Catalog Generation" directory="Microsoft" />
   <Sources>
-    <Source id="Win11_25H2_26200" windowsMajor="11" releaseId="25H2" build="26200.6899" buildMajor="26200" buildUbr="6899" sourceFile="Microsoft/Win11_25H2_26200.xml" sourceXmlSha256="1248978dc577b8fe986663ab511f5bf2bc053ee38462d2cbb880c6286d228726" itemCount="1978" />
-    <Source id="Win11_24H2_26100" windowsMajor="11" releaseId="24H2" build="26100.4349" buildMajor="26100" buildUbr="4349" sourceFile="Microsoft/Win11_24H2_26100.xml" sourceXmlSha256="86ef0b4c4f235d6d229019c46cce0d4b9287082acb98e9377d82b02b16a55b86" itemCount="1978" />
-    <Source id="Win11_23H2_22631" windowsMajor="11" releaseId="23H2" build="22631.2861" buildMajor="22631" buildUbr="2861" sourceFile="Microsoft/Win11_23H2_22631.xml" sourceXmlSha256="26419867ddac297a330dd641e59ecec584bdf370d4a0743a88683c604d9d629e" itemCount="1978" />
+    <Source id="Win11_25H2_26200" windowsMajor="11" releaseId="25H2" build="26200.6899" buildMajor="26200" buildUbr="6899" sourceFile="Microsoft/Win11_25H2_26200.xml" sourceXmlSha256="c119bbbaa74957370859f9a1467ffbaa7d7d9cceb4abf88d6eba86f19a820371" itemCount="1978" />
+    <Source id="Win11_24H2_26100" windowsMajor="11" releaseId="24H2" build="26100.4349" buildMajor="26100" buildUbr="4349" sourceFile="Microsoft/Win11_24H2_26100.xml" sourceXmlSha256="af1584e661416a90b81e8fe460e9941f1940deeca923456bf8cfcb188a2b7530" itemCount="1978" />
+    <Source id="Win11_23H2_22631" windowsMajor="11" releaseId="23H2" build="22631.2861" buildMajor="22631" buildUbr="2861" sourceFile="Microsoft/Win11_23H2_22631.xml" sourceXmlSha256="7d2d10166d0f8e4821715515b428f952daa5906adaa5f6c2dbb666ade7dec660" itemCount="1978" />
   </Sources>
   <Items>
     <Item>

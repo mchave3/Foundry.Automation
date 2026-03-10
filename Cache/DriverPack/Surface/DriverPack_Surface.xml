@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SurfaceCatalog schemaVersion="1" generatedAtUtc="2026-03-05T03:44:16Z" category="DriverPack">
-  <Source catalogSha256="8c55f63f04e1bd4cf32400c55a789408987fedb12c3ad602544f8e97307e4dc7" catalogType="SupportArticle" uri="https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120" name="Microsoft Surface Drivers and Firmware" />
-  <CatalogMetadata lastPublishedDate="2025-12-12" articleGuid="09bb2e09-2a4b-cb69-0951-078a7739e120" firstPublishedDate="2020-09-01" />
+<SurfaceCatalog schemaVersion="1" generatedAtUtc="2026-03-10T18:33:33Z" category="DriverPack">
+  <Source uri="https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120" catalogSha256="96b6a93e8b6fbe183e43bd1c5ddfcccae28fd2c680cd38de189f16aea973c63a" name="Microsoft Surface Drivers and Firmware" catalogType="SupportArticle" />
+  <CatalogMetadata articleGuid="09bb2e09-2a4b-cb69-0951-078a7739e120" lastPublishedDate="2025-12-12" firstPublishedDate="2020-09-01" />
   <Items>
     <Item>
       <id>49039|Surface3_4GLTE-ATT_Win10_18362_1902003_0.msi</id>
@@ -439,18 +439,18 @@
       <supportedOperatingSystems>Windows 10 Windows 11 Windows 10 Tech Preview</supportedOperatingSystems>
     </Item>
     <Item>
-      <id>102923|SurfaceLaptop4_AMD_Win11_22631_25.120.461.0.msi</id>
+      <id>102923|SurfaceLaptop4_AMD_Win11_22631_26.021.7718.0.msi</id>
       <model>Surface Laptop 4 with AMD Processor</model>
       <downloadTitle>Surface Laptop 4 with AMD Processor Drivers and Firmware</downloadTitle>
       <packageId>102923</packageId>
       <downloadCenterUrl>https://www.microsoft.com/download/details.aspx?id=102923</downloadCenterUrl>
-      <downloadUrl>https://download.microsoft.com/download/7ee743a7-aac6-4b0c-83bf-218070e93e39/SurfaceLaptop4_AMD_Win11_22631_25.120.461.0.msi</downloadUrl>
-      <msiUrl>https://download.microsoft.com/download/7ee743a7-aac6-4b0c-83bf-218070e93e39/SurfaceLaptop4_AMD_Win11_22631_25.120.461.0.msi</msiUrl>
-      <fileName>SurfaceLaptop4_AMD_Win11_22631_25.120.461.0.msi</fileName>
+      <downloadUrl>https://download.microsoft.com/download/7ee743a7-aac6-4b0c-83bf-218070e93e39/SurfaceLaptop4_AMD_Win11_22631_26.021.7718.0.msi</downloadUrl>
+      <msiUrl>https://download.microsoft.com/download/7ee743a7-aac6-4b0c-83bf-218070e93e39/SurfaceLaptop4_AMD_Win11_22631_26.021.7718.0.msi</msiUrl>
+      <fileName>SurfaceLaptop4_AMD_Win11_22631_26.021.7718.0.msi</fileName>
       <format>msi</format>
       <version>1.0</version>
-      <sizeBytes>735383552</sizeBytes>
-      <datePublished>2026-01-16</datePublished>
+      <sizeBytes>735420416</sizeBytes>
+      <datePublished>2026-03-05</datePublished>
       <supportedOperatingSystems>Windows 11</supportedOperatingSystems>
     </Item>
     <Item>
@@ -663,18 +663,18 @@
       <supportedOperatingSystems>Windows 11</supportedOperatingSystems>
     </Item>
     <Item>
-      <id>106292|SurfacePro10with5GforBusiness_Win11_22631_25.110.5663.0.msi</id>
+      <id>106292|SurfacePro10with5GforBusiness_Win11_22631_26.011.9225.0.msi</id>
       <model>Surface Pro 10 with 5G for Business</model>
       <downloadTitle>Surface Pro 10 with 5G for Business Drivers and Firmware</downloadTitle>
       <packageId>106292</packageId>
       <downloadCenterUrl>https://www.microsoft.com/download/details.aspx?id=106292</downloadCenterUrl>
-      <downloadUrl>https://download.microsoft.com/download/356e9788-abcd-471c-8c3c-6e8f68eef9ef/SurfacePro10with5GforBusiness_Win11_22631_25.110.5663.0.msi</downloadUrl>
-      <msiUrl>https://download.microsoft.com/download/356e9788-abcd-471c-8c3c-6e8f68eef9ef/SurfacePro10with5GforBusiness_Win11_22631_25.110.5663.0.msi</msiUrl>
-      <fileName>SurfacePro10with5GforBusiness_Win11_22631_25.110.5663.0.msi</fileName>
+      <downloadUrl>https://download.microsoft.com/download/356e9788-abcd-471c-8c3c-6e8f68eef9ef/SurfacePro10with5GforBusiness_Win11_22631_26.011.9225.0.msi</downloadUrl>
+      <msiUrl>https://download.microsoft.com/download/356e9788-abcd-471c-8c3c-6e8f68eef9ef/SurfacePro10with5GforBusiness_Win11_22631_26.011.9225.0.msi</msiUrl>
+      <fileName>SurfacePro10with5GforBusiness_Win11_22631_26.011.9225.0.msi</fileName>
       <format>msi</format>
       <version>1.0</version>
-      <sizeBytes>1161646080</sizeBytes>
-      <datePublished>2025-12-03</datePublished>
+      <sizeBytes>1163276288</sizeBytes>
+      <datePublished>2026-03-05</datePublished>
       <supportedOperatingSystems>Windows 11</supportedOperatingSystems>
     </Item>
     <Item>
@@ -693,18 +693,18 @@
       <supportedOperatingSystems>Windows 11</supportedOperatingSystems>
     </Item>
     <Item>
-      <id>108013|SurfacePro11withIntel_Win11_22631_25.122.23078.0.msi</id>
+      <id>108013|SurfacePro11withIntel_Win11_22631_26.021.8636.0.msi</id>
       <model>Surface Pro 11th Edition with Intel</model>
       <downloadTitle>Surface Pro 11th Edition with Intel Drivers and Firmware</downloadTitle>
       <packageId>108013</packageId>
       <downloadCenterUrl>https://www.microsoft.com/download/details.aspx?id=108013</downloadCenterUrl>
-      <downloadUrl>https://download.microsoft.com/download/c26c62fe-da4b-41d1-b276-c855751c247c/SurfacePro11withIntel_Win11_22631_25.122.23078.0.msi</downloadUrl>
-      <msiUrl>https://download.microsoft.com/download/c26c62fe-da4b-41d1-b276-c855751c247c/SurfacePro11withIntel_Win11_22631_25.122.23078.0.msi</msiUrl>
-      <fileName>SurfacePro11withIntel_Win11_22631_25.122.23078.0.msi</fileName>
+      <downloadUrl>https://download.microsoft.com/download/c26c62fe-da4b-41d1-b276-c855751c247c/SurfacePro11withIntel_Win11_22631_26.021.8636.0.msi</downloadUrl>
+      <msiUrl>https://download.microsoft.com/download/c26c62fe-da4b-41d1-b276-c855751c247c/SurfacePro11withIntel_Win11_22631_26.021.8636.0.msi</msiUrl>
+      <fileName>SurfacePro11withIntel_Win11_22631_26.021.8636.0.msi</fileName>
       <format>msi</format>
       <version>1.0</version>
-      <sizeBytes>967663616</sizeBytes>
-      <datePublished>2026-01-16</datePublished>
+      <sizeBytes>967983104</sizeBytes>
+      <datePublished>2026-03-05</datePublished>
       <supportedOperatingSystems>Windows 11</supportedOperatingSystems>
     </Item>
     <Item>
