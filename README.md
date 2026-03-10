@@ -33,10 +33,11 @@ In GitHub Actions, `run-scripts-daily.yml` executes all `Update-*.ps1` scripts f
 
 ## Operating System Catalog
 
-This repository includes a PowerShell generator that pulls Windows catalog metadata from WORProject, downloads CAB catalogs, extracts `products.xml`, and writes deterministic ESD cache outputs.
+This repository includes a PowerShell generator that reads local Microsoft `products.xml` sources from the repository and writes deterministic ESD cache outputs.
 
 - Script: `Scripts/Update-OSCatalog.ps1`
 - Schema: `Schemas/OperatingSystem.schema.json`
+- Inputs: `Cache/OS/Microsoft/*.xml`
 - Outputs:
   - `Cache/OS/OperatingSystem.xml`
   - `Cache/OS/README.md`
@@ -47,7 +48,7 @@ Run:
 pwsh -NoProfile -File ./Scripts/Update-OSCatalog.ps1
 ```
 
-Prerequisite: `7zz` or `7z` must be available in `PATH` for CAB extraction.
+Source files must follow the naming convention `Win<major>_<releaseId>_<buildMajor>.xml`, for example `Win11_24H2_26100.xml`.
 
 ## Dell Catalog
 

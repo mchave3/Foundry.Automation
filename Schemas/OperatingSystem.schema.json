@@ -6,14 +6,13 @@
     "schemaVersion",
     "generatedAtUtc",
     "source",
-    "latestFwlinks",
     "sources",
     "items"
   ],
   "properties": {
     "schemaVersion": {
       "type": "integer",
-      "minimum": 1
+      "const": 3
     },
     "generatedAtUtc": {
       "type": "string",
@@ -23,40 +22,17 @@
       "type": "object",
       "required": [
         "name",
-        "versionsUri"
+        "directory"
       ],
       "properties": {
         "name": {
           "type": "string"
         },
-        "versionsUri": {
+        "directory": {
           "type": "string"
         }
       },
       "additionalProperties": false
-    },
-    "latestFwlinks": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": [
-          "windowsMajor",
-          "fwlinkId",
-          "fwlinkUrl"
-        ],
-        "properties": {
-          "windowsMajor": {
-            "type": "string"
-          },
-          "fwlinkId": {
-            "type": "string"
-          },
-          "fwlinkUrl": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      }
     },
     "sources": {
       "type": "array",
@@ -65,13 +41,11 @@
         "required": [
           "id",
           "windowsMajor",
+          "releaseId",
           "build",
           "buildMajor",
-          "buildUbr",
-          "date",
-          "cabUrl",
-          "cabSha256",
-          "productsXmlSha256",
+          "sourceFile",
+          "sourceXmlSha256",
           "itemCount"
         ],
         "properties": {
@@ -79,6 +53,9 @@
             "type": "string"
           },
           "windowsMajor": {
+            "type": "string"
+          },
+          "releaseId": {
             "type": "string"
           },
           "build": {
@@ -96,29 +73,11 @@
               "null"
             ]
           },
-          "date": {
-            "type": [
-              "string",
-              "null"
-            ]
+          "sourceFile": {
+            "type": "string"
           },
-          "cabUrl": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "cabSha256": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "productsXmlSha256": {
-            "type": [
-              "string",
-              "null"
-            ]
+          "sourceXmlSha256": {
+            "type": "string"
           },
           "itemCount": {
             "type": "integer",

@@ -7,7 +7,7 @@ param(
 
     [Parameter()]
     [ValidateNotNullOrEmpty()]
-    [string]$VersionsUri = 'https://worproject.com/dldserv/esd/getversions.php',
+    [string]$SourceDirectory = (Join-Path -Path $PSScriptRoot -ChildPath '..\Cache\OS\Microsoft'),
 
     [Parameter()]
     [ValidateNotNullOrEmpty()]
@@ -27,32 +27,6 @@ $ErrorActionPreference = 'Stop'
 
 #region Utility Functions
 
-# Extract fwlink id from a Microsoft URL query string.
-function Get-FwlinkIdFromUrl {
-    param(
-        [Parameter(Mandatory = $true)]
-        [AllowEmptyString()]
-        [string]$Url
-    )
-
-    if (-not $Url) {
-        return $null
-    }
-
-    try {
-        $match = [regex]::Match($Url, '(?i)(?:\?|&)LinkId=(\d+)')
-        if ($match.Success) {
-            return $match.Groups[1].Value
-        }
-    }
-    catch {
-        Write-Verbose -Message ("Unable to parse fwlink id from URL '{0}': {1}" -f $Url, $_.Exception.Message)
-    }
-
-    return $null
-}
-
-# Parse build text like 26100.4349 into major/UBR parts.
 function ConvertTo-BuildParts {
     param(
         [Parameter(Mandatory = $true)]
@@ -86,7 +60,6 @@ function ConvertTo-BuildParts {
     }
 }
 
-# Normalize architecture naming to a common set used across catalogs.
 function Normalize-OsArchitecture {
     param(
         [Parameter()]
@@ -107,7 +80,6 @@ function Normalize-OsArchitecture {
     }
 }
 
-# Promote HTTP delivery links to HTTPS for consistency and transport security.
 function Normalize-DownloadUrl {
     param(
         [Parameter()]
@@ -120,49 +92,17 @@ function Normalize-DownloadUrl {
     }
 
     $normalized = $Url.Trim()
-    if ($normalized -match '^(?i)http://') {
-        return ('https://' + $normalized.Substring(7))
-    }
-
-    return $normalized
-}
-
-# Convert source date values (e.g. 20251012) to ISO yyyy-MM-dd where possible.
-function ConvertTo-IsoDateFromSource {
-    param(
-        [Parameter()]
-        [AllowNull()]
-        [string]$Value
-    )
-
-    if (-not $Value) {
-        return $null
-    }
-
-    $normalized = $Value.Trim()
     if (-not $normalized) {
         return $null
     }
 
-    if ($normalized -match '^\d{4}-\d{2}-\d{2}$') {
-        return $normalized
-    }
-
-    [datetime]$parsedDate = [datetime]::MinValue
-    if ([datetime]::TryParseExact($normalized, 'yyyyMMdd', [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::None, [ref]$parsedDate)) {
-        return $parsedDate.ToString('yyyy-MM-dd')
-    }
-    if ([datetime]::TryParse($normalized, [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::AllowWhiteSpaces, [ref]$parsedDate)) {
-        return $parsedDate.ToString('yyyy-MM-dd')
-    }
-    if ([datetime]::TryParse($normalized, [System.Globalization.CultureInfo]::CurrentCulture, [System.Globalization.DateTimeStyles]::AllowWhiteSpaces, [ref]$parsedDate)) {
-        return $parsedDate.ToString('yyyy-MM-dd')
+    if ($normalized -match '^http://') {
+        return 'https://' + $normalized.Substring(7)
     }
 
     return $normalized
 }
 
-# Infer client type from URL/file naming tokens when explicit metadata is absent.
 function Get-ClientTypeFromText {
     param(
         [Parameter()]
@@ -185,7 +125,6 @@ function Get-ClientTypeFromText {
     return $null
 }
 
-# Infer license channel (RET/VOL) from URL/file naming.
 function Get-LicenseChannelFromText {
     param(
         [Parameter()]
@@ -208,7 +147,6 @@ function Get-LicenseChannelFromText {
     return $null
 }
 
-# Map build major to public Windows release identifiers.
 function Get-WindowsReleaseIdFromBuildMajor {
     param(
         [Parameter()]
@@ -224,200 +162,54 @@ function Get-WindowsReleaseIdFromBuildMajor {
         { $_ -ge 26200 } { return '25H2' }
         { $_ -ge 26100 } { return '24H2' }
         { $_ -ge 22631 } { return '23H2' }
-        { $_ -ge 22621 } { return '22H2' }
-        { $_ -ge 22000 } { return '21H2' }
-        { $_ -ge 19045 } { return '22H2' }
-        { $_ -ge 19044 } { return '21H2' }
-        { $_ -ge 19043 } { return '21H1' }
-        { $_ -ge 19042 } { return '20H2' }
-        { $_ -ge 19041 } { return '2004' }
-        { $_ -ge 18363 } { return '1909' }
-        { $_ -ge 18362 } { return '1903' }
-        { $_ -ge 17763 } { return '1809' }
-        { $_ -ge 17134 } { return '1803' }
-        { $_ -ge 16299 } { return '1709' }
-        { $_ -ge 15063 } { return '1703' }
-        { $_ -ge 14393 } { return '1607' }
-        { $_ -ge 10586 } { return '1511' }
-        { $_ -ge 10240 } { return '1507' }
         default { return $null }
     }
 }
 
-# Serialize JSON deterministically with normalized line endings.
-function ConvertTo-DeterministicJson {
-    param(
-        [Parameter(Mandatory = $true)]
-        [object]$Object
-    )
-
-    $json = ConvertTo-Json -InputObject $Object -Depth 10
-    return ($json -replace "`r?`n", "`r`n").TrimEnd("`r", "`n")
-}
-
-# Write text file as UTF-8 without BOM.
 function Write-Utf8NoBomFile {
     param(
         [Parameter(Mandatory = $true)]
         [string]$Path,
 
         [Parameter(Mandatory = $true)]
+        [AllowEmptyString()]
         [string]$Content
     )
 
     $encoding = [System.Text.UTF8Encoding]::new($false)
-    $normalized = ($Content -replace "`r?`n", "`r`n").TrimEnd("`r", "`n") + "`r`n"
-    [System.IO.File]::WriteAllText($Path, $normalized, $encoding)
+    [System.IO.File]::WriteAllText($Path, $Content, $encoding)
 }
 
-# Resolve a writable temporary root directory in a cross-platform way.
-function Get-TemporaryRootPath {
-    $tempPath = [System.IO.Path]::GetTempPath()
-    if (-not $tempPath) {
-        return '/tmp'
-    }
-
-    return $tempPath
-}
-
-# Resolve 7-Zip executable path for cross-platform CAB extraction.
-function Get-SevenZipCommandPath {
-    $candidates = @('7zz', '7z')
-    foreach ($candidate in $candidates) {
-        $command = Get-Command -Name $candidate -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
-        if ($command) {
-            return [string]$command.Source
-        }
-    }
-
-    throw 'Required tool not found: 7-Zip CLI (7zz or 7z). Install 7-Zip/p7zip before running this script.'
-}
-
-# Extract file patterns from an archive using 7-Zip.
-function Invoke-SevenZipExtract {
+function Get-SourceDefinitionFromFileName {
     param(
         [Parameter(Mandatory = $true)]
-        [string]$SevenZipPath,
-
-        [Parameter(Mandatory = $true)]
-        [string]$ArchivePath,
-
-        [Parameter(Mandatory = $true)]
-        [string]$OutputDirectory,
-
-        [Parameter(Mandatory = $true)]
-        [string[]]$Patterns
+        [ValidateNotNullOrEmpty()]
+        [string]$FileName
     )
 
-    $arguments = @('e', '-y', "-o$OutputDirectory", $ArchivePath)
-    $arguments += $Patterns
-    & $SevenZipPath @arguments | Out-Null
-}
-
-# Load WORProject versions endpoint and keep one best source per build major.
-function Get-WorProjectCatalogSources {
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$Uri
-    )
-
-    $response = Invoke-RestMethod -Uri $Uri -ErrorAction Stop
-    $versionNodes = @($response.productsDb.versions.version)
-
-    $latestFwlinksMap = @{}
-    $sources = @()
-
-    foreach ($versionNode in $versionNodes) {
-        $windowsMajor = [string]$versionNode.number
-        if (-not $windowsMajor) {
-            continue
-        }
-
-        $latestFwlinkUrl = Normalize-DownloadUrl -Url ([string]$versionNode.latestCabLink)
-        if ($latestFwlinkUrl) {
-            $latestFwlinkId = Get-FwlinkIdFromUrl -Url $latestFwlinkUrl
-            if ($latestFwlinkId) {
-                $latestFwlinksMap[$windowsMajor] = [pscustomobject]([ordered]@{
-                        windowsMajor = $windowsMajor
-                        fwlinkId = $latestFwlinkId
-                        fwlinkUrl = $latestFwlinkUrl
-                    })
-            }
-        }
-
-        $bestByBuildMajor = @{}
-        foreach ($releaseNode in @($versionNode.releases.release)) {
-            $build = [string]$releaseNode.build
-            $date = [string]$releaseNode.date
-            $cabUrl = Normalize-DownloadUrl -Url ([string]$releaseNode.cabLink)
-
-            if (-not $build -or -not $cabUrl) {
-                continue
-            }
-
-            $parts = ConvertTo-BuildParts -Build $build
-            if ($null -eq $parts.Major) {
-                continue
-            }
-
-            $buildKey = [string]$parts.Major
-            $current = $bestByBuildMajor[$buildKey]
-            $take = $false
-
-            if (-not $current) {
-                $take = $true
-            }
-            else {
-                $currentUbr = $current.buildUbr
-                $newUbr = $parts.Ubr
-                if ($null -eq $currentUbr) { $currentUbr = -1 }
-                if ($null -eq $newUbr) { $newUbr = -1 }
-
-                if ($newUbr -gt $currentUbr) {
-                    $take = $true
-                }
-                elseif ($newUbr -eq $currentUbr -and $date -and ($date -gt $current.date)) {
-                    $take = $true
-                }
-            }
-
-            if ($take) {
-                # Keep newest release per build major to avoid redundant source processing.
-                $bestByBuildMajor[$buildKey] = [pscustomobject]([ordered]@{
-                        windowsMajor = $windowsMajor
-                        build = $build
-                        buildMajor = $parts.Major
-                        buildUbr = $parts.Ubr
-                        date = ConvertTo-IsoDateFromSource -Value $date
-                        cabUrl = $cabUrl
-                    })
-            }
-        }
-
-        $sources += @($bestByBuildMajor.Values)
+    $baseName = [System.IO.Path]::GetFileNameWithoutExtension($FileName)
+    $match = [regex]::Match($baseName, '^(?i)Win(?<windowsMajor>\d+)_(?<releaseId>\d{2}H\d)_(?<buildMajor>\d{5})$')
+    if (-not $match.Success) {
+        throw ("Source XML name '{0}' must match 'Win<major>_<releaseId>_<buildMajor>.xml'." -f $FileName)
     }
 
-    $latestFwlinks = @($latestFwlinksMap.Values | Sort-Object -Descending -Property @(
-            @{ Expression = { [int]$_.windowsMajor } },
-            @{ Expression = { $_.fwlinkId } },
-            @{ Expression = { $_.fwlinkUrl } }
-        ))
-
-    $sourcesSorted = @($sources | Sort-Object -Descending -Property @(
-            @{ Expression = { [int]$_.windowsMajor } },
-            @{ Expression = { $_.buildMajor } },
-            @{ Expression = { $_.buildUbr } },
-            @{ Expression = { $_.date } },
-            @{ Expression = { $_.cabUrl } }
-        ))
-
-    return [pscustomobject]@{
-        LatestFwlinks = $latestFwlinks
-        Sources = $sourcesSorted
+    [int]$parsedBuildMajor = 0
+    if (-not [int]::TryParse($match.Groups['buildMajor'].Value, [ref]$parsedBuildMajor)) {
+        throw ("Source XML name '{0}' contains an invalid build major." -f $FileName)
     }
+
+    return [pscustomobject]([ordered]@{
+            id = $baseName
+            windowsMajor = $match.Groups['windowsMajor'].Value
+            releaseId = $match.Groups['releaseId'].Value.ToUpperInvariant()
+            buildMajor = $parsedBuildMajor
+        })
 }
 
-# Convert products.xml entries into normalized ESD items.
+#endregion Utility Functions
+
+#region OS-Specific Functions
+
 function ConvertFrom-ProductsXml {
     param(
         [Parameter(Mandatory = $true)]
@@ -439,6 +231,7 @@ function ConvertFrom-ProductsXml {
         param(
             [Parameter(Mandatory = $true)]
             [object]$Node,
+
             [Parameter(Mandatory = $true)]
             [string]$Name
         )
@@ -600,7 +393,6 @@ function ConvertFrom-ProductsXml {
             $items |
             Where-Object { $_.clientType -and ($allowedClientTypes -contains $_.clientType.ToUpperInvariant()) }
         )
-        # Some older catalogs do not expose client type reliably; fallback keeps full set.
         if ($filtered.Count -gt 0) {
             $items = $filtered
         }
@@ -619,14 +411,88 @@ function ConvertFrom-ProductsXml {
         ))
 }
 
-# Emit XML output aligned with the JSON catalog shape.
+function Get-LocalProductsSource {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Path,
+
+        [Parameter(Mandatory = $true)]
+        [string]$CatalogRoot,
+
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNull()]
+        [string[]]$ClientTypes,
+
+        [Parameter()]
+        [System.Management.Automation.SwitchParameter]$IncludeKey
+    )
+
+    $fileInfo = Get-Item -Path $Path -ErrorAction Stop
+    $sourceDefinition = Get-SourceDefinitionFromFileName -FileName $fileInfo.Name
+
+    [xml]$productsXml = Get-Content -Path $fileInfo.FullName -Raw
+    $sourceItems = @(
+        ConvertFrom-ProductsXml -ProductsXml $productsXml -SourceId $sourceDefinition.id -ClientTypes $ClientTypes -IncludeKey:$IncludeKey
+    )
+
+    if ($sourceItems.Count -lt 1) {
+        throw ("Source XML '{0}' yielded no matching ESD item after normalization/filtering." -f $fileInfo.Name)
+    }
+
+    $matchingBuildItems = @($sourceItems | Where-Object { $_.buildMajor -eq $sourceDefinition.buildMajor })
+    if ($matchingBuildItems.Count -lt 1) {
+        throw ("Source XML '{0}' does not contain items for build major {1} declared by its file name." -f $fileInfo.Name, $sourceDefinition.buildMajor)
+    }
+
+    $representativeItem = $matchingBuildItems |
+        Sort-Object -Descending -Property @(
+            @{ Expression = { if ($null -eq $_.buildUbr) { -1 } else { $_.buildUbr } } },
+            @{ Expression = { $_.build } },
+            @{ Expression = { $_.fileName } }
+        ) |
+        Select-Object -First 1
+
+    $releaseId = if ($representativeItem.releaseId) { [string]$representativeItem.releaseId } else { [string]$sourceDefinition.releaseId }
+    if ($releaseId -ne $sourceDefinition.releaseId) {
+        throw ("Source XML '{0}' declares release {1} in its file name but contains items for {2}." -f $fileInfo.Name, $sourceDefinition.releaseId, $releaseId)
+    }
+
+    $windowsRelease = @($matchingBuildItems | Where-Object { $_.windowsRelease -ne $null } | Select-Object -ExpandProperty windowsRelease -Unique)
+    if ($windowsRelease.Count -gt 1) {
+        throw ("Source XML '{0}' contains mixed Windows releases." -f $fileInfo.Name)
+    }
+
+    $windowsMajor = if ($windowsRelease.Count -eq 1) { [string]$windowsRelease[0] } else { [string]$sourceDefinition.windowsMajor }
+    if ($windowsMajor -ne [string]$sourceDefinition.windowsMajor) {
+        throw ("Source XML '{0}' declares Windows {1} in its file name but contains Windows {2} items." -f $fileInfo.Name, $sourceDefinition.windowsMajor, $windowsMajor)
+    }
+
+    $sourceRelativePath = [System.IO.Path]::GetRelativePath($CatalogRoot, $fileInfo.FullName).Replace('\', '/')
+    $sourceXmlSha256 = (Get-FileHash -Path $fileInfo.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+
+    return [pscustomobject]([ordered]@{
+            Source = [pscustomobject]([ordered]@{
+                    id = $sourceDefinition.id
+                    windowsMajor = $windowsMajor
+                    releaseId = $releaseId
+                    build = if ($representativeItem.build) { [string]$representativeItem.build } else { [string]$sourceDefinition.buildMajor }
+                    buildMajor = $sourceDefinition.buildMajor
+                    buildUbr = $representativeItem.buildUbr
+                    sourceFile = $sourceRelativePath
+                    sourceXmlSha256 = $sourceXmlSha256
+                    itemCount = $sourceItems.Count
+                })
+            Items = @($sourceItems)
+        })
+}
+
 function Write-OperatingSystemXml {
     param(
         [Parameter(Mandatory = $true)]
         [string]$Path,
 
         [Parameter(Mandatory = $true)]
-        [hashtable]$Catalog
+        [pscustomobject]$Catalog
     )
 
     $settings = [System.Xml.XmlWriterSettings]::new()
@@ -645,17 +511,12 @@ function Write-OperatingSystemXml {
         $writer.WriteAttributeString('generatedAtUtc', [string]$Catalog.generatedAtUtc)
 
         $writer.WriteStartElement('Source')
-        $writer.WriteAttributeString('name', [string]$Catalog.source.name)
-        $writer.WriteAttributeString('versionsUri', [string]$Catalog.source.versionsUri)
-        $writer.WriteEndElement()
+        foreach ($property in $Catalog.source.PSObject.Properties) {
+            if ($null -eq $property.Value) {
+                continue
+            }
 
-        $writer.WriteStartElement('LatestFwlinks')
-        foreach ($fwlink in $Catalog.latestFwlinks) {
-            $writer.WriteStartElement('LatestFwlink')
-            $writer.WriteAttributeString('windowsMajor', [string]$fwlink.windowsMajor)
-            $writer.WriteAttributeString('fwlinkId', [string]$fwlink.fwlinkId)
-            $writer.WriteAttributeString('fwlinkUrl', [string]$fwlink.fwlinkUrl)
-            $writer.WriteEndElement()
+            $writer.WriteAttributeString([string]$property.Name, [string]$property.Value)
         }
         $writer.WriteEndElement()
 
@@ -706,157 +567,44 @@ $generatedAt = (Get-Date).ToUniversalTime()
 $generatedAtUtc = $generatedAt.ToString('yyyy-MM-ddTHH:mm:ssZ')
 $generatedAtDisplay = $generatedAt.ToString('yyyy-MM-dd HH:mm:ss') + ' UTC'
 
-$sevenZipPath = Get-SevenZipCommandPath
-
 if (-not (Test-Path -Path $OutputDirectory)) {
     $null = New-Item -Path $OutputDirectory -ItemType Directory -Force
 }
 
-$catalogSources = Get-WorProjectCatalogSources -Uri $VersionsUri
-$latestFwlinks = @($catalogSources.LatestFwlinks)
-$sourceInputs = @($catalogSources.Sources)
+$resolvedOutputDirectory = (Resolve-Path -Path $OutputDirectory).Path
+
+if (-not (Test-Path -Path $SourceDirectory)) {
+    throw ("Source directory not found: {0}" -f $SourceDirectory)
+}
+
+$resolvedSourceDirectory = (Resolve-Path -Path $SourceDirectory).Path
+$sourceFiles = @(Get-ChildItem -Path $resolvedSourceDirectory -Filter '*.xml' -File | Sort-Object -Property Name)
+if ($sourceFiles.Count -lt 1) {
+    throw ("No source XML files were found in {0}" -f $resolvedSourceDirectory)
+}
 
 $sources = @()
 $itemsAll = @()
 $skippedSources = 0
 $skippedSourceDetails = @()
 
-$tempRoot = Join-Path -Path (Get-TemporaryRootPath) -ChildPath ('foundry-os-catalog-' + [guid]::NewGuid())
-$null = New-Item -Path $tempRoot -ItemType Directory -Force
-
-try {
-    foreach ($sourceInput in $sourceInputs) {
-        $sourceId = 'Win{0}_{1}' -f [string]$sourceInput.windowsMajor, [string]$sourceInput.build
-        $cabUrl = Normalize-DownloadUrl -Url ([string]$sourceInput.cabUrl)
-
-        if (-not $cabUrl) {
-            $reason = 'cabUrl is missing'
-            Write-Warning -Message ("Skipping source '{0}' because {1}." -f $sourceId, $reason)
-            $skippedSources += 1
-            $skippedSourceDetails += [pscustomobject]@{
-                sourceId = $sourceId
-                reason = $reason
-            }
-            continue
-        }
-
-        $sourceTempDirectory = Join-Path -Path $tempRoot -ChildPath $sourceId
-        if (-not (Test-Path -Path $sourceTempDirectory)) {
-            $null = New-Item -Path $sourceTempDirectory -ItemType Directory -Force
-        }
-
-        $cabPath = Join-Path -Path $sourceTempDirectory -ChildPath ("products_{0}.cab" -f $sourceId)
-        $xmlPath = Join-Path -Path $sourceTempDirectory -ChildPath ("products_{0}.xml" -f $sourceId)
-
-        try {
-            Invoke-WebRequest -Uri $cabUrl -OutFile $cabPath -ErrorAction Stop | Out-Null
-        }
-        catch {
-            $reason = "CAB download failed: {0}" -f $_.Exception.Message
-            Write-Warning -Message ("Skipping source '{0}' because {1}" -f $sourceId, $reason)
-            $skippedSources += 1
-            $skippedSourceDetails += [pscustomobject]@{
-                sourceId = $sourceId
-                reason = $reason
-            }
-            continue
-        }
-
-        $cabSha256 = (Get-FileHash -Path $cabPath -Algorithm SHA256).Hash.ToLowerInvariant()
-
-        $directProductsXmlPath = Join-Path -Path $sourceTempDirectory -ChildPath 'products.xml'
-        if (Test-Path -Path $directProductsXmlPath) {
-            Remove-Item -Path $directProductsXmlPath -Force -ErrorAction SilentlyContinue
-        }
-
-        try {
-            Invoke-SevenZipExtract -SevenZipPath $sevenZipPath -ArchivePath $cabPath -OutputDirectory $sourceTempDirectory -Patterns @('products.xml')
-        }
-        catch {
-            Write-Verbose -Message ("7-Zip direct extraction failed for source '{0}': {1}" -f $sourceId, $_.Exception.Message)
-        }
-
-        if (Test-Path -Path $directProductsXmlPath) {
-            Copy-Item -Path $directProductsXmlPath -Destination $xmlPath -Force
-        }
-
-        if (-not (Test-Path -Path $xmlPath)) {
-            # Fallback for sources where the XML name differs from products.xml.
-            try {
-                Invoke-SevenZipExtract -SevenZipPath $sevenZipPath -ArchivePath $cabPath -OutputDirectory $sourceTempDirectory -Patterns @('*.xml')
-            }
-            catch {
-                Write-Verbose -Message ("7-Zip wildcard extraction failed for source '{0}': {1}" -f $sourceId, $_.Exception.Message)
-            }
-
-            $xmlCandidates = @(
-                Get-ChildItem -Path $sourceTempDirectory -Filter '*.xml' -File |
-                Where-Object { $_.FullName -ne $xmlPath } |
-                Sort-Object -Descending -Property LastWriteTimeUtc, Name
-            )
-
-            if ($xmlCandidates.Count -ge 1) {
-                Copy-Item -Path $xmlCandidates[0].FullName -Destination $xmlPath -Force
-            }
-        }
-
-        if (-not (Test-Path -Path $xmlPath)) {
-            $reason = 'products.xml was not found after CAB extraction'
-            Write-Warning -Message ("Skipping source '{0}' because {1}." -f $sourceId, $reason)
-            $skippedSources += 1
-            $skippedSourceDetails += [pscustomobject]@{
-                sourceId = $sourceId
-                reason = $reason
-            }
-            continue
-        }
-
-        $productsXmlSha256 = (Get-FileHash -Path $xmlPath -Algorithm SHA256).Hash.ToLowerInvariant()
-
-        try {
-            [xml]$productsXml = Get-Content -Path $xmlPath -Raw
-        }
-        catch {
-            $reason = "products.xml could not be parsed: {0}" -f $_.Exception.Message
-            Write-Warning -Message ("Skipping source '{0}' because {1}" -f $sourceId, $reason)
-            $skippedSources += 1
-            $skippedSourceDetails += [pscustomobject]@{
-                sourceId = $sourceId
-                reason = $reason
-            }
-            continue
-        }
-
-        $sourceItems = ConvertFrom-ProductsXml -ProductsXml $productsXml -SourceId $sourceId -ClientTypes $ClientTypes -IncludeKey:$IncludeKey
-        if (@($sourceItems).Count -lt 1) {
-            $reason = 'products.xml yielded no matching ESD item after normalization/filtering'
-            Write-Warning -Message ("Skipping source '{0}' because {1}." -f $sourceId, $reason)
-            $skippedSources += 1
-            $skippedSourceDetails += [pscustomobject]@{
-                sourceId = $sourceId
-                reason = $reason
-            }
-            continue
-        }
-
-        $itemsAll += @($sourceItems)
-
-        $sources += [pscustomobject]([ordered]@{
-                id = $sourceId
-                windowsMajor = [string]$sourceInput.windowsMajor
-                build = [string]$sourceInput.build
-                buildMajor = $sourceInput.buildMajor
-                buildUbr = $sourceInput.buildUbr
-                date = ConvertTo-IsoDateFromSource -Value ([string]$sourceInput.date)
-                cabUrl = $cabUrl
-                cabSha256 = $cabSha256
-                productsXmlSha256 = $productsXmlSha256
-                itemCount = @($sourceItems).Count
-            })
+foreach ($sourceFile in $sourceFiles) {
+    try {
+        $sourceResult = Get-LocalProductsSource -Path $sourceFile.FullName -CatalogRoot $resolvedOutputDirectory -ClientTypes $ClientTypes -IncludeKey:$IncludeKey
     }
-}
-finally {
-    Remove-Item -Path $tempRoot -Recurse -Force -ErrorAction SilentlyContinue
+    catch {
+        $reason = $_.Exception.Message
+        Write-Warning -Message ("Skipping source '{0}' because {1}" -f $sourceFile.Name, $reason)
+        $skippedSources += 1
+        $skippedSourceDetails += [pscustomobject]@{
+            sourceId = $sourceFile.Name
+            reason = $reason
+        }
+        continue
+    }
+
+    $sources += $sourceResult.Source
+    $itemsAll += $sourceResult.Items
 }
 
 if (-not $itemsAll -or $itemsAll.Count -lt $MinimumItemCount) {
@@ -867,15 +615,12 @@ $dedupMap = [ordered]@{}
 foreach ($item in $itemsAll) {
     $key = $null
     if ($item.sha256) {
-        # Prefer stable content hash when available.
         $key = 'sha256:' + [string]$item.sha256
     }
     elseif ($item.sha1) {
-        # Backward-compatible fallback for older feeds.
         $key = 'sha1:' + [string]$item.sha1
     }
     else {
-        # Fallback key for entries missing content hashes.
         $key = 'url:' + [string]$item.url + '|fn:' + [string]$item.fileName
     }
 
@@ -899,30 +644,30 @@ $itemsSorted = @($dedupMap.Values | Sort-Object -Descending -Property @(
 $sourcesSorted = @($sources | Sort-Object -Descending -Property @(
         @{ Expression = { [int]$_.windowsMajor } },
         @{ Expression = { $_.buildMajor } },
-        @{ Expression = { $_.buildUbr } },
-        @{ Expression = { $_.date } },
+        @{ Expression = { if ($null -eq $_.buildUbr) { -1 } else { $_.buildUbr } } },
+        @{ Expression = { $_.releaseId } },
         @{ Expression = { $_.id } }
     ))
 
-$catalog = [ordered]@{
-    schemaVersion = 2
-    generatedAtUtc = $generatedAtUtc
-    source = [ordered]@{
-        name = 'WORProject MCT Catalogs API'
-        versionsUri = $VersionsUri
-    }
-    latestFwlinks = $latestFwlinks
-    sources = $sourcesSorted
-    items = $itemsSorted
-}
+$relativeSourceDirectory = [System.IO.Path]::GetRelativePath($resolvedOutputDirectory, $resolvedSourceDirectory).Replace('\', '/')
 
-$xmlPath = Join-Path -Path $OutputDirectory -ChildPath 'OperatingSystem.xml'
-$mdPath = Join-Path -Path $OutputDirectory -ChildPath 'README.md'
+$catalog = [pscustomobject]([ordered]@{
+        schemaVersion = 3
+        generatedAtUtc = $generatedAtUtc
+        source = [pscustomobject]([ordered]@{
+                name = 'Foundry Automated OS Catalog Generation'
+                directory = $relativeSourceDirectory
+            })
+        sources = $sourcesSorted
+        items = $itemsSorted
+    })
+
+$xmlPath = Join-Path -Path $resolvedOutputDirectory -ChildPath 'OperatingSystem.xml'
+$mdPath = Join-Path -Path $resolvedOutputDirectory -ChildPath 'README.md'
 
 Write-OperatingSystemXml -Path $xmlPath -Catalog $catalog
 
 $xmlHash = (Get-FileHash -Path $xmlPath -Algorithm SHA256).Hash.ToLowerInvariant()
-
 $status = if ($itemsSorted.Count -gt 0) { 'SUCCESS' } else { 'WARNING' }
 $durationSeconds = [int][Math]::Round(((Get-Date) - $startedAt).TotalSeconds)
 
@@ -933,6 +678,8 @@ $summaryLines = @(
     '| --- | --- |',
     "| Executed At (UTC) | $generatedAtDisplay |",
     "| Status | $status |",
+    "| Source Directory | $relativeSourceDirectory |",
+    "| Source Files | $($sourceFiles.Count) |",
     "| Sources Processed | $($sourcesSorted.Count) |",
     "| Sources Skipped | $skippedSources |",
     "| Items | $($itemsSorted.Count) |",
@@ -960,7 +707,7 @@ Write-Utf8NoBomFile -Path $mdPath -Content ($summaryLines -join "`r`n")
 [pscustomobject]@{
     XmlPath = $xmlPath
     MarkdownPath = $mdPath
-    LatestFwlinks = $latestFwlinks.Count
+    SourceFiles = $sourceFiles.Count
     Sources = $sourcesSorted.Count
     Items = $itemsSorted.Count
     Status = $status
