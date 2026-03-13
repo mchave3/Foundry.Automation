@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SurfaceCatalog schemaVersion="1" generatedAtUtc="2026-03-12T17:58:18Z" category="DriverPack">
-  <Source catalogType="SupportArticle" name="Microsoft Surface Drivers and Firmware" uri="https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120" catalogSha256="ddeaa5e85143ff9285e04b2249fa70807d900c291a99e3b192ca46d7d4fe07e1" />
-  <CatalogMetadata firstPublishedDate="2020-09-01" articleGuid="09bb2e09-2a4b-cb69-0951-078a7739e120" lastPublishedDate="2025-12-12" />
+<SurfaceCatalog schemaVersion="1" generatedAtUtc="2026-03-13T03:44:39Z" category="DriverPack">
+  <Source catalogType="SupportArticle" catalogSha256="fd5cd421cf395acfb3d63a87aa8c253dc05e5a6157a2d9840b1b141f6d863117" uri="https://support.microsoft.com/en-us/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120" name="Microsoft Surface Drivers and Firmware" />
+  <CatalogMetadata lastPublishedDate="2025-12-12" articleGuid="09bb2e09-2a4b-cb69-0951-078a7739e120" firstPublishedDate="2020-09-01" />
   <Items>
     <Item>
       <id>49039|Surface3_4GLTE-ATT_Win10_18362_1902003_0.msi</id>
@@ -330,7 +330,22 @@
       <format>msi</format>
       <version>1.0</version>
       <sizeBytes>1242841088</sizeBytes>
-      <datePublished>2026-01-21</datePublished>
+      <datePublished>2026-03-12</datePublished>
+      <supportedOperatingSystems>Windows 11</supportedOperatingSystems>
+    </Item>
+    <Item>
+      <id>101974|SurfaceHub3_Hub2S_Win11_22631_26.021.8855.0.msi</id>
+      <model>Surface Hub 2S and Surface Hub 3</model>
+      <downloadTitle>Drivers and Firmware for Windows 11 Pro and Enterprise OS on Surface Hub 2S and Surface Hub 3</downloadTitle>
+      <packageId>101974</packageId>
+      <downloadCenterUrl>https://www.microsoft.com/download/details.aspx?id=101974</downloadCenterUrl>
+      <downloadUrl>https://download.microsoft.com/download/e421ce83-c5a6-47a9-83a5-35ed280d6ef1/SurfaceHub3_Hub2S_Win11_22631_26.021.8855.0.msi</downloadUrl>
+      <msiUrl>https://download.microsoft.com/download/e421ce83-c5a6-47a9-83a5-35ed280d6ef1/SurfaceHub3_Hub2S_Win11_22631_26.021.8855.0.msi</msiUrl>
+      <fileName>SurfaceHub3_Hub2S_Win11_22631_26.021.8855.0.msi</fileName>
+      <format>msi</format>
+      <version>1.0</version>
+      <sizeBytes>1242718208</sizeBytes>
+      <datePublished>2026-03-12</datePublished>
       <supportedOperatingSystems>Windows 11</supportedOperatingSystems>
     </Item>
     <Item>
@@ -693,18 +708,18 @@
       <supportedOperatingSystems>Windows 11</supportedOperatingSystems>
     </Item>
     <Item>
-      <id>108013|SurfacePro11withIntel_Win11_22631_26.021.8636.0.msi</id>
+      <id>108013|SurfacePro11withIntel_Win11_22631_26.022.27267.0.msi</id>
       <model>Surface Pro 11th Edition with Intel</model>
       <downloadTitle>Surface Pro 11th Edition with Intel Drivers and Firmware</downloadTitle>
       <packageId>108013</packageId>
       <downloadCenterUrl>https://www.microsoft.com/download/details.aspx?id=108013</downloadCenterUrl>
-      <downloadUrl>https://download.microsoft.com/download/c26c62fe-da4b-41d1-b276-c855751c247c/SurfacePro11withIntel_Win11_22631_26.021.8636.0.msi</downloadUrl>
-      <msiUrl>https://download.microsoft.com/download/c26c62fe-da4b-41d1-b276-c855751c247c/SurfacePro11withIntel_Win11_22631_26.021.8636.0.msi</msiUrl>
-      <fileName>SurfacePro11withIntel_Win11_22631_26.021.8636.0.msi</fileName>
+      <downloadUrl>https://download.microsoft.com/download/c26c62fe-da4b-41d1-b276-c855751c247c/SurfacePro11withIntel_Win11_22631_26.022.27267.0.msi</downloadUrl>
+      <msiUrl>https://download.microsoft.com/download/c26c62fe-da4b-41d1-b276-c855751c247c/SurfacePro11withIntel_Win11_22631_26.022.27267.0.msi</msiUrl>
+      <fileName>SurfacePro11withIntel_Win11_22631_26.022.27267.0.msi</fileName>
       <format>msi</format>
       <version>1.0</version>
-      <sizeBytes>967983104</sizeBytes>
-      <datePublished>2026-03-05</datePublished>
+      <sizeBytes>967991296</sizeBytes>
+      <datePublished>2026-03-12</datePublished>
       <supportedOperatingSystems>Windows 11</supportedOperatingSystems>
     </Item>
     <Item>
