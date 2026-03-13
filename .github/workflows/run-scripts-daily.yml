@@ -34,9 +34,14 @@ jobs:
           }
 
           $include = foreach ($file in $scriptFiles) {
+            $runsOn = if ($file.Name -eq 'Update-OSCatalog.ps1') { 'windows-latest' } else { 'ubuntu-slim' }
+            $requires7Zip = $file.Name -in @('Update-DellCatalog.ps1', 'Update-HPCatalog.ps1')
+
             [pscustomobject]@{
               script_path = "Scripts/$($file.Name)"
               artifact_name = "cache-update-$($file.BaseName)"
+              runs_on = $runsOn
+              requires_7zip = $requires7Zip
             }
           }
 
@@ -47,7 +52,7 @@ jobs:
   run-update-scripts:
     needs: discover-update-scripts
     if: needs.discover-update-scripts.outputs.has_scripts == 'true'
-    runs-on: ubuntu-slim
+    runs-on: ${{ matrix.runs_on }}
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.discover-update-scripts.outputs.matrix) }}
@@ -56,10 +61,25 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Install 7-Zip
+        if: runner.os == 'Linux' && matrix.requires_7zip
         shell: pwsh
         run: |
           sudo apt-get update
           sudo apt-get install -y p7zip-full
+
+      - name: Ensure 7-Zip
+        if: runner.os == 'Windows' && matrix.requires_7zip
+        shell: pwsh
+        run: |
+          $sevenZipPath = 'C:\Program Files\7-Zip'
+          if (Test-Path -Path $sevenZipPath) {
+            $sevenZipPath | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          }
+
+          $sevenZipCommand = Get-Command -Name '7z' -ErrorAction SilentlyContinue
+          if (-not $sevenZipCommand) {
+            throw '7-Zip is not available on the Windows runner.'
+          }
 
       - name: Execute script
         shell: pwsh
@@ -98,12 +118,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
-      - name: Install 7-Zip
-        shell: pwsh
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y p7zip-full
 
       - name: Execute unified build
         shell: pwsh
