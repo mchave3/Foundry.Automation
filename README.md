@@ -33,12 +33,12 @@ In GitHub Actions, `run-scripts-daily.yml` executes all `Update-*.ps1` scripts f
 
 ## Operating System Catalog
 
-This repository includes a PowerShell generator that reads local Microsoft `products.xml` sources from the repository and writes deterministic ESD cache outputs.
+This repository includes a PowerShell generator that retrieves Windows 11 `products.cab` metadata from official Microsoft-hosted sources, extracts `products.xml`, and writes deterministic ESD cache outputs.
 
 - Script: `Scripts/Update-OSCatalog.ps1`
 - Schema: `Schemas/OperatingSystem.schema.json`
-- Inputs: `Cache/OS/Microsoft/*.xml`
 - Outputs:
+  - Generated source metadata: `Cache/OS/Microsoft/*.xml`
   - `Cache/OS/OperatingSystem.xml`
   - `Cache/OS/README.md`
 
@@ -48,7 +48,9 @@ Run:
 pwsh -NoProfile -File ./Scripts/Update-OSCatalog.ps1
 ```
 
-Source files must follow the naming convention `Win<major>_<releaseId>_<buildMajor>.xml`, for example `Win11_24H2_26100.xml`.
+The script targets Windows 11 `23H2`, `24H2`, and `25H2` only, with no fallback to repository-pinned source catalogs. It uses Microsoft-hosted `products.cab` links for `23H2` and `24H2`, and Windows Update metadata resolution for `25H2`.
+
+Generated source files use the naming convention `Win<major>_<releaseId>_<buildMajor>.xml`, for example `Win11_24H2_26100.xml`.
 
 ## Dell Catalog
 
